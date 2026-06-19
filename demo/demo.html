@@ -259,15 +259,22 @@ body.vibe-magical .sess-header:hover{background:rgba(44,34,80,.9)}
 .sess-dot{width:8px;height:8px;border-radius:50%}
 
 /* ── ANALYZE ── full width */
-.analyze-wrap{padding:28px 32px 48px}
+.analyze-wrap{padding:20px 32px 48px}
 @media(max-width:720px){.analyze-wrap{padding:16px 16px 100px}}
-.domain-tabs{display:flex;margin-bottom:28px;background:var(--card);border:.5px solid var(--bd);border-radius:11px;overflow:hidden}
+.domain-tabs{display:flex;background:var(--card);border:.5px solid var(--bd);border-radius:11px;overflow:hidden;position:sticky;top:56px;z-index:20;box-shadow:0 4px 16px rgba(0,0,0,.07);margin:0 0 28px}.domain-tabs-wrap{padding-bottom:28px}
 .dtab{flex:1;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;padding:13px 8px;
   color:var(--tm);background:none;border:none;border-right:.5px solid var(--bd);
   transition:all .12s;text-align:center;display:flex;align-items:center;justify-content:center;gap:7px}
 .dtab:last-child{border-right:none}
 .dtab.on{background:var(--pp);color:var(--p)}
 .dtab:hover:not(.on){background:var(--bg);color:var(--t1)}
+body.vibe-magical .dtab{color:#9A8AB8;border-right-color:rgba(155,114,207,.25)}
+body.vibe-magical .dtab.on{background:#2E2650;color:#C9A0E8}
+body.vibe-magical .dtab:hover:not(.on){background:#231E42;color:#C4BAE8}
+body.vibe-magical .sess-badge{background:#2E2650;color:#C9A0E8;border-color:#6A50A0}
+body.vibe-magical .m-ctag{background:#2A1F4A;color:#C9A832;border-color:#C9A832}
+body.vibe-chill .m-ctag{background:#D4EDDA;color:#1A6035;border-color:#2E9E5A}
+body.vibe-chill .ctag{background:#D4EDDA;color:#1A6035;border-color:#2E9E5A}
 .domain-scr{display:none}.domain-scr.on{display:block}
 .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
 .score-tile{background:var(--card);border:.5px solid var(--bd);border-radius:14px;padding:22px 24px;transition:background .3s}
@@ -396,13 +403,16 @@ body.vibe-magical .sess-header:hover{background:rgba(44,34,80,.9)}
 .prompt-label{font-size:19px;font-weight:900;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .prompt-wrap{background:var(--card);border:1.5px solid var(--bde);border-radius:14px;overflow:hidden;margin-bottom:12px;transition:background .3s}
 .prompt-wrap:focus-within{border-color:var(--p)}
-.prompt-ta{width:100%;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:16px;
-  color:var(--t1);line-height:1.65;resize:none;background:transparent;padding:16px 18px}
+.prompt-ta{width:100%;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:16px;color:var(--t1);line-height:1.65;resize:none;background:transparent;padding:16px 18px}
+body.vibe-magical .prompt-ta::placeholder{color:#6A5A90}
+body.vibe-magical .prompt-ta{color:#EAE4FF}
 .prompt-footer{padding:11px 16px 13px;border-top:1px solid var(--bd);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .media-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;
   border:.5px solid var(--bde);background:var(--bg);font-family:'DM Mono','Courier New',monospace;
   font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);cursor:pointer;transition:all .12s}
 .media-pill:hover{border-color:var(--p);color:var(--p);background:var(--pp)}
+body.vibe-magical .media-pill{border-color:#6A50A0;color:#C9A0E8;background:rgba(155,114,207,.12)}
+body.vibe-magical .canva-pill{border-color:rgba(155,114,207,.4);background:rgba(120,80,200,.15);color:#C9A0E8}
 .canva-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;
   border:.5px solid color-mix(in srgb,#7B2FBE 30%,transparent);
   background:color-mix(in srgb,#7B2FBE 8%,transparent);
@@ -650,12 +660,12 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
 <!-- ANALYZE -->
 <div class="scr" id="scr-analyze">
   <div class="analyze-wrap">
-    <div class="domain-tabs">
+    <div class="analyze-hd"><div class="domain-tabs">
       <button class="dtab on" onclick="showDomain('network',this)">👤 Network</button>
       <button class="dtab" onclick="showDomain('content',this)">📄 Content</button>
       <button class="dtab" onclick="showDomain('reach',this)">🌐 Reach</button>
       <button class="dtab" onclick="showDomain('revenue',this)">💲 Revenue</button>
-    </div>
+    </div></div>
     <!-- NETWORK -->
     <div class="domain-scr on" id="dom-network">
       <div class="net-toolbar">
