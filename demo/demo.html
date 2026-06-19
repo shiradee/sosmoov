@@ -261,7 +261,13 @@ body.vibe-magical .sess-header:hover{background:rgba(44,34,80,.9)}
 /* ── ANALYZE ── full width */
 .analyze-wrap{padding:20px 32px 48px}
 @media(max-width:720px){.analyze-wrap{padding:16px 16px 100px}}
-.domain-tabs{display:flex;background:var(--card);border:.5px solid var(--bd);border-radius:11px;overflow:hidden;position:sticky;top:56px;z-index:20;box-shadow:0 4px 16px rgba(0,0,0,.07);margin:0 0 28px}.domain-tabs-wrap{padding-bottom:28px}
+.domain-tabs-sticky{background:var(--bg);padding:16px 32px 0;transition:background .3s}
+@media(max-width:720px){.domain-tabs-sticky{padding:12px 16px 0}}
+.domain-tabs-sticky.stuck{position:fixed;top:56px;left:0;right:0;z-index:20;padding:8px 32px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+@media(max-width:720px){.domain-tabs-sticky.stuck{padding:8px 16px}}
+.domain-tabs-spacer{display:none;height:0}
+.domain-tabs-sticky.stuck~.domain-tabs-spacer{display:block;height:72px}
+.domain-tabs{display:flex;background:var(--card);border:.5px solid var(--bd);border-radius:11px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.07);margin-bottom:0}.domain-tabs-wrap{padding-bottom:28px}
 .dtab{flex:1;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;padding:13px 8px;
   color:var(--tm);background:none;border:none;border-right:.5px solid var(--bd);
   transition:all .12s;text-align:center;display:flex;align-items:center;justify-content:center;gap:7px}
@@ -659,13 +665,16 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
 
 <!-- ANALYZE -->
 <div class="scr" id="scr-analyze">
-  <div class="analyze-wrap">
-    <div class="analyze-hd"><div class="domain-tabs">
+  <div class="domain-tabs-sticky">
+    <div class="domain-tabs">
       <button class="dtab on" onclick="showDomain('network',this)">👤 Network</button>
       <button class="dtab" onclick="showDomain('content',this)">📄 Content</button>
       <button class="dtab" onclick="showDomain('reach',this)">🌐 Reach</button>
       <button class="dtab" onclick="showDomain('revenue',this)">💲 Revenue</button>
-    </div></div>
+    </div>
+  </div>
+  <div class="domain-tabs-spacer"></div>
+  <div class="analyze-wrap">
     <!-- NETWORK -->
     <div class="domain-scr on" id="dom-network">
       <div class="net-toolbar">
@@ -986,6 +995,38 @@ function setVibe(v,label,el){
   document.getElementById('net-i2d').textContent=d.ni2d;
   document.getElementById('ciara-chat-msg').textContent=d.chatMsg;
   buildGraph();
+
+// ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
+(function(){
+  var banner = document.querySelector('.domain-tabs-sticky');
+  if(!banner) return;
+  var lastStuck = false;
+  function checkSticky(){
+    if(!document.getElementById('scr-analyze').classList.contains('on')){
+      if(lastStuck){banner.classList.remove('stuck');lastStuck=false;}
+      return;
+    }
+    var rect = banner.getBoundingClientRect();
+    var topbar = document.querySelector('.topbar');
+    var tbH = topbar ? topbar.offsetHeight : 56;
+    var shouldStick = rect.top <= tbH;
+    if(shouldStick !== lastStuck){
+      banner.classList.toggle('stuck', shouldStick);
+      lastStuck = shouldStick;
+    }
+  }
+  window.addEventListener('scroll', checkSticky, {passive:true});
+  // re-check when switching to analyze tab
+  var origShow = window.showScr;
+  window.showScr = function(id, tab){
+    origShow(id, tab);
+    if(id === 'analyze'){
+      banner.classList.remove('stuck');
+      lastStuck = false;
+      setTimeout(checkSticky, 50);
+    }
+  };
+})();
 }
 function toggleVibe(){document.getElementById('vibe-btn').classList.toggle('open');document.getElementById('vibe-dd').classList.toggle('open');}
 document.addEventListener('click',function(e){if(!e.target.closest('.vibe-wrap')){document.getElementById('vibe-btn').classList.remove('open');document.getElementById('vibe-dd').classList.remove('open');}});
@@ -1023,6 +1064,38 @@ function buildGraph(){
 
 function focusNode(id){
   focusId=id;buildGraph();
+
+// ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
+(function(){
+  var banner = document.querySelector('.domain-tabs-sticky');
+  if(!banner) return;
+  var lastStuck = false;
+  function checkSticky(){
+    if(!document.getElementById('scr-analyze').classList.contains('on')){
+      if(lastStuck){banner.classList.remove('stuck');lastStuck=false;}
+      return;
+    }
+    var rect = banner.getBoundingClientRect();
+    var topbar = document.querySelector('.topbar');
+    var tbH = topbar ? topbar.offsetHeight : 56;
+    var shouldStick = rect.top <= tbH;
+    if(shouldStick !== lastStuck){
+      banner.classList.toggle('stuck', shouldStick);
+      lastStuck = shouldStick;
+    }
+  }
+  window.addEventListener('scroll', checkSticky, {passive:true});
+  // re-check when switching to analyze tab
+  var origShow = window.showScr;
+  window.showScr = function(id, tab){
+    origShow(id, tab);
+    if(id === 'analyze'){
+      banner.classList.remove('stuck');
+      lastStuck = false;
+      setTimeout(checkSticky, 50);
+    }
+  };
+})();
   var p=PROFILES[id];if(!p)return;
   document.getElementById('np-av').textContent=p.av;
   document.getElementById('np-av').style.background=p.bg;
@@ -1062,6 +1135,38 @@ function toggleChat(){document.getElementById('ciara-chat').classList.toggle('op
 function sendToC(){var inp=document.getElementById('ciara-input');var msg=inp.value.trim();if(!msg)return;var body=document.getElementById('ciara-chat-body');var user=document.createElement('div');user.style.cssText='align-self:flex-end;background:var(--pp);border-radius:12px 0 12px 12px;padding:10px 13px;font-size:14px;color:var(--pd);max-width:90%;margin-left:auto;';user.textContent=msg;body.appendChild(user);inp.value='';setTimeout(function(){var r=document.createElement('div');r.className='ciara-bub';var nm={linkedin:'LinkedIn post',instagram:'Reel',email:'newsletter',youtube:'video',substack:'piece'};r.textContent=["Great! Want me to turn that into a "+((nm[curPlat])||'post')+"?","I can see a strong angle — should I draft something?","That sounds like your best-performing type. Let me generate a few versions.","Got it. Pulling from your sessions to shape this..."][Math.floor(Math.random()*4)];body.appendChild(r);body.scrollTop=body.scrollHeight;},600);body.scrollTop=body.scrollHeight;}
 
 buildGraph();
+
+// ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
+(function(){
+  var banner = document.querySelector('.domain-tabs-sticky');
+  if(!banner) return;
+  var lastStuck = false;
+  function checkSticky(){
+    if(!document.getElementById('scr-analyze').classList.contains('on')){
+      if(lastStuck){banner.classList.remove('stuck');lastStuck=false;}
+      return;
+    }
+    var rect = banner.getBoundingClientRect();
+    var topbar = document.querySelector('.topbar');
+    var tbH = topbar ? topbar.offsetHeight : 56;
+    var shouldStick = rect.top <= tbH;
+    if(shouldStick !== lastStuck){
+      banner.classList.toggle('stuck', shouldStick);
+      lastStuck = shouldStick;
+    }
+  }
+  window.addEventListener('scroll', checkSticky, {passive:true});
+  // re-check when switching to analyze tab
+  var origShow = window.showScr;
+  window.showScr = function(id, tab){
+    origShow(id, tab);
+    if(id === 'analyze'){
+      banner.classList.remove('stuck');
+      lastStuck = false;
+      setTimeout(checkSticky, 50);
+    }
+  };
+})();
 </script>
 </body>
 </html>
