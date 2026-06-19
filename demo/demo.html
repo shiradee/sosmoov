@@ -10,290 +10,340 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 button{cursor:pointer;font-family:inherit}
-:root{
-  --p:#534AB7;--pd:#3C3489;--pl:#CECBF6;--pp:#EEEDFE;
-  --o:#FF6B35;--od:#E55A24;--c:#EF9F27;--cp:#FAEEDA;
-  --nb:#1A1730;--ww:#F4F3FA;--wh:#FFFFFF;
-  --t1:#1A1730;--t2:#333130;--tm:#5C5956;
-  --bd:rgba(206,203,246,0.35);--bde:#CECBF6;
-  --ok:#1D9E75;--okp:#DFF5ED;--wn:#9A6200;--wnp:#FEF3E2;
-}
-body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.6;color:var(--t1);background:var(--ww)}
 
-/* ── ONE BUTTON COMPONENT ── */
-.ab{display:inline-flex!important;align-items:center!important;gap:5px!important;font-family:'DM Mono','Courier New',Courier,monospace!important;font-size:11px!important;font-weight:500!important;letter-spacing:.07em!important;text-transform:uppercase!important;line-height:1.4!important;padding:5px 12px!important;border-radius:5px!important;border:none!important;white-space:nowrap!important;text-decoration:none!important;transition:background 120ms,color 120ms!important}
+/* ── VIBE CSS VARIABLES ── applied at :root, overridden by .vibe-chill / .vibe-magical */
+:root,body.vibe-business{
+  --bg-page:#F4F3FA; --bg-card:#FFFFFF; --bg-card2:#EEEDFE; --bg-dark:#1A1730;
+  --p:#534AB7; --pd:#3C3489; --pl:#CECBF6; --pp:#EEEDFE;
+  --o:#FF6B35; --od:#E55A24; --c:#EF9F27; --cp:#FAEEDA;
+  --t1:#1A1730; --t2:#333130; --tm:#5C5956;
+  --bd:rgba(206,203,246,0.35); --bde:#CECBF6;
+  --ok:#1D9E75; --okp:#DFF5ED; --wn:#9A6200; --wnp:#FEF3E2;
+  --tab-active-color:var(--p); --tab-active-border:var(--p);
+  --morning-grad:linear-gradient(135deg,#EEEDFE 0%,#E4E2FF 55%,#EEEDF8 100%);
+  --morning-border:#CECBF6;
+  --score-big-color:var(--p);
+  --idea-bg:#EEEDFE; --idea-border:#CECBF6;
+  --vibe-btn-bg:#EEEDFE; --vibe-btn-color:#3C3489; --vibe-btn-border:#CECBF6;
+  --tag-lure-bg:#EEEDFE; --tag-lure-color:#3C3489;
+  --ciara-btn-bg:#FF6B35; --ciara-btn-color:#fff;
+  --network-bg:#FFFFFF; --network-border:rgba(206,203,246,0.5); --network-grid:rgba(206,203,246,0.25);
+  --node-glow:rgba(83,74,183,0.7);
+}
+
+body.vibe-chill{
+  --bg-page:#F2EDE3; --bg-card:#FFFDF8; --bg-card2:#EDF4F8; --bg-dark:#2C4A5A;
+  --p:#3A8FC9; --pd:#2A6F99; --pl:#A8D4F0; --pp:#E8F4FB;
+  --o:#F4845F; --od:#D6633F; --c:#7EC8A0; --cp:#E6F7EE;
+  --t1:#1A2E38; --t2:#2F4A56; --tm:#6A8A96;
+  --bd:rgba(90,160,210,0.25); --bde:#A8D4F0;
+  --ok:#5BAE82; --okp:#E6F7EE; --wn:#C47D2A; --wnp:#FEF5E4;
+  --tab-active-color:#3A8FC9; --tab-active-border:#3A8FC9;
+  --morning-grad:linear-gradient(135deg,#E8F4FB 0%,#D8EEF8 40%,#EDF0F2 100%);
+  --morning-border:#A8D4F0;
+  --score-big-color:#3A8FC9;
+  --idea-bg:#E8F4FB; --idea-border:#A8D4F0;
+  --vibe-btn-bg:#E8F4FB; --vibe-btn-color:#2A6F99; --vibe-btn-border:#A8D4F0;
+  --tag-lure-bg:#E8F4FB; --tag-lure-color:#2A6F99;
+  --ciara-btn-bg:#5BAE82; --ciara-btn-color:#fff;
+  --network-bg:#FFFDF8; --network-border:rgba(90,160,210,0.3); --network-grid:rgba(90,160,210,0.15);
+  --node-glow:rgba(58,143,201,0.7);
+}
+
+body.vibe-magical{
+  --bg-page:#0D0B1A; --bg-card:#1A1530; --bg-card2:#231E42; --bg-dark:#09081A;
+  --p:#9B72CF; --pd:#7B5EA7; --pl:#C9A0E8; --pp:#2A1F4A;
+  --o:#D4AF37; --od:#B8941A; --c:#8B6FBF; --cp:#1E1840;
+  --t1:#E8E0FF; --t2:#C0B4E8; --tm:#7A6A9A;
+  --bd:rgba(155,114,207,0.25); --bde:#4A3580;
+  --ok:#2A9D8F; --okp:#0D2E2B; --wn:#D4AF37; --wnp:#1E1A08;
+  --tab-active-color:#C9A0E8; --tab-active-border:#9B72CF;
+  --morning-grad:linear-gradient(135deg,#1A1530 0%,#231E42 60%,#1E1840 100%);
+  --morning-border:#4A3580;
+  --score-big-color:#C9A0E8;
+  --idea-bg:#231E42; --idea-border:#4A3580;
+  --vibe-btn-bg:#231E42; --vibe-btn-color:#C9A0E8; --vibe-btn-border:#4A3580;
+  --tag-lure-bg:#2A1F4A; --tag-lure-color:#C9A0E8;
+  --ciara-btn-bg:#D4AF37; --ciara-btn-color:#0D0B1A;
+  --network-bg:#0D0B1A; --network-border:rgba(155,114,207,0.4); --network-grid:rgba(155,114,207,0.12);
+  --node-glow:rgba(155,114,207,0.85);
+}
+
+body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.6;color:var(--t1);background:var(--bg-page);transition:background .35s,color .35s}
+
+/* ONE BUTTON */
+.ab{display:inline-flex!important;align-items:center!important;gap:5px!important;font-family:'DM Mono','Courier New',monospace!important;font-size:11px!important;font-weight:500!important;letter-spacing:.07em!important;text-transform:uppercase!important;line-height:1.4!important;padding:5px 12px!important;border-radius:5px!important;border:none!important;white-space:nowrap!important;transition:background .12s,color .12s!important}
 .ab-p{background:var(--pp)!important;color:var(--pd)!important;outline:.5px solid var(--pl)!important}
 .ab-p:hover{background:var(--p)!important;color:#fff!important}
-.ab-o{background:#FFF0EB!important;color:var(--od)!important;outline:.5px solid #FFB89A!important}
+.ab-o{background:color-mix(in srgb,var(--o) 15%,transparent)!important;color:var(--od)!important;outline:.5px solid color-mix(in srgb,var(--o) 50%,transparent)!important}
 .ab-o:hover{background:var(--o)!important;color:#fff!important}
 .ab-g{background:transparent!important;color:var(--tm)!important;outline:.5px solid var(--bde)!important}
-.ab-g:hover{background:var(--wh)!important;color:var(--t2)!important}
+.ab-g:hover{background:var(--bg-card)!important;color:var(--t2)!important}
 .ab-join{background:var(--p)!important;color:#fff!important;outline:none!important}
 .ab-join:hover{background:var(--pd)!important}
 .ab-gen{width:100%!important;justify-content:center!important;padding:12px 16px!important;font-size:12px!important;background:var(--o)!important;color:#fff!important;outline:none!important;border-radius:8px!important}
 .ab-gen:hover{background:var(--od)!important}
 
-/* ── TYPE ── */
-.lbl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tm)}
-.h-section{font-size:22px;font-weight:900;color:var(--nb);line-height:1.2}
-.h-card{font-size:18px;font-weight:900;color:var(--nb)}
-.body-md{font-size:15px;color:var(--t2);line-height:1.65}
-.body-sm{font-size:14px;color:var(--t2);line-height:1.6}
-
-/* ── BADGES ── */
-.badge{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;display:inline-block;line-height:1.4;font-weight:500}
+.badge{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px;display:inline-block;line-height:1.4;font-weight:500}
 .b-p{background:var(--pp);color:var(--pd);outline:.5px solid var(--pl)}
-.b-m{background:#EFEEEC;color:#3A3837;outline:.5px solid #D0CEC8}
-.b-ok{background:var(--okp);color:#085041;outline:.5px solid #9FE1CB}
-.b-pot{background:var(--pp);color:var(--pd);outline:.5px solid var(--pl)}
-.b-eff{background:var(--wnp);color:var(--wn);outline:.5px solid #E9C46A}
-.b-cut{background:#FEECEC;color:#8B1C1C;outline:.5px solid #FCA5A5}
+.b-m{background:color-mix(in srgb,var(--tm) 12%,var(--bg-card));color:var(--tm);outline:.5px solid var(--bde)}
+.b-ok{background:var(--okp);color:var(--ok);outline:.5px solid color-mix(in srgb,var(--ok) 40%,transparent)}
+.b-eff{background:var(--wnp);color:var(--wn)}
+.b-cut{background:color-mix(in srgb,#E24B4A 10%,transparent);color:#E24B4A;outline:.5px solid color-mix(in srgb,#E24B4A 30%,transparent)}
 
-/* ── TOPBAR ── */
-.topbar{background:var(--wh);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:30;height:54px}
+.lbl{font-family:'DM Mono','Courier New',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tm)}
+
+/* TOPBAR */
+.topbar{background:var(--bg-card);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 24px;gap:14px;position:sticky;top:0;z-index:30;height:54px;transition:background .35s,border-color .35s}
 .wordmark{font-family:'Fredoka One','Arial Rounded MT Bold',Arial,sans-serif;font-size:28px;line-height:1;flex-shrink:0}
-.wm-so{color:var(--p)}.wm-sm{color:var(--o)}
+.wm-so{color:var(--p);transition:color .35s}.wm-sm{color:var(--o);transition:color .35s}
 .tab-row{display:flex;flex:1}
-.tab{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:700;padding:0 22px;height:54px;display:flex;align-items:center;gap:7px;color:var(--tm);border-bottom:2.5px solid transparent;border-left:none;border-right:none;border-top:none;background:none;white-space:nowrap;transition:color 120ms,border-color 120ms}
-.tab.on{color:var(--p);border-bottom-color:var(--p)}
+.tab{font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;padding:0 20px;height:54px;display:flex;align-items:center;gap:7px;color:var(--tm);border-bottom:2.5px solid transparent;border-left:none;border-right:none;border-top:none;background:none;white-space:nowrap;transition:color .12s,border-color .12s}
+.tab.on{color:var(--tab-active-color);border-bottom-color:var(--tab-active-border)}
 .tab:hover:not(.on){color:var(--t1)}
+
+/* VIBE — left of account icon */
 .vibe-wrap{flex-shrink:0;position:relative}
-.vibe-btn{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border:.5px solid var(--bde);border-radius:5px;background:var(--pp);color:var(--pd);display:flex;align-items:center;gap:5px;white-space:nowrap;transition:background 120ms}
-.vibe-btn:hover{background:var(--pl);border-color:var(--p)}
-.vchev{font-size:8px;color:var(--p);transition:transform 120ms}
+.vibe-btn{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border:.5px solid var(--vibe-btn-border);border-radius:5px;background:var(--vibe-btn-bg);color:var(--vibe-btn-color);display:flex;align-items:center;gap:5px;white-space:nowrap;transition:background .12s}
+.vibe-btn:hover{filter:brightness(0.96)}
+.vchev{font-size:8px;transition:transform .12s}
 .vibe-btn.open .vchev{transform:rotate(180deg)}
-.vibe-dd{position:absolute;top:calc(100% + 5px);right:0;background:var(--wh);border:.5px solid var(--bde);border-radius:10px;box-shadow:0 8px 28px rgba(83,74,183,.14);z-index:100;min-width:130px;overflow:hidden;display:none}
+.vibe-dd{position:absolute;top:calc(100% + 5px);left:0;background:var(--bg-card);border:.5px solid var(--bde);border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.15);z-index:100;min-width:150px;overflow:hidden;display:none}
 .vibe-dd.open{display:block}
-.vibe-opt{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;color:var(--t2);display:flex;align-items:center;gap:7px;background:none;border:none;width:100%;text-align:left;transition:background 120ms}
+.vibe-opt{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:11px 15px;color:var(--t2);display:flex;align-items:center;gap:8px;background:none;border:none;width:100%;text-align:left;transition:background .12s}
 .vibe-opt:hover{background:var(--pp);color:var(--pd)}
 .vibe-opt.on{background:var(--pp);color:var(--p);font-weight:500}
+.vibe-swatch{width:11px;height:11px;border-radius:50%;flex-shrink:0}
 
-/* ── SCREENS ── */
+/* ACCOUNT ICON — right corner */
+.account-btn{width:34px;height:34px;border-radius:50%;background:var(--pp);border:.5px solid var(--pl);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--pd);transition:background .12s}
+.account-btn:hover{background:var(--p);color:#fff}
+
+/* SCREENS */
 .scr{display:none}.scr.on{display:block}
 
-/* ── MODAL — centered ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(26,23,48,.65);z-index:50;display:flex;align-items:center;justify-content:center;padding:24px}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;display:flex;align-items:center;justify-content:center;padding:24px}
 .modal-overlay.gone{display:none}
-.modal{background:var(--wh);border-radius:20px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:28px 32px 36px;box-shadow:0 20px 60px rgba(83,74,183,.2)}
-.mhandle{display:none}
+.modal{background:var(--bg-card);border-radius:20px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;padding:28px 32px 36px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 .mhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .mclose{background:none;border:none;font-size:24px;color:var(--tm);padding:2px 6px;line-height:1}
 .prog-row{display:flex;gap:5px;margin-bottom:20px}
-.pdot{height:4px;border-radius:2px;background:var(--pl);flex:1}.pdot.dn{background:var(--p)}
-.mtitle{font-size:20px;font-weight:900;color:var(--nb);margin-bottom:6px}
+.pdot{height:4px;border-radius:2px;background:var(--bde);flex:1}.pdot.dn{background:var(--p)}
+.mtitle{font-size:20px;font-weight:900;color:var(--t1);margin-bottom:6px}
 .msub{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:18px}
 .flbl{font-weight:700;font-size:14px;color:var(--t2);margin-bottom:8px;display:block}
-.finput{width:100%;padding:12px 14px;border:1px solid var(--bde);border-radius:10px;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:15px;color:var(--nb);background:var(--wh);outline:none;transition:border 120ms;margin-bottom:16px}
+.finput{width:100%;padding:12px 14px;border:1px solid var(--bde);border-radius:10px;font-family:'Nunito',sans-serif;font-size:15px;color:var(--t1);background:var(--bg-card);outline:none;transition:border .12s;margin-bottom:16px}
 .finput:focus{border:1.5px solid var(--p)}
-.fta{width:100%;padding:12px 14px;border:1px solid var(--bde);border-radius:10px;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:15px;color:var(--nb);background:var(--wh);outline:none;resize:none;line-height:1.6;transition:border 120ms}
+.fta{width:100%;padding:12px 14px;border:1px solid var(--bde);border-radius:10px;font-family:'Nunito',sans-serif;font-size:15px;color:var(--t1);background:var(--bg-card);outline:none;resize:none;line-height:1.6;transition:border .12s}
 .fta:focus{border:1.5px solid var(--p)}
 .niche-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
-.niche-btn{padding:11px 13px;border:1.5px solid var(--bde);border-radius:10px;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:700;color:var(--t2);background:var(--wh);text-align:left;display:flex;align-items:center;gap:8px;transition:all 120ms}
+.niche-btn{padding:11px 13px;border:1.5px solid var(--bde);border-radius:10px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;color:var(--t2);background:var(--bg-card);text-align:left;display:flex;align-items:center;gap:8px;transition:all .12s}
 .niche-btn.on{border-color:var(--p);background:var(--pp);color:var(--p)}
 .goal-list{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
-.goal-btn{padding:12px 15px;border:1.5px solid var(--bde);border-radius:10px;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:700;color:var(--t2);background:var(--wh);text-align:left;transition:all 120ms}
+.goal-btn{padding:12px 15px;border:1.5px solid var(--bde);border-radius:10px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;color:var(--t2);background:var(--bg-card);text-align:left;transition:all .12s}
 .goal-btn.on{border-color:var(--p);background:var(--pp);color:var(--p)}
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
-.cta-btn{padding:11px 12px;border:1.5px solid var(--bde);border-radius:10px;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:600;color:var(--t2);background:var(--wh);text-align:center;transition:all 120ms}
-.cta-btn.on{border-color:var(--o);background:#FFF0EB;color:#8A3215}
-.tool-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--bde);border-radius:10px;margin-bottom:9px;font-size:14px;font-weight:700;color:var(--t2);background:var(--wh);transition:all 120ms}
+.cta-btn{padding:11px 12px;border:1.5px solid var(--bde);border-radius:10px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:var(--t2);background:var(--bg-card);text-align:center;transition:all .12s}
+.cta-btn.on{border-color:var(--o);background:color-mix(in srgb,var(--o) 10%,transparent);color:var(--od)}
+.tool-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--bde);border-radius:10px;margin-bottom:9px;font-size:14px;font-weight:700;color:var(--t2);background:var(--bg-card);transition:all .12s}
 .tool-row.on{border-color:var(--p);background:var(--pp);color:var(--p)}
 .ticon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 .tmeta{font-size:12px;color:var(--tm);font-weight:400;margin-top:2px}
 .btn-row-m{display:flex;justify-content:space-between;align-items:center;padding-top:8px}
-.post-prev{background:var(--ww);border-radius:10px;padding:16px;margin-bottom:16px}
+.post-prev{background:var(--bg-page);border-radius:10px;padding:16px;margin-bottom:16px}
 .card-ciara-m{background:var(--cp);border:1px solid var(--c);border-radius:12px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:18px}
 .cav{width:32px;height:32px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ctag{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.1em;padding:2px 7px;border-radius:4px;background:#E6FBF3;color:#085041;outline:1px solid #9FE1CB;display:inline-block;margin-left:6px}
-.cname{font-weight:700;font-size:14px;color:#633806}
-.cmsg{font-size:14px;color:#4A3010;line-height:1.55;margin-top:4px}
+.ctag{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.1em;padding:2px 7px;border-radius:4px;background:var(--okp);color:var(--ok);outline:1px solid color-mix(in srgb,var(--ok) 40%,transparent);display:inline-block;margin-left:6px}
+.cname{font-weight:700;font-size:14px;color:var(--t1)}
+.cmsg{font-size:14px;color:var(--t2);line-height:1.55;margin-top:4px}
 
-/* ── PREP ── single column, morning card full-width */
+/* PREP */
 .prep-wrap{padding:28px 28px 40px;max-width:900px}
 @media(max-width:720px){.prep-wrap{padding:16px 16px 100px}}
-.morning{background:linear-gradient(135deg,var(--pp) 0%,#E4E2FF 55%,#EEEDF8 100%);border-radius:22px;padding:24px;position:relative;overflow:hidden;border:1px solid var(--pl)}
+.morning{background:var(--morning-grad);border-radius:22px;padding:24px;position:relative;overflow:hidden;border:1px solid var(--morning-border);transition:background .35s,border-color .35s}
 .m-orb1{position:absolute;right:-24px;top:-24px;width:130px;height:130px;border-radius:50%;background:var(--o);opacity:.09;pointer-events:none}
 .m-orb2{position:absolute;left:-14px;bottom:-28px;width:120px;height:120px;border-radius:50%;background:var(--p);opacity:.08;pointer-events:none}
 .m-inner{position:relative;z-index:1}
-.stat-strip{display:flex;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--pl);padding-bottom:14px;margin-bottom:16px}
+.stat-strip{display:flex;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--morning-border);padding-bottom:14px;margin-bottom:16px}
 .sp{display:flex;flex-direction:column;gap:2px}
-.sp-val{font-size:18px;font-weight:900;color:var(--nb);line-height:1}
-.sp-lbl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm)}
+.sp-val{font-size:18px;font-weight:900;color:var(--t1);line-height:1}
+.sp-lbl{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm)}
 .m-goal-top{margin-bottom:14px}
-.m-goal-lbl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;color:var(--pd);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
-.m-goal-txt{font-size:16px;color:var(--nb);font-weight:700;line-height:1.5}
+.m-goal-lbl{font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--p);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.m-goal-txt{font-size:16px;color:var(--t1);font-weight:700;line-height:1.5}
 .m-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:10px}
-.m-greet{font-size:18px;font-weight:900;color:var(--nb)}
-.m-date{font-size:12px;color:var(--tm);margin-top:3px;font-family:'DM Mono','Courier New',Courier,monospace;letter-spacing:.04em}
+.m-greet{font-size:18px;font-weight:900;color:var(--t1)}
+.m-date{font-size:11px;color:var(--tm);margin-top:3px;font-family:'DM Mono','Courier New',monospace;letter-spacing:.04em}
 .m-date a{color:var(--p);text-decoration:none}.m-date a:hover{text-decoration:underline}
-.m-ctag{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.1em;padding:4px 10px;border-radius:4px;background:var(--cp);color:#633806;border:1px solid var(--c);flex-shrink:0}
-
-/* session rows — expandable */
-.sess-row{background:rgba(255,255,255,.7);border-radius:12px;border:.5px solid var(--pl);margin-bottom:8px;overflow:hidden}
-.sess-header{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;transition:background 120ms}
+.m-ctag{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.1em;padding:4px 10px;border-radius:4px;background:var(--cp);color:var(--c);border:1px solid var(--c);flex-shrink:0}
+.sess-row{background:rgba(255,255,255,.65);border-radius:12px;border:.5px solid var(--morning-border);margin-bottom:8px;overflow:hidden}
+body.vibe-magical .sess-row{background:rgba(26,21,48,.65)}
+.sess-header{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;transition:background .12s}
 .sess-header:hover{background:rgba(255,255,255,.9)}
+body.vibe-magical .sess-header:hover{background:rgba(40,32,70,.9)}
 .sess-bar{width:4px;height:28px;border-radius:3px;background:var(--o);flex-shrink:0}
-.sess-name{font-size:15px;font-weight:700;color:var(--nb)}
-.sess-time{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;color:var(--pd);margin-top:2px}
-.sess-badge{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;padding:3px 8px;border-radius:4px;background:var(--pp);color:var(--pd);border:.5px solid var(--pl);margin-left:auto;white-space:nowrap;margin-right:8px}
-.sess-chevron{font-size:11px;color:var(--tm);transition:transform 150ms;flex-shrink:0}
+.sess-name{font-size:15px;font-weight:700;color:var(--t1)}
+.sess-time{font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--p);margin-top:2px}
+.sess-badge{font-family:'DM Mono','Courier New',monospace;font-size:10px;padding:3px 8px;border-radius:4px;background:var(--pp);color:var(--pd);border:.5px solid var(--pl);margin-left:auto;white-space:nowrap;margin-right:8px}
+.sess-chevron{font-size:11px;color:var(--tm);transition:transform .15s;flex-shrink:0}
 .sess-row.open .sess-chevron{transform:rotate(180deg)}
-.sess-detail{display:none;padding:0 14px 14px;border-top:.5px solid var(--pl)}
+.sess-detail{display:none;padding:0 14px 14px;border-top:.5px solid var(--morning-border)}
 .sess-row.open .sess-detail{display:block}
-.sess-flag{display:flex;align-items:flex-start;gap:6px;background:rgba(239,159,39,.12);border:1px solid rgba(239,159,39,.4);border-radius:9px;padding:9px 11px;margin-top:11px;font-size:13px;color:var(--t2);line-height:1.5}
-.sess-flag-hed{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#7A4E00;font-weight:500;margin-bottom:3px}
-.sess-read{background:var(--ww);border-radius:9px;padding:11px 13px;margin-top:10px}
-.sess-read-lbl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:4px}
+.sess-flag{display:flex;align-items:flex-start;gap:6px;background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);border-radius:9px;padding:9px 11px;margin-top:11px;font-size:13px;color:var(--t2);line-height:1.5}
+.sess-flag-hed{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--wn);font-weight:500;margin-bottom:3px}
+.sess-read{background:var(--bg-page);border-radius:9px;padding:11px 13px;margin-top:10px}
+.sess-read-lbl{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:4px}
 .sess-read-txt{font-size:14px;color:var(--t2);line-height:1.6}
 .sess-footer{display:flex;align-items:center;justify-content:space-between;margin-top:11px}
 .sess-status{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--tm)}
 .sess-dot{width:8px;height:8px;border-radius:50%}
 
-/* ── ANALYZE ── single col, strong rhythm */
+/* ANALYZE */
 .analyze-wrap{padding:28px 28px 40px;max-width:900px}
 @media(max-width:720px){.analyze-wrap{padding:16px 16px 100px}}
-.domain-tabs{display:flex;margin-bottom:28px;background:var(--wh);border:.5px solid var(--bd);border-radius:11px;overflow:hidden;width:100%}
-.dtab{flex:1;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:700;padding:12px 8px;color:var(--tm);background:none;border:none;border-right:.5px solid var(--bd);transition:all 120ms;text-align:center;display:flex;align-items:center;justify-content:center;gap:7px}
+.domain-tabs{display:flex;margin-bottom:28px;background:var(--bg-card);border:.5px solid var(--bd);border-radius:11px;overflow:hidden;width:100%}
+.dtab{flex:1;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;padding:12px 8px;color:var(--tm);background:none;border:none;border-right:.5px solid var(--bd);transition:all .12s;text-align:center;display:flex;align-items:center;justify-content:center;gap:7px}
 .dtab:last-child{border-right:none}
 .dtab.on{background:var(--pp);color:var(--p)}
-.dtab:hover:not(.on){background:var(--ww);color:var(--t1)}
+.dtab:hover:not(.on){background:var(--bg-page);color:var(--t1)}
 .domain-scr{display:none}.domain-scr.on{display:block}
-
-/* scorecard 2x2 — full width, generous tiles */
 .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
-.score-tile{background:var(--wh);border:.5px solid var(--bd);border-radius:14px;padding:20px 22px}
-.score-lbl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:8px}
-.score-val{font-size:32px;font-weight:900;color:var(--nb);line-height:1;margin-bottom:6px}
+.score-tile{background:var(--bg-card);border:.5px solid var(--bd);border-radius:14px;padding:20px 22px;transition:background .35s}
+.score-lbl{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);margin-bottom:8px}
+.score-val{font-size:32px;font-weight:900;color:var(--score-big-color);line-height:1;margin-bottom:6px}
 .score-trend{font-size:13px;font-weight:700}
 .t-up{color:var(--ok)}.t-warn{color:var(--wn)}.t-muted{color:var(--tm)}
-
-/* WCB — single col with section dividers */
 .wcb-section{margin-bottom:28px}
 .wcb-hdr{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1.5px solid var(--bd)}
 .wcb-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.wcb-title{font-size:18px;font-weight:900;color:var(--nb)}
-.wcb-sub{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;color:var(--tm);margin-top:3px}
-.az-card{background:var(--wh);border:.5px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:10px}
+.wcb-title{font-size:18px;font-weight:900;color:var(--t1)}
+.wcb-sub{font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--tm);margin-top:3px}
+.az-card{background:var(--bg-card);border:.5px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:10px;transition:background .35s}
 .az-row{display:flex;align-items:flex-start;gap:11px}
 .az-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:6px}
 .az-txt{font-size:15px;color:var(--t2);line-height:1.65;flex:1}
-.az-txt strong{color:var(--nb);font-weight:700}
+.az-txt strong{color:var(--t1);font-weight:700}
 .az-acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
-.idea-card{background:var(--pp);border:.5px solid var(--pl);border-radius:12px;padding:16px;margin-bottom:10px;display:flex;gap:13px}
+.idea-card{background:var(--idea-bg);border:.5px solid var(--idea-border);border-radius:12px;padding:16px;margin-bottom:10px;display:flex;gap:13px;transition:background .35s}
 .idea-num{font-family:'Fredoka One','Arial Rounded MT Bold',Arial,sans-serif;font-size:20px;color:var(--p);flex-shrink:0;line-height:1.2}
-.idea-title{font-size:15px;font-weight:700;color:var(--nb);margin-bottom:4px}
+.idea-title{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px}
 .idea-desc{font-size:14px;color:var(--t2);line-height:1.55}
 .idea-acts{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
-.learn-drawer{display:none;background:var(--ww);border-radius:8px;padding:13px 15px;margin-top:10px;border:.5px solid var(--bde)}
+.learn-drawer{display:none;background:var(--bg-page);border-radius:8px;padding:13px 15px;margin-top:10px;border:.5px solid var(--bde)}
 .learn-drawer.open{display:block}
 .learn-step{display:flex;gap:10px;margin-bottom:9px;font-size:14px;color:var(--t2);line-height:1.55}
-.learn-num{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;min-width:20px;height:20px;border-radius:50%;background:var(--pp);color:var(--p);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-weight:500}
-
-/* content analytics */
-.post-hist{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--wh);border-radius:11px;margin-bottom:8px;border:.5px solid var(--bd)}
+.learn-num{font-family:'DM Mono','Courier New',monospace;font-size:9px;min-width:20px;height:20px;border-radius:50%;background:var(--pp);color:var(--p);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.post-hist{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg-card);border-radius:11px;margin-bottom:8px;border:.5px solid var(--bd)}
 .ph-ico{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.ph-title{font-size:14px;font-weight:700;color:var(--nb)}
-.ph-meta{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;color:var(--tm);margin-top:2px}
+.ph-title{font-size:14px;font-weight:700;color:var(--t1)}
+.ph-meta{font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--tm);margin-top:2px}
 .ph-eng{margin-left:auto;text-align:right}
 .ph-ev{font-size:16px;font-weight:900;color:var(--p)}
-.ph-el{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;color:var(--tm)}
+.ph-el{font-family:'DM Mono','Courier New',monospace;font-size:9px;color:var(--tm)}
 
-/* network */
+/* NETWORK GRAPH — styled panel */
 .net-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.net-title{font-size:18px;font-weight:900;color:var(--nb)}
+.net-title{font-size:18px;font-weight:900;color:var(--t1)}
 .net-icon-row{display:flex;gap:6px}
-.net-icon-btn{width:32px;height:32px;border:.5px solid var(--bde);border-radius:6px;background:var(--wh);color:var(--tm);display:flex;align-items:center;justify-content:center;transition:all 120ms}
+.net-icon-btn{width:32px;height:32px;border:.5px solid var(--bde);border-radius:6px;background:var(--bg-card);color:var(--tm);display:flex;align-items:center;justify-content:center;transition:all .12s}
 .net-icon-btn:hover{background:var(--pp);color:var(--p);border-color:var(--pl)}
 .net-icon-btn.on{background:var(--pp);color:var(--p);border-color:var(--pl)}
-.net-graph-wrap{background:var(--wh);border:.5px solid var(--bd);border-radius:16px;overflow:hidden;margin-bottom:28px;position:relative}
-.net-graph-legend{display:flex;gap:14px;flex-wrap:wrap;padding:11px 16px;border-top:.5px solid var(--bd);background:var(--ww)}
-.legend-item{display:flex;align-items:center;gap:5px;font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;color:var(--tm);letter-spacing:.06em;text-transform:uppercase}
+
+/* Graph frame with grid bg */
+.net-graph-wrap{background:var(--network-bg);border:1.5px solid var(--network-border);border-radius:16px;overflow:hidden;margin-bottom:14px;position:relative;transition:background .35s,border-color .35s}
+.net-graph-wrap::before{content:'';position:absolute;inset:0;background-image:radial-gradient(var(--network-grid) 1.2px,transparent 1.2px);background-size:24px 24px;pointer-events:none;z-index:0}
+.net-graph-wrap svg{position:relative;z-index:1}
+.net-graph-legend{display:flex;gap:14px;flex-wrap:wrap;padding:11px 16px;border-top:1px solid var(--bd);background:color-mix(in srgb,var(--bg-page) 80%,transparent)}
+.legend-item{display:flex;align-items:center;gap:5px;font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--tm);letter-spacing:.06em;text-transform:uppercase}
 .legend-dot{width:10px;height:10px;border-radius:50%}
-.np-float{position:absolute;top:10px;right:10px;width:240px;background:var(--wh);border:.5px solid var(--bde);border-radius:14px;padding:16px;box-shadow:0 8px 28px rgba(83,74,183,.18);display:none;z-index:10}
+.np-float{position:absolute;top:10px;right:10px;width:240px;background:var(--bg-card);border:.5px solid var(--bde);border-radius:14px;padding:16px;box-shadow:0 8px 28px rgba(0,0,0,.18);display:none;z-index:10;transition:background .35s}
 .np-float.show{display:block}
 .np-close{position:absolute;top:9px;right:11px;background:none;border:none;font-size:18px;color:var(--tm);line-height:1}
 .np-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-right:20px}
 .np-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0}
-.np-name{font-size:15px;font-weight:900;color:var(--nb)}
+.np-name{font-size:15px;font-weight:900;color:var(--t1)}
 .np-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
 .np-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
-.np-field{background:var(--ww);border-radius:7px;padding:8px 10px}
-.np-fl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tm);margin-bottom:3px}
-.np-fv{font-size:13px;font-weight:700;color:var(--nb)}.np-fv.ok{color:var(--ok)}
+.np-field{background:var(--bg-page);border-radius:7px;padding:8px 10px}
+.np-fl{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--tm);margin-bottom:3px}
+.np-fv{font-size:13px;font-weight:700;color:var(--t1)}.np-fv.ok{color:var(--ok)}
 .np-read{background:var(--cp);border:.5px solid var(--c);border-radius:8px;padding:10px 12px;margin-bottom:11px}
-.np-rl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#7A4E00;margin-bottom:3px}
-.np-rt{font-size:12px;color:#4A3010;line-height:1.5}
+.np-rl{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--wn);margin-bottom:3px}
+.np-rt{font-size:12px;color:var(--t2);line-height:1.5}
 .np-acts{display:flex;gap:5px;flex-wrap:wrap}
 
-/* ── CREATE ── three col desktop */
+/* CREATE — 3-col */
 .create-layout{display:grid;grid-template-columns:215px 1fr 1fr;gap:0;min-height:calc(100vh - 54px)}
 @media(max-width:960px){.create-layout{grid-template-columns:1fr}}
-.mobile-format-scroll{display:none}
+.mobile-platform-scroll{display:none}
 @media(max-width:960px){
-  .mobile-format-scroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:14px 16px 0;background:var(--wh);border-bottom:.5px solid var(--bd)}
-  .mobile-format-scroll::-webkit-scrollbar{display:none}
-  .mfs-chip{flex-shrink:0;padding:7px 14px;border-radius:999px;border:.5px solid var(--bde);background:var(--wh);font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);transition:all 120ms}
+  .mobile-platform-scroll{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:14px 16px 0;background:var(--bg-card);border-bottom:.5px solid var(--bd)}
+  .mobile-platform-scroll::-webkit-scrollbar{display:none}
+  .mfs-chip{flex-shrink:0;padding:7px 14px;border-radius:999px;border:.5px solid var(--bde);background:var(--bg-card);font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);transition:all .12s}
   .mfs-chip.on{background:var(--pp);color:var(--p);border-color:var(--pl)}
 }
-.create-rail{background:var(--wh);border-right:.5px solid var(--bd);padding:20px 16px;display:flex;flex-direction:column;gap:4px;position:sticky;top:54px;height:calc(100vh - 54px);overflow-y:auto}
+.create-rail{background:var(--bg-card);border-right:.5px solid var(--bd);padding:20px 16px;display:flex;flex-direction:column;gap:4px;position:sticky;top:54px;height:calc(100vh - 54px);overflow-y:auto;transition:background .35s}
 @media(max-width:960px){.create-rail{display:none}}
-.rail-lbl{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);margin-bottom:8px;padding:0 5px}
+.rail-lbl{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);margin-bottom:8px;padding:0 5px}
 .rail-section{margin-bottom:16px}
 .rail-divider{height:1px;background:var(--bd);margin:10px 5px}
-.rail-chip{padding:8px 11px;border-radius:7px;border:.5px solid var(--bde);background:var(--wh);font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--tm);text-align:left;transition:all 120ms;display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;width:100%}
-.rail-chip:hover{background:var(--pp);color:var(--pd);border-color:var(--pl)}
-.rail-chip.on{background:var(--pp);color:var(--p);border-color:var(--pl)}
-.chip-edit{color:var(--pl);font-size:12px}
-.rail-chip.on .chip-edit{color:var(--p)}
-.tone-chip{padding:8px 11px;border-radius:7px;border:.5px solid var(--bde);background:var(--wh);font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;color:var(--t2);text-align:left;transition:all 120ms;margin-bottom:5px;display:block;width:100%}
-.tone-chip:hover{background:#FFF0EB;color:#8A3215;border-color:#FFB89A}
-.tone-chip.on{background:#FFF0EB;color:#8A3215;border-color:#FFB89A}
-.rail-btn{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:8px;border:none;background:none;width:100%;text-align:left;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:600;color:var(--t2);transition:all 120ms}
-.rail-btn:hover{background:var(--ww);color:var(--t1)}
+
+/* Platform chips in rail */
+.plat-chip{padding:8px 11px;border-radius:7px;border:.5px solid var(--bde);background:var(--bg-card);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--t2);text-align:left;transition:all .12s;display:flex;align-items:center;gap:8px;margin-bottom:5px;width:100%}
+.plat-chip:hover{background:var(--pp);color:var(--pd);border-color:var(--pl)}
+.plat-chip.on{background:var(--pp);color:var(--p);border-color:var(--pl)}
+.plat-icon{font-size:16px;flex-shrink:0}
+
+/* Format chips in rail — changes per platform */
+.fmt-chip{padding:7px 10px;border-radius:6px;border:.5px solid var(--bde);background:var(--bg-card);font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.05em;color:var(--tm);text-align:left;transition:all .12s;display:flex;align-items:center;gap:6px;margin-bottom:4px;width:100%}
+.fmt-chip:hover{background:var(--pp);color:var(--pd);border-color:var(--pl)}
+.fmt-chip.on{background:var(--pp);color:var(--p);border-color:var(--pl)}
+.fmt-chip-icon{font-size:13px;flex-shrink:0}
+
+.tone-chip{padding:8px 11px;border-radius:7px;border:.5px solid var(--bde);background:var(--bg-card);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--t2);text-align:left;transition:all .12s;margin-bottom:5px;display:block;width:100%}
+.tone-chip:hover{background:color-mix(in srgb,var(--o) 10%,transparent);color:var(--od);border-color:color-mix(in srgb,var(--o) 50%,transparent)}
+.tone-chip.on{background:color-mix(in srgb,var(--o) 10%,transparent);color:var(--od);border-color:color-mix(in srgb,var(--o) 50%,transparent)}
+.rail-btn{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:8px;border:none;background:none;width:100%;text-align:left;font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:var(--t2);transition:all .12s}
+.rail-btn:hover{background:var(--bg-page);color:var(--t1)}
 .create-center{padding:24px 24px;border-right:.5px solid var(--bd);overflow-y:auto}
 @media(max-width:960px){.create-center{border-right:none;padding:18px}}
-
-/* prompt FIRST */
 .prompt-section{margin-bottom:24px}
-.prompt-label{font-size:18px;font-weight:900;color:var(--nb);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.prompt-wrap{background:var(--wh);border:1.5px solid var(--bde);border-radius:14px;overflow:hidden;margin-bottom:12px}
+.prompt-label{font-size:18px;font-weight:900;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.prompt-wrap{background:var(--bg-card);border:1.5px solid var(--bde);border-radius:14px;overflow:hidden;margin-bottom:12px;transition:background .35s}
 .prompt-wrap:focus-within{border-color:var(--p)}
-.prompt-ta{width:100%;border:none;outline:none;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:15px;color:var(--nb);line-height:1.65;resize:none;background:transparent;padding:16px 18px}
+.prompt-ta{width:100%;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:15px;color:var(--t1);line-height:1.65;resize:none;background:transparent;padding:16px 18px}
 .prompt-footer{padding:11px 16px 13px;border-top:1px solid var(--bd);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.media-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;border:.5px solid var(--bde);background:var(--ww);font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);cursor:pointer;transition:all 120ms}
+.media-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;border:.5px solid var(--bde);background:var(--bg-page);font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);cursor:pointer;transition:all .12s}
 .media-pill:hover{border-color:var(--p);color:var(--p);background:var(--pp)}
-.canva-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;border:.5px solid #7B2FBE44;background:#7B2FBE11;font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:#5B1FAA;cursor:pointer;transition:all 120ms}
-.canva-pill:hover{background:#7B2FBE22}
+.canva-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;border:.5px solid color-mix(in srgb,#7B2FBE 30%,transparent);background:color-mix(in srgb,#7B2FBE 8%,transparent);font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:#5B1FAA;cursor:pointer;transition:all .12s}
+.canva-pill:hover{background:color-mix(in srgb,#7B2FBE 15%,transparent)}
 .generate-row{margin-bottom:28px}
 .create-divider{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .create-divider::before,.create-divider::after{content:'';flex:1;height:1px;background:var(--bd)}
-.create-divider-txt{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm)}
-
-/* suggestions 2x2 */
-.sug-label{font-size:15px;font-weight:900;color:var(--nb);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.sug-label span{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);font-weight:400}
+.create-divider-txt{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tm)}
+.sug-label{font-size:15px;font-weight:900;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sug-label span{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);font-weight:400}
 .sug-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sug-card{background:var(--wh);border:.5px solid var(--bd);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 120ms}
-.sug-card:hover{border-color:var(--p);box-shadow:0 2px 14px rgba(83,74,183,.1)}
+.sug-card{background:var(--bg-card);border:.5px solid var(--bd);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .12s}
+.sug-card:hover{border-color:var(--p);box-shadow:0 2px 14px rgba(0,0,0,.08)}
 .sug-card.on{border-color:var(--p);box-shadow:0 0 0 2px var(--pp)}
 .sug-img{width:100%;height:80px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .sug-body{padding:10px 12px 12px}
 .sug-tags{display:flex;gap:5px;margin-bottom:6px;flex-wrap:wrap}
-.sug-tag{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.06em;padding:2px 6px;border-radius:3px}
+.sug-tag{font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.06em;padding:2px 6px;border-radius:3px}
 .st-session{background:var(--wnp);color:var(--wn)}
 .st-data{background:var(--pp);color:var(--pd)}
-.st-fmt{background:var(--okp);color:#085041}
-.sug-title{font-size:13px;font-weight:700;color:var(--nb);margin-bottom:2px;line-height:1.3}
+.st-fmt{background:var(--okp);color:var(--ok)}
+.sug-title{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:2px;line-height:1.3}
 .sug-desc{font-size:11px;color:var(--tm);line-height:1.45}
-
-/* right output */
-.create-right{padding:24px 24px;background:var(--ww);overflow-y:auto}
-@media(max-width:960px){.create-right{padding:0 18px 120px;background:var(--ww)}}
+.create-right{padding:24px 24px;background:var(--bg-page);overflow-y:auto;transition:background .35s}
+@media(max-width:960px){.create-right{padding:0 18px 120px}}
 .output-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:60px 24px}
 .output-empty-icon{width:60px;height:60px;border-radius:18px;background:var(--pp);display:flex;align-items:center;justify-content:center;font-size:26px}
-.gen-output{background:var(--wh);border:.5px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:13px}
+.gen-output{background:var(--bg-card);border:.5px solid var(--bd);border-radius:13px;padding:18px;margin-bottom:13px;transition:background .35s}
 .gen-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:6px;flex-wrap:wrap}
-.gen-ver{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm)}
+.gen-ver{font-family:'DM Mono','Courier New',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm)}
 .gen-acts{display:flex;gap:5px;flex-wrap:wrap}
 .gen-txt{font-size:15px;color:var(--t1);line-height:1.75}
 .infog{background:var(--pp);border-radius:11px;padding:16px;border:.5px solid var(--pl)}
@@ -305,50 +355,64 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
 .ib-lbl{font-size:11px;color:var(--t2);width:85px;flex-shrink:0}
 .ib-track{flex:1;height:7px;background:var(--pl);border-radius:4px;overflow:hidden}
 .ib-fill{height:100%;border-radius:4px;background:var(--p)}
-.ib-val{font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;color:var(--pd);width:28px;text-align:right}
-.vid-prev{background:var(--nb);border-radius:11px;padding:16px;position:relative;overflow:hidden}
+.ib-val{font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--pd);width:28px;text-align:right}
+.vid-prev{background:var(--bg-dark);border-radius:11px;padding:16px;position:relative;overflow:hidden}
 .vid-orb{position:absolute;right:-15px;top:-15px;width:80px;height:80px;border-radius:50%;background:var(--o);opacity:.15}
-.vid-tag{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;padding:3px 8px;border-radius:3px;background:rgba(83,74,183,.3);color:var(--pl);display:inline-block;margin-bottom:6px;position:relative;z-index:1}
+.vid-tag{font-family:'DM Mono','Courier New',monospace;font-size:9px;padding:3px 8px;border-radius:3px;background:color-mix(in srgb,var(--p) 30%,transparent);color:var(--pl);display:inline-block;margin-bottom:6px;position:relative;z-index:1}
 .vid-title{font-size:14px;font-weight:700;color:#F8F7FF;margin-bottom:7px;position:relative;z-index:1}
 .vid-script{font-size:13px;color:#CECBF6;line-height:1.65;position:relative;z-index:1}
 .carousel-out{display:flex;gap:8px;overflow-x:auto;padding-bottom:5px;scrollbar-width:none}
 .carousel-out::-webkit-scrollbar{display:none}
 .c-slide{flex-shrink:0;width:115px;background:var(--pp);border:1px solid var(--pl);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:4px}
-.cs-n{font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;color:var(--pd)}
+.cs-n{font-family:'DM Mono','Courier New',monospace;font-size:9px;color:var(--pd)}
 .cs-t{font-size:10px;font-weight:700;color:var(--pd)}
 .cs-b{font-size:9px;color:var(--t2);line-height:1.4}
-.poll-opt{padding:11px 14px;border:1.5px solid var(--bde);border-radius:8px;margin-bottom:8px;font-size:14px;font-weight:600;color:var(--t2);background:var(--wh)}
+.poll-opt{padding:11px 14px;border:1.5px solid var(--bde);border-radius:8px;margin-bottom:8px;font-size:14px;font-weight:600;color:var(--t2);background:var(--bg-card)}
 .poll-opt.hi{border-color:var(--p);background:var(--pp);color:var(--p)}
 
+/* Magical crystal decorations */
+body.vibe-magical .net-graph-wrap::after{content:'';position:absolute;bottom:30px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,rgba(155,114,207,.3),rgba(212,175,55,.15));clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);pointer-events:none;z-index:0}
+
 /* CIARA */
-.ciara-bubble-btn{position:fixed;bottom:28px;right:28px;width:52px;height:52px;border-radius:50%;background:var(--c);border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(239,159,39,.45);z-index:40;transition:transform 120ms}
+.ciara-bubble-btn{position:fixed;bottom:28px;right:28px;width:52px;height:52px;border-radius:50%;background:var(--c);border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);z-index:40;transition:transform .12s,background .35s}
 .ciara-bubble-btn:hover{transform:scale(1.08)}
-.ciara-chat{position:fixed;bottom:88px;right:28px;width:310px;background:var(--wh);border:.5px solid var(--bde);border-radius:20px;box-shadow:0 10px 40px rgba(83,74,183,.16);z-index:40;display:none;overflow:hidden}
+.ciara-chat{position:fixed;bottom:88px;right:28px;width:310px;background:var(--bg-card);border:.5px solid var(--bde);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:40;display:none;overflow:hidden;transition:background .35s}
 .ciara-chat.open{display:flex;flex-direction:column}
 .ciara-chat-hdr{background:var(--cp);border-bottom:.5px solid var(--c);padding:12px 16px;display:flex;align-items:center;gap:10px}
-.ciara-chat-name{font-weight:700;font-size:15px;color:#633806}
-.ciara-chat-close{margin-left:auto;background:none;border:none;font-size:20px;color:#B07300;line-height:1}
+.ciara-chat-name{font-weight:700;font-size:15px;color:var(--t1)}
+.ciara-chat-close{margin-left:auto;background:none;border:none;font-size:20px;color:var(--c);line-height:1}
 .ciara-chat-body{padding:14px 16px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-.ciara-bub{background:var(--cp);border-radius:0 12px 12px 12px;padding:11px 13px;font-size:14px;color:#4A3010;line-height:1.55;max-width:90%}
+.ciara-bub{background:var(--cp);border-radius:0 12px 12px 12px;padding:11px 13px;font-size:14px;color:var(--t2);line-height:1.55;max-width:90%}
 .ciara-chat-input-row{padding:11px 13px;border-top:.5px solid var(--bd);display:flex;gap:8px}
-.ciara-inp{flex:1;border:.5px solid var(--bde);border-radius:7px;padding:9px 11px;font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:14px;outline:none;background:var(--ww);color:var(--nb)}
+.ciara-inp{flex:1;border:.5px solid var(--bde);border-radius:7px;padding:9px 11px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;background:var(--bg-page);color:var(--t1)}
 .ciara-inp:focus{border-color:var(--c)}
-.ciara-send{background:var(--c);border:none;border-radius:7px;padding:9px 13px;font-family:'DM Mono','Courier New',Courier,monospace;font-size:10px;color:var(--nb);font-weight:500}
+.ciara-send{background:var(--c);border:none;border-radius:7px;padding:9px 13px;font-family:'DM Mono','Courier New',monospace;font-size:10px;color:var(--bg-dark);font-weight:500}
 
-/* mobile nav */
+/* Bottom nav */
 .bnav{display:none}
 @media(max-width:720px){
-  .bnav{display:flex;background:var(--wh);border-top:1px solid var(--bd);position:fixed;bottom:0;left:0;right:0;z-index:20;padding:6px 0 env(safe-area-inset-bottom,4px)}
+  .bnav{display:flex;background:var(--bg-card);border-top:1px solid var(--bd);position:fixed;bottom:0;left:0;right:0;z-index:20;padding:6px 0 env(safe-area-inset-bottom,4px)}
   .ciara-bubble-btn{bottom:80px}
   .ciara-chat{bottom:132px}
 }
-.bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;font-family:'DM Mono','Courier New',Courier,monospace;font-size:9px;letter-spacing:.05em;color:var(--tm);text-transform:uppercase;background:none;border:none;transition:color 120ms}
+.bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;font-family:'DM Mono','Courier New',monospace;font-size:9px;letter-spacing:.05em;color:var(--tm);text-transform:uppercase;background:none;border:none;transition:color .12s}
 .bni.on{color:var(--p)}.bni-c{color:var(--c)!important}
+
+/* Magical stars bg */
+body.vibe-magical{background-image:radial-gradient(rgba(155,114,207,.18) 1px,transparent 1px);background-size:32px 32px}
+body.vibe-magical .topbar{border-bottom-color:rgba(155,114,207,.3)}
+body.vibe-magical .tab{border-bottom-color:transparent}
+body.vibe-magical .tab.on{color:var(--pl);border-bottom-color:var(--p)}
+
+/* Chill wave accent */
+body.vibe-chill .topbar::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:linear-gradient(90deg,#A8D4F0,#5BA4CF,#F4845F,#7EC8A0,#A8D4F0);opacity:.5}
+body.vibe-chill .topbar{position:relative}
 </style>
 </head>
-<body>
+<body class="vibe-business" id="app-body">
 <script>if(sessionStorage.getItem("sosmoov_access")!=="1"){window.location.href="index.html";}</script>
 <div id="app">
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="wordmark"><span class="wm-so">so</span><span class="wm-sm">smoov</span></div>
   <div class="tab-row">
@@ -356,17 +420,22 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
     <button class="tab"     onclick="showScr('analyze',this)">📊 Analyze</button>
     <button class="tab"     onclick="showScr('create',this)">✏️ Create</button>
   </div>
+  <!-- VIBE — LEFT of account -->
   <div class="vibe-wrap">
     <button class="vibe-btn" id="vibe-btn" onclick="toggleVibe()"><span id="vibe-label">⚡ Business</span><span class="vchev">▾</span></button>
     <div class="vibe-dd" id="vibe-dd">
-      <button class="vibe-opt on"  onclick="setVibe('business','⚡ Business',this)">⚡ Business</button>
-      <button class="vibe-opt"     onclick="setVibe('chill','😌 Chill',this)">😌 Chill</button>
-      <button class="vibe-opt"     onclick="setVibe('magical','✨ Magical',this)">✨ Magical</button>
+      <button class="vibe-opt on" onclick="setVibe('business','⚡ Business',this)"><span class="vibe-swatch" style="background:linear-gradient(135deg,#534AB7,#FF6B35)"></span>Business</button>
+      <button class="vibe-opt"    onclick="setVibe('chill','😌 Chill',this)"><span class="vibe-swatch" style="background:linear-gradient(135deg,#5BA4CF,#7EC8A0)"></span>Chill</button>
+      <button class="vibe-opt"    onclick="setVibe('magical','✨ Magical',this)"><span class="vibe-swatch" style="background:linear-gradient(135deg,#9B72CF,#D4AF37)"></span>Magical</button>
     </div>
   </div>
+  <!-- ACCOUNT ICON — RIGHT -->
+  <button class="account-btn" onclick="alert('Account · Settings · Connectors\n\nComing soon — this is where you'll manage your integrations, billing, and preferences.')" title="Account & Settings">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+  </button>
 </div>
 
-<!-- MODAL — centered -->
+<!-- MODAL -->
 <div class="modal-overlay" id="ob-modal">
   <div class="modal">
     <div class="mhdr"><span class="lbl" id="ob-lbl">Step 1 of 4</span><button class="mclose" onclick="closeModal()">×</button></div>
@@ -385,8 +454,8 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
         <button class="niche-btn" onclick="pick(this,'.niche-btn')">✦ Other</button>
       </div>
       <label class="flbl">Specialty (optional)</label>
-      <input class="finput" placeholder="e.g. Leadership transitions for senior execs" />
-      <div class="card-ciara-m"><div class="cav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#1A1730"/><circle cx="19" cy="19" r="2" fill="#1A1730" opacity=".45"/><circle cx="5" cy="19" r="1.2" fill="#1A1730" opacity=".3"/></svg></div><div><span class="cname">Ciara</span><span class="ctag">[INSIGHT]</span><div class="cmsg" id="ob-ciara-msg">Executive coaches land best on LinkedIn. I'll tune your content to senior leadership audiences.</div></div></div>
+      <input class="finput" placeholder="e.g. Leadership transitions for senior execs"/>
+      <div class="card-ciara-m"><div class="cav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#1A1730"/></svg></div><div><span class="cname">Ciara</span><span class="ctag">[INSIGHT]</span><div class="cmsg" id="ob-ciara-msg">Executive coaches land best on LinkedIn. I'll tune your content to senior leadership audiences.</div></div></div>
       <div class="btn-row-m"><span></span><button class="ab ab-p" onclick="goStep(2)">Continue →</button></div>
     </div>
     <div id="ob2" style="display:none">
@@ -425,7 +494,7 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
       <label class="flbl">What happened in a recent session?</label>
       <textarea class="fta" rows="3" style="margin-bottom:16px" placeholder="e.g. A client finally had the conversation they'd avoided for 6 months."></textarea>
       <label class="flbl">Your take on it</label>
-      <input class="finput" placeholder="e.g. Avoidance is usually protecting something real." />
+      <input class="finput" placeholder="e.g. Avoidance is usually protecting something real."/>
       <div class="post-prev"><div class="lbl" style="margin-bottom:7px">Ciara's draft · LinkedIn</div><div style="font-size:15px;color:var(--t1);line-height:1.75"><strong>Six months of circling the same conversation.</strong><br><br>My client finally walked in — and it went better than they ever imagined.<br><br>Avoidance isn't laziness. It's protection. The breakthrough wasn't courage. It was clarity.<br><br><em>📅 If this resonates, let's talk. Link in bio.</em></div></div>
       <div class="btn-row-m"><button class="ab ab-g" onclick="goStep(3)">← Back</button><div style="display:flex;gap:8px"><button class="ab ab-g">Regenerate</button><button class="ab ab-o" onclick="closeModal()">Enter my practice →</button></div></div>
     </div>
@@ -444,30 +513,18 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
           <div class="sp"><div class="sp-val">14</div><div class="sp-lbl">Sessions / mo</div></div>
           <div class="sp"><div class="sp-val">74</div><div class="sp-lbl">Network</div></div>
         </div>
-        <!-- GOAL FIRST -->
-        <div class="m-goal-top">
-          <div class="m-goal-lbl">Your goal today</div>
-          <div class="m-goal-txt" id="d-goal">Lead from behind. Embrace pauses so insights arise naturally.</div>
-        </div>
-        <!-- GREETING -->
+        <div class="m-goal-top"><div class="m-goal-lbl">Your goal today</div><div class="m-goal-txt" id="d-goal">Lead from behind. Embrace pauses so insights arise naturally.</div></div>
         <div class="m-hdr">
           <div style="display:flex;align-items:center;gap:11px">
             <div class="cav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#1A1730"/><circle cx="19" cy="19" r="2" fill="#1A1730" opacity=".45"/><circle cx="5" cy="19" r="1.2" fill="#1A1730" opacity=".3"/></svg></div>
-            <div>
-              <div class="m-greet" id="d-greet">☀️ Good morning, Shira</div>
-              <div class="m-date">Tue · Jun 17 · 72°F sunny &nbsp;·&nbsp;<a href="https://calendar.google.com" target="_blank">Open calendar ↗</a></div>
-            </div>
+            <div><div class="m-greet" id="d-greet">☀️ Good morning, Shira</div><div class="m-date">Tue · Jun 17 · 72°F sunny &nbsp;·&nbsp;<a href="https://calendar.google.com" target="_blank">Open calendar ↗</a></div></div>
           </div>
           <span class="m-ctag" id="d-ctag">[HEADS UP]</span>
         </div>
-        <!-- SESSION 1 — expandable -->
         <div class="sess-row open" id="sess-alex">
           <div class="sess-header" onclick="toggleSess('sess-alex')">
-            <div class="sess-bar"></div>
-            <div style="flex:1"><div class="sess-name">Alex Johnson</div><div class="sess-time">10:00 AM · 60 min</div></div>
-            <span class="sess-badge">Session 8 of 12</span>
-            <button class="ab ab-join" onclick="event.stopPropagation()">Join</button>
-            <span class="sess-chevron" style="margin-left:8px">▾</span>
+            <div class="sess-bar"></div><div style="flex:1"><div class="sess-name">Alex Johnson</div><div class="sess-time">10:00 AM · 60 min</div></div>
+            <span class="sess-badge">Session 8 of 12</span><button class="ab ab-join" onclick="event.stopPropagation()">Join</button><span class="sess-chevron" style="margin-left:8px">▾</span>
           </div>
           <div class="sess-detail">
             <div class="sess-flag"><div><div class="sess-flag-hed">🚩 Flag</div><div id="flag1">Preparing for a difficult manager conversation. Check in before diving in.</div></div></div>
@@ -475,14 +532,10 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
             <div class="sess-footer"><div class="sess-status"><div class="sess-dot" style="background:var(--ok)"></div>Assignment complete</div><button class="ab ab-g">View profile →</button></div>
           </div>
         </div>
-        <!-- SESSION 2 — expandable -->
         <div class="sess-row open" id="sess-morgan">
           <div class="sess-header" onclick="toggleSess('sess-morgan')">
-            <div class="sess-bar"></div>
-            <div style="flex:1"><div class="sess-name">Morgan Lee</div><div class="sess-time">2:00 PM · 50 min</div></div>
-            <span class="sess-badge">Session 2 of 4</span>
-            <button class="ab ab-join" onclick="event.stopPropagation()">Join</button>
-            <span class="sess-chevron" style="margin-left:8px">▾</span>
+            <div class="sess-bar"></div><div style="flex:1"><div class="sess-name">Morgan Lee</div><div class="sess-time">2:00 PM · 50 min</div></div>
+            <span class="sess-badge">Session 2 of 4</span><button class="ab ab-join" onclick="event.stopPropagation()">Join</button><span class="sess-chevron" style="margin-left:8px">▾</span>
           </div>
           <div class="sess-detail">
             <div class="sess-flag"><div><div class="sess-flag-hed">🎉 Milestone</div><div id="flag2">1-month anniversary today. A small acknowledgment goes a long way.</div></div></div>
@@ -490,8 +543,7 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
             <div class="sess-footer"><div class="sess-status"><div class="sess-dot" style="background:var(--wn)"></div>Assignment pending 🤔</div><button class="ab ab-g">View profile →</button></div>
           </div>
         </div>
-        <!-- INVOICE FLAG -->
-        <div style="margin-top:8px;background:rgba(239,159,39,.1);border:1px solid rgba(239,159,39,.35);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--t2)"><span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7A4E00;display:block;margin-bottom:3px">🔔 Reminder</span><span id="flag3">Q3 invoice for Rivera Group due Friday. Ciara can draft it.</span></div>
+        <div style="margin-top:8px;background:color-mix(in srgb,var(--c) 10%,transparent);border:1px solid color-mix(in srgb,var(--c) 35%,transparent);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--t2)"><span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--wn);display:block;margin-bottom:3px">🔔 Reminder</span><span id="flag3">Q3 invoice for Rivera Group due Friday. Ciara can draft it.</span></div>
       </div>
     </div>
   </div>
@@ -507,12 +559,11 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
 <div class="scr" id="scr-analyze">
   <div class="analyze-wrap">
     <div class="domain-tabs">
-      <button class="dtab on"  onclick="showDomain('network',this)">👤 Network</button>
-      <button class="dtab"     onclick="showDomain('content',this)">📄 Content</button>
-      <button class="dtab"     onclick="showDomain('reach',this)">🌐 Reach</button>
-      <button class="dtab"     onclick="showDomain('revenue',this)">💲 Revenue</button>
+      <button class="dtab on" onclick="showDomain('network',this)">👤 Network</button>
+      <button class="dtab"    onclick="showDomain('content',this)">📄 Content</button>
+      <button class="dtab"    onclick="showDomain('reach',this)">🌐 Reach</button>
+      <button class="dtab"    onclick="showDomain('revenue',this)">💲 Revenue</button>
     </div>
-
     <!-- NETWORK -->
     <div class="domain-scr on" id="dom-network">
       <div class="net-toolbar">
@@ -527,14 +578,14 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
         <svg width="100%" viewBox="0 0 640 280" style="display:block"><g id="net-lines"></g><g id="net-nodes"></g></svg>
         <div class="net-graph-legend">
           <div class="legend-item"><div class="legend-dot" style="background:#1D9E75"></div>MVP</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#534AB7"></div>Potential</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--p)"></div>Potential</div>
           <div class="legend-item"><div class="legend-dot" style="background:#EF9F27"></div>Needs effort</div>
           <div class="legend-item"><div class="legend-dot" style="background:#E24B4A"></div>Cut loose</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#1A1730"></div>You</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--t1)"></div>You</div>
         </div>
         <div class="np-float" id="np-float">
           <button class="np-close" onclick="closeProfile()">×</button>
-          <div class="np-top"><div class="np-av" id="np-av" style="background:var(--okp);color:#085041">AJ</div><div style="flex:1"><div class="np-name" id="np-name">Alex Johnson</div><div class="np-tags" id="np-tags"><span class="badge b-ok">MVP</span><span class="badge b-p">Client</span></div></div></div>
+          <div class="np-top"><div class="np-av" id="np-av" style="background:var(--okp);color:var(--ok)">AJ</div><div style="flex:1"><div class="np-name" id="np-name">Alex Johnson</div><div class="np-tags" id="np-tags"><span class="badge b-ok">MVP</span><span class="badge b-p">Client</span></div></div></div>
           <div class="np-grid" id="np-grid">
             <div class="np-field"><div class="np-fl">Since</div><div class="np-fv">Jan 2023</div></div>
             <div class="np-field"><div class="np-fl">Spend</div><div class="np-fv ok">$18,400</div></div>
@@ -547,24 +598,21 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
           <div class="np-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Save to list</button><button class="ab ab-g">Edit</button><button class="ab ab-g">Message</button></div>
         </div>
       </div>
-      <div class="wcb-section">
-        <div class="wcb-hdr"><div class="wcb-icon" style="background:var(--okp)">📈</div><div><div class="wcb-title">What's working</div><div class="wcb-sub">Client domain · 90 days</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Retention at 91%.</strong> Clients who reach session 6+ complete at 94% and refer at 3×. Your mid-session rhythm is doing something right.</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>3 MVPs generating referrals.</strong> Alex, Sarah, Rivera Group have sent 5 clients this year combined.</div></div></div>
+      <!-- WCB sections -->
+      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--okp)">📈</div><div><div class="wcb-title">What's working</div><div class="wcb-sub">Client domain · 90 days</div></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Retention at 91%.</strong> Clients who reach session 6+ complete at 94% and refer at 3×.</div></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>3 MVPs generating referrals.</strong> Alex, Sarah, Rivera Group — 5 clients sent this year.</div></div></div>
       </div>
-      <div class="wcb-section">
-        <div class="wcb-hdr"><div class="wcb-icon" style="background:var(--wnp)">📉</div><div><div class="wcb-title">Could be better</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Zero referrals in 60 days</strong> despite 8 active clients. Happy clients don't refer without a prompt.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create referral post</button></div></div>
+      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--wnp)">📉</div><div><div class="wcb-title">Could be better</div></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Zero referrals in 60 days</strong> despite 8 active clients.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create referral post</button></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Paula Reed going cold.</strong> No contact in 2 months. Previously a referral source.</div></div><div class="az-acts"><button class="ab ab-p">Draft outreach</button></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Rivera Group renewal not initiated.</strong> Sprint ends in 3 sessions. No conversation logged yet.</div></div><div class="az-acts"><button class="ab ab-p">Draft renewal conversation</button></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Rivera Group renewal not initiated.</strong> Sprint ends in 3 sessions.</div></div><div class="az-acts"><button class="ab ab-p">Draft renewal conversation</button></div></div>
       </div>
-      <div class="wcb-section">
-        <div class="wcb-hdr"><div class="wcb-icon" style="background:var(--cp)">✦</div><div><div class="wcb-title" id="exp-net-t">Experiments</div><div class="wcb-sub" id="exp-net-s">Try these — Ciara tracks results</div></div></div>
-        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title" id="net-i1t">Ask Rivera Group for a testimonial first</div><div class="idea-desc" id="net-i1d">Before the renewal conversation — reinforces value delivered and gives you content for your next post.</div><div class="idea-acts"><button class="ab ab-p">Draft the ask</button></div></div></div>
+      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--idea-bg)">✦</div><div><div class="wcb-title" id="exp-net-t">Experiments</div><div class="wcb-sub" id="exp-net-s">Try these — Ciara tracks results</div></div></div>
+        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title" id="net-i1t">Ask Rivera Group for a testimonial first</div><div class="idea-desc" id="net-i1d">Before the renewal conversation — reinforces value and gives you content.</div><div class="idea-acts"><button class="ab ab-p">Draft the ask</button></div></div></div>
         <div class="idea-card"><div class="idea-num">2</div><div><div class="idea-title" id="net-i2t">Personal outreach to Paula Reed</div><div class="idea-desc" id="net-i2d">Not a newsletter — one genuine sentence about something you worked on together.</div><div class="idea-acts"><button class="ab ab-p">Draft the message</button></div></div></div>
       </div>
     </div>
-
     <!-- CONTENT -->
     <div class="domain-scr" id="dom-content">
       <div class="score-grid">
@@ -576,31 +624,30 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
       <div class="lbl" style="margin-bottom:12px">Recent posts</div>
       <div style="margin-bottom:28px">
         <div class="post-hist"><div class="ph-ico" style="background:var(--pp)">💼</div><div style="flex:1"><div class="ph-title">The conversation they'd been avoiding</div><div class="ph-meta">Jun 14 · LinkedIn</div></div><div class="ph-eng"><div class="ph-ev">62</div><div class="ph-el">engagements</div></div></div>
-        <div class="post-hist"><div class="ph-ico" style="background:#FFF0EB">📧</div><div style="flex:1"><div class="ph-title">What avoidance is protecting</div><div class="ph-meta">Jun 10 · Email</div></div><div class="ph-eng"><div class="ph-ev">31%</div><div class="ph-el">open rate</div></div></div>
+        <div class="post-hist"><div class="ph-ico" style="background:color-mix(in srgb,var(--o) 12%,transparent)">📧</div><div style="flex:1"><div class="ph-title">What avoidance is protecting</div><div class="ph-meta">Jun 10 · Email</div></div><div class="ph-eng"><div class="ph-ev">31%</div><div class="ph-el">open rate</div></div></div>
         <div class="post-hist"><div class="ph-ico" style="background:var(--okp)">📊</div><div style="flex:1"><div class="ph-title">3 signs a client is ready to act</div><div class="ph-meta">Jun 7 · Infographic</div></div><div class="ph-eng"><div class="ph-ev">1.2K</div><div class="ph-el">views</div></div></div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--okp)">📈</div><div><div class="wcb-title">What's working</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Story posts outperform everything.</strong> 2.4× engagement when you lead with a real client moment vs a framework or how-to post.</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Email open rate is strong at 31%.</strong> Industry average is 21%. Your subject lines and list quality are working.</div></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Story posts outperform everything.</strong> 2.4× engagement when you lead with a real client moment.</div></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Email open rate is strong at 31%.</strong> Industry average is 21%.</div></div></div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--wnp)">📉</div><div><div class="wcb-title">Could be better</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Posting dropped off.</strong> 11 days since your last post. On pace for 3 posts this month vs a target of 8.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Generate a post</button></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Posting dropped off.</strong> 11 days since your last post. On pace for 3 vs target of 8.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Generate a post</button></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>No Calendly link in your LinkedIn bio.</strong> Posts drive traffic but there's no clear next step.</div></div><div class="az-acts"><button class="ab ab-p" onclick="toggleDrawer('cal-drawer')">Learn how</button></div>
           <div class="learn-drawer" id="cal-drawer">
             <div class="learn-step"><div class="learn-num">1</div><div>Go to <strong>linkedin.com/in/yourprofile</strong> → <strong>Edit profile</strong>.</div></div>
             <div class="learn-step"><div class="learn-num">2</div><div>Click the pencil icon next to your name to open the intro section.</div></div>
             <div class="learn-step"><div class="learn-num">3</div><div>Scroll to <strong>Website</strong> → paste <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--p)">calendly.com/shiradee/30min-exploration</span></div></div>
-            <div class="learn-step"><div class="learn-num">4</div><div>Label it <strong>"Book a 30-min call"</strong> — reads as an invitation, not a URL.</div></div>
+            <div class="learn-step"><div class="learn-num">4</div><div>Label it <strong>"Book a 30-min call"</strong>.</div></div>
             <div class="learn-step"><div class="learn-num">5</div><div>Save and check your public profile.</div></div>
           </div>
         </div>
       </div>
-      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--cp)">✦</div><div><div class="wcb-title">Experiments</div></div></div>
-        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Monthly "client win" post</div><div class="idea-desc">One anonymized breakthrough per month keeps your pipeline warm and positions you as someone who delivers results, not just promises them.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create in Studio</button></div></div></div>
-        <div class="idea-card"><div class="idea-num">2</div><div><div class="idea-title">Try a poll this week</div><div class="idea-desc">You haven't tested polls yet. They typically get 3–4× more replies than regular posts — low effort, high signal.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create a poll</button></div></div></div>
+      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--idea-bg)">✦</div><div><div class="wcb-title">Experiments</div></div></div>
+        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Monthly "client win" post</div><div class="idea-desc">One anonymized breakthrough per month keeps your pipeline warm.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create in Studio</button></div></div></div>
+        <div class="idea-card"><div class="idea-num">2</div><div><div class="idea-title">Try a poll this week</div><div class="idea-desc">3–4× more replies than regular posts. Low effort, high signal.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create a poll</button></div></div></div>
       </div>
     </div>
-
     <!-- REACH -->
     <div class="domain-scr" id="dom-reach">
       <div class="score-grid">
@@ -613,13 +660,12 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Network score trending up.</strong> 74 and climbing — driven by Dana's onboarding and Chris Wang's discovery call.</div></div></div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--wnp)">📉</div><div><div class="wcb-title">Could be better</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Referrals dropped to zero.</strong> Last quarter you got 3 from Sarah Kim alone. She hasn't heard from you in 2 weeks.</div></div><div class="az-acts"><button class="ab ab-p">Reach out to Sarah</button></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Referrals dropped to zero.</strong> Last quarter you got 3 from Sarah Kim. She hasn't heard from you in 2 weeks.</div></div><div class="az-acts"><button class="ab ab-p">Reach out to Sarah</button></div></div>
       </div>
-      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--cp)">✦</div><div><div class="wcb-title">Experiments</div></div></div>
-        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Quarterly alumni touchpoint</div><div class="idea-desc">A personal note to past clients — not a newsletter — surfaces referrals and renewals. One sentence per person is enough.</div><div class="idea-acts"><button class="ab ab-p">Build the list</button></div></div></div>
+      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--idea-bg)">✦</div><div><div class="wcb-title">Experiments</div></div></div>
+        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Quarterly alumni touchpoint</div><div class="idea-desc">A personal note to past clients — not a newsletter — surfaces referrals and renewals.</div><div class="idea-acts"><button class="ab ab-p">Build the list</button></div></div></div>
       </div>
     </div>
-
     <!-- REVENUE -->
     <div class="domain-scr" id="dom-revenue">
       <div class="score-grid">
@@ -629,48 +675,52 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
         <div class="score-tile"><div class="score-lbl">Pipeline value</div><div class="score-val">$6,200</div><div class="score-trend t-muted">2 warm leads</div></div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--okp)">📈</div><div><div class="wcb-title">What's working</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Partnerships convert best.</strong> 12-session clients have 3× LTV vs Sprints. Lean into longer engagements.</div></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Partnerships convert best.</strong> 12-session clients have 3× LTV vs Sprints.</div></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Valuation growing.</strong> Up $8K this month — client documentation and content library are the drivers.</div></div></div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--wnp)">📉</div><div><div class="wcb-title">Could be better</div></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Rivera Group renewal not initiated.</strong> $31K spend — largest revenue risk this quarter.</div></div><div class="az-acts"><button class="ab ab-p">Draft renewal conversation</button></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>No upsell with Morgan.</strong> Sprint ends in 2 sessions. No Partnership offer made yet.</div></div><div class="az-acts"><button class="ab ab-p">Draft the ask</button></div></div>
       </div>
-      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--cp)">✦</div><div><div class="wcb-title">Experiments</div></div></div>
-        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Test a retainer offer</div><div class="idea-desc">Alex and Dana both engage heavily between sessions. A lighter monthly retainer could increase LTV and revenue predictability.</div><div class="idea-acts"><button class="ab ab-p">Design the offer</button></div></div></div>
+      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--idea-bg)">✦</div><div><div class="wcb-title">Experiments</div></div></div>
+        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Test a retainer offer</div><div class="idea-desc">Alex and Dana engage heavily between sessions. A lighter monthly retainer could increase LTV.</div><div class="idea-acts"><button class="ab ab-p">Design the offer</button></div></div></div>
       </div>
     </div>
   </div>
 </div>
-<!-- CREATE -->
+<!-- CREATE — platform + format split -->
 <div class="scr" id="scr-create">
-  <div class="mobile-format-scroll">
-    <button class="mfs-chip on" onclick="pickMF(this,'linkedin')">💼 LinkedIn</button>
-    <button class="mfs-chip" onclick="pickMF(this,'infographic')">📊 Infographic</button>
-    <button class="mfs-chip" onclick="pickMF(this,'video')">🎥 Video</button>
-    <button class="mfs-chip" onclick="pickMF(this,'carousel')">🖼️ Carousel</button>
-    <button class="mfs-chip" onclick="pickMF(this,'poll')">📣 Poll</button>
-    <button class="mfs-chip" onclick="pickMF(this,'email')">📧 Email</button>
+  <div class="mobile-platform-scroll" id="mobile-plat-scroll">
+    <button class="mfs-chip on" onclick="pickMobilePlat(this,'linkedin')">💼 LinkedIn</button>
+    <button class="mfs-chip" onclick="pickMobilePlat(this,'instagram')">📸 Instagram</button>
+    <button class="mfs-chip" onclick="pickMobilePlat(this,'email')">📧 Email</button>
+    <button class="mfs-chip" onclick="pickMobilePlat(this,'youtube')">▶️ YouTube</button>
+    <button class="mfs-chip" onclick="pickMobilePlat(this,'substack')">📝 Substack</button>
   </div>
   <div class="create-layout">
+    <!-- LEFT RAIL -->
     <div class="create-rail">
       <div class="rail-section">
+        <div class="rail-lbl">Platform</div>
+        <button class="plat-chip on" id="pc-linkedin" onclick="pickPlat(this,'linkedin')"><span class="plat-icon">💼</span>LinkedIn</button>
+        <button class="plat-chip" id="pc-instagram" onclick="pickPlat(this,'instagram')"><span class="plat-icon">📸</span>Instagram</button>
+        <button class="plat-chip" id="pc-email" onclick="pickPlat(this,'email')"><span class="plat-icon">📧</span>Email</button>
+        <button class="plat-chip" id="pc-youtube" onclick="pickPlat(this,'youtube')"><span class="plat-icon">▶️</span>YouTube</button>
+        <button class="plat-chip" id="pc-substack" onclick="pickPlat(this,'substack')"><span class="plat-icon">📝</span>Substack</button>
+      </div>
+      <div class="rail-divider"></div>
+      <div class="rail-section">
         <div class="rail-lbl">Format</div>
-        <button class="rail-chip on" id="rf-linkedin" onclick="pickRC(this,'rf');pickFmt('linkedin')">💼 LinkedIn</button>
-        <button class="rail-chip" id="rf-infographic" onclick="pickRC(this,'rf');pickFmt('infographic')">📊 Infographic</button>
-        <button class="rail-chip" id="rf-video" onclick="pickRC(this,'rf');pickFmt('video')">🎥 Video Script</button>
-        <button class="rail-chip" id="rf-carousel" onclick="pickRC(this,'rf');pickFmt('carousel')">🖼️ Carousel</button>
-        <button class="rail-chip" id="rf-poll" onclick="pickRC(this,'rf');pickFmt('poll')">📣 Poll</button>
-        <button class="rail-chip" id="rf-email" onclick="pickRC(this,'rf');pickFmt('email')">📧 Email</button>
+        <div id="fmt-options"><!-- populated by pickPlat() --></div>
       </div>
       <div class="rail-divider"></div>
       <div class="rail-section">
         <div class="rail-lbl">Audience list</div>
-        <button class="rail-chip" onclick="pickRC(this,'rl')">All clients <span class="chip-edit">✎</span></button>
-        <button class="rail-chip" onclick="pickRC(this,'rl')">MVPs · 3 <span class="chip-edit">✎</span></button>
-        <button class="rail-chip" onclick="pickRC(this,'rl')">Potential MVPs <span class="chip-edit">✎</span></button>
-        <button class="rail-chip" onclick="pickRC(this,'rl')">At-risk · 2 <span class="chip-edit">✎</span></button>
-        <button class="rail-chip" style="color:var(--p);border-color:var(--pl)" onclick="alert('List builder — create a new segment from your Network')">+ New list</button>
+        <button class="plat-chip" onclick="pickAud(this)">All clients</button>
+        <button class="plat-chip" onclick="pickAud(this)">MVPs · 3</button>
+        <button class="plat-chip" onclick="pickAud(this)">Potential MVPs</button>
+        <button class="plat-chip" onclick="pickAud(this)">At-risk · 2</button>
+        <button class="plat-chip" style="color:var(--p);border-color:var(--pl)" onclick="alert('List builder — create a new segment from your Network')">+ New list</button>
       </div>
       <div class="rail-divider"></div>
       <div class="rail-section">
@@ -688,8 +738,7 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
         <button class="rail-btn">🕐 History</button>
       </div>
     </div>
-
-    <!-- CENTER: prompt first, then suggestions -->
+    <!-- CENTER -->
     <div class="create-center">
       <div class="prompt-section">
         <div class="prompt-label">✏️ What's the insight?</div>
@@ -702,36 +751,33 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
         </div>
         <div class="generate-row"><button class="ab ab-gen" onclick="doGenerate()">✦ Generate →</button></div>
       </div>
-
       <div class="create-divider"><span class="create-divider-txt">or start from a suggestion</span></div>
-
       <div class="sug-label">✦ Ciara's picks <span>from your sessions &amp; data</span></div>
       <div class="sug-grid">
         <div class="sug-card" onclick="pickSug(this,'The manager conversation Alex avoided for 6 months')">
           <div class="sug-img" style="background:linear-gradient(135deg,#E8E4FF,#C8C0F0)"><div style="font-size:28px">💬</div></div>
-          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-session">From session</span><span class="sug-tag st-fmt">LinkedIn</span></div><div class="sug-title">The manager conversation Alex avoided for 6 months</div><div class="sug-desc">Alex finally had it last week. Lead with the breakthrough.</div></div>
+          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-session">From session</span><span class="sug-tag st-fmt" id="sug1-fmt">LinkedIn</span></div><div class="sug-title">The manager conversation Alex avoided for 6 months</div><div class="sug-desc">Alex finally had it last week. Lead with the breakthrough.</div></div>
         </div>
         <div class="sug-card" onclick="pickSug(this,'Why session 6-8 is where transformation happens')">
           <div class="sug-img" style="background:linear-gradient(135deg,#DFF5ED,#B8E8D8)"><div style="font-size:28px">📈</div></div>
-          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-data">From analytics</span><span class="sug-tag st-fmt">Infographic</span></div><div class="sug-title">Why session 6–8 is where transformation happens</div><div class="sug-desc">Your data shows clients peak in this window.</div></div>
+          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-data">From analytics</span><span class="sug-tag st-fmt" id="sug2-fmt">Post</span></div><div class="sug-title">Why session 6–8 is where transformation happens</div><div class="sug-desc">Your data shows clients peak in this window.</div></div>
         </div>
         <div class="sug-card" onclick="pickSug(this,'Morgan career pivot — the unnamed decision')">
           <div class="sug-img" style="background:linear-gradient(135deg,#FEF3E2,#F5D8A0)"><div style="font-size:28px">🤝</div></div>
-          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-session">From session</span><span class="sug-tag st-fmt">LinkedIn</span></div><div class="sug-title">Morgan's career pivot — the unnamed decision</div><div class="sug-desc">"That's not confusion. That's protection."</div></div>
+          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-session">From session</span><span class="sug-tag st-fmt" id="sug3-fmt">Post</span></div><div class="sug-title">Morgan's career pivot — the unnamed decision</div><div class="sug-desc">"That's not confusion. That's protection."</div></div>
         </div>
         <div class="sug-card" onclick="pickSug(this,'Your referral rate dropped — make it a poll')">
           <div class="sug-img" style="background:linear-gradient(135deg,#FEECEC,#F5B8B8)"><div style="font-size:28px">📣</div></div>
-          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-data">From insights</span><span class="sug-tag st-fmt">Poll</span></div><div class="sug-title">Your referral rate dropped — make it a poll</div><div class="sug-desc">Generates engagement and surfaces referral psychology.</div></div>
+          <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-data">From insights</span><span class="sug-tag st-fmt" id="sug4-fmt">Poll</span></div><div class="sug-title">Your referral rate dropped — make it a poll</div><div class="sug-desc">Generates engagement and surfaces referral psychology.</div></div>
         </div>
       </div>
     </div>
-
     <!-- RIGHT OUTPUT -->
     <div class="create-right">
       <div id="cs-output">
         <div class="output-empty">
           <div class="output-empty-icon">✦</div>
-          <div style="font-size:18px;font-weight:900;color:var(--nb)">Ready when you are</div>
+          <div style="font-size:18px;font-weight:900;color:var(--t1)">Ready when you are</div>
           <div style="font-size:15px;color:var(--tm);max-width:240px;text-align:center;line-height:1.6">Write your insight or pick a suggestion, then hit Generate.</div>
         </div>
       </div>
@@ -751,19 +797,17 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
 <div class="ciara-chat" id="ciara-chat">
   <div class="ciara-chat-hdr">
     <div class="cav" style="width:30px;height:30px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#1A1730"/></svg></div>
-    <div class="ciara-chat-name">Ciara</div>
-    <span class="ctag">[INSIGHT]</span>
+    <div class="ciara-chat-name">Ciara</div><span class="ctag">[INSIGHT]</span>
     <button class="ciara-chat-close" onclick="toggleChat()">×</button>
   </div>
   <div class="ciara-chat-body" id="ciara-chat-body">
-    <div class="ciara-bub" id="ciara-chat-msg">Your breakthrough posts get 2.4× more engagement than frameworks. Ready to create one? Write your own or pick a suggestion above.</div>
+    <div class="ciara-bub" id="ciara-chat-msg">Your breakthrough posts get 2.4× more engagement than frameworks. Ready to create one?</div>
   </div>
   <div class="ciara-chat-input-row">
     <input class="ciara-inp" id="ciara-input" placeholder="Ask Ciara anything…" onkeydown="if(event.key==='Enter')sendToC()"/>
     <button class="ciara-send" onclick="sendToC()">→</button>
   </div>
 </div>
-
 <div class="bnav">
   <button class="bni on">☀️<br>Prep</button>
   <button class="bni" onclick="showScr('analyze',document.querySelectorAll('.tab')[1])">📊<br>Analyze</button>
@@ -773,51 +817,147 @@ body{font-family:'Nunito','Helvetica Neue',Arial,sans-serif;font-size:16px;line-
 </div><!-- /app -->
 
 <script>
-var VIBES={
-  business:{greet:'☀️ Good morning, Shira',ctag:'[HEADS UP]',flag1:'Preparing for a difficult manager conversation. Check in before diving in.',flag2:'1-month anniversary today. A small acknowledgment goes a long way.',flag3:'Q3 invoice for Rivera Group due Friday. Ciara can draft it.',goal:'Lead from behind. Embrace pauses so insights arise naturally.',alexRead:'Still seeking external validation before acting. Session 6 breakthrough needs reinforcing — bring it back today.',morganRead:'Career pivot conversation is circling — Morgan may be ready to name it directly today.',obCiara:"Executive coaches land best on LinkedIn. I'll tune your content to senior leadership audiences.",expNetT:'Experiments',expNetS:'Try these — Ciara tracks results',ni1t:'Ask Rivera Group for a testimonial first',ni1d:'Before the renewal conversation — reinforces value and gives you content for your next post.',ni2t:'Personal outreach to Paula Reed',ni2d:"Not a newsletter — one genuine sentence about something you worked on together.",chatMsg:"Your breakthrough posts get 2.4× more engagement than frameworks. Ready to create one?"},
-  chill:{greet:'☀️ Hey Shira, morning!',ctag:'[just so you know]',flag1:"Alex has been thinking about that manager conversation. Worth a soft check-in.",flag2:"One month with Morgan! A little acknowledgment goes a long way 🎉",flag3:'Heads up — Rivera Group invoice is due Friday. Want me to draft it?',goal:"You don't have to fill every silence. Let them breathe a little today.",alexRead:'Alex still looks for your validation before they trust themselves. Just stay curious.',morganRead:"Something's brewing with Morgan around a career change. Leave space for it.",obCiara:"LinkedIn is usually the move for exec coaches. I'll keep it warm but professional.",expNetT:'Things worth trying',expNetS:'Low lift, Ciara tracks results',ni1t:'Check in with Rivera before talking renewal',ni1d:"Ask how it's been going. It'll feel less transactional.",ni2t:'Personal note to Paula',ni2d:"Not a newsletter. Just one real sentence.",chatMsg:"Hey! Your story posts are killing it 😊 Want to make another one?"},
+// PLATFORM → FORMAT MAP
+var PLAT_FORMATS = {
+  linkedin:  [{icon:'📝',id:'post',lbl:'Text post'},{icon:'🖼️',id:'carousel',lbl:'Carousel'},{icon:'📊',id:'infographic',lbl:'Infographic'},{icon:'📣',id:'poll',lbl:'Poll'},{icon:'📰',id:'article',lbl:'Article'}],
+  instagram: [{icon:'🖼️',id:'feed',lbl:'Feed post'},{icon:'🎥',id:'reel',lbl:'Reel script'},{icon:'📖',id:'story',lbl:'Story'},{icon:'🖼️',id:'carousel',lbl:'Carousel'}],
+  email:     [{icon:'📧',id:'newsletter',lbl:'Newsletter'},{icon:'📬',id:'sequence',lbl:'Sequence'},{icon:'📢',id:'announcement',lbl:'Announcement'},{icon:'📅',id:'invite',lbl:'Event invite'}],
+  youtube:   [{icon:'🎬',id:'script',lbl:'Video script'},{icon:'📄',id:'description',lbl:'Description'},{icon:'📌',id:'thumbnail',lbl:'Thumbnail idea'},{icon:'🔗',id:'shorts',lbl:'Shorts script'}],
+  substack:  [{icon:'📝',id:'post',lbl:'Post'},{icon:'📋',id:'notes',lbl:'Notes'},{icon:'🎙️',id:'podcast',lbl:'Podcast script'},{icon:'💬',id:'thread',lbl:'Thread'}],
+};
+var curPlat = 'linkedin';
+var curFmt  = 'post';
+
+function renderFmts(plat) {
+  var fmts = PLAT_FORMATS[plat] || [];
+  var html = fmts.map(function(f,i) {
+    return '<button class="fmt-chip'+(i===0?' on':'')
+      +'" id="fc-'+f.id+'" onclick="pickFmt(this,\''+f.id+'\')">'
+      +'<span class="fmt-chip-icon">'+f.icon+'</span>'+f.lbl+'</button>';
+  }).join('');
+  document.getElementById('fmt-options').innerHTML = html;
+  curFmt = fmts[0] ? fmts[0].id : 'post';
+  updateSugTags(plat);
+  resetOutput();
+}
+
+function updateSugTags(plat) {
+  var nm = {linkedin:'LinkedIn',instagram:'Instagram',email:'Email',youtube:'YouTube',substack:'Substack'};
+  var label = nm[plat]||plat;
+  ['sug1-fmt','sug2-fmt','sug3-fmt','sug4-fmt'].forEach(function(id){ var el=document.getElementById(id); if(el)el.textContent=label; });
+}
+
+function pickPlat(el,plat){
+  document.querySelectorAll('.plat-chip[id^="pc-"]').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');curPlat=plat;renderFmts(plat);
+}
+function pickFmt(el,fmt){
+  document.querySelectorAll('.fmt-chip').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');curFmt=fmt;resetOutput();
+}
+function pickAud(el){
+  document.querySelectorAll('.create-rail .plat-chip:not([id])').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');
+}
+function pickTC(el){document.querySelectorAll('.tone-chip').forEach(function(b){b.classList.remove('on');});el.classList.add('on');}
+function pickMobilePlat(el,plat){
+  document.querySelectorAll('.mfs-chip').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');curPlat=plat;renderFmts(plat);
+  var pc=document.getElementById('pc-'+plat);
+  if(pc){document.querySelectorAll('.plat-chip[id^="pc-"]').forEach(function(b){b.classList.remove('on');});pc.classList.add('on');}
+}
+renderFmts('linkedin'); // init
+
+// VIBES
+var VIBES = {
+  business:{greet:'☀️ Good morning, Shira',ctag:'[HEADS UP]',flag1:'Preparing for a difficult manager conversation. Check in before diving in.',flag2:'1-month anniversary today. A small acknowledgment goes a long way.',flag3:'Q3 invoice for Rivera Group due Friday. Ciara can draft it.',goal:'Lead from behind. Embrace pauses so insights arise naturally.',alexRead:'Still seeking external validation before acting. Session 6 breakthrough needs reinforcing — bring it back today.',morganRead:'Career pivot conversation is circling — Morgan may be ready to name it directly today.',obCiara:"Executive coaches land best on LinkedIn. I'll tune your content to senior leadership audiences.",expNetT:'Experiments',expNetS:'Try these — Ciara tracks results',ni1t:'Ask Rivera Group for a testimonial first',ni1d:'Before the renewal conversation — reinforces value and gives you content.',ni2t:'Personal outreach to Paula Reed',ni2d:'Not a newsletter — one genuine sentence about something you worked on together.',chatMsg:"Your breakthrough posts get 2.4× more engagement than frameworks. Ready to create one?"},
+  chill:{greet:'☀️ Hey Shira, morning!',ctag:'[just so you know]',flag1:"Alex has been thinking about that manager conversation. Worth a soft check-in.",flag2:"One month with Morgan! A little acknowledgment goes a long way 🎉",flag3:'Heads up — Rivera Group invoice is due Friday. Want me to draft it?',goal:"You don't have to fill every silence. Let them breathe a little today.",alexRead:'Alex still looks for your validation before they trust themselves. Just stay curious.',morganRead:"Something's brewing with Morgan around a career change. Leave space for it.",obCiara:"LinkedIn is usually the move for exec coaches. I'll keep it warm but professional.",expNetT:'Things worth trying',expNetS:'Low lift, Ciara tracks results',ni1t:'Check in with Rivera before talking renewal',ni1d:"Ask how it's been going. It'll feel less transactional.",ni2t:'Personal note to Paula',ni2d:'Not a newsletter. Just one real sentence.',chatMsg:"Hey! Your story posts are killing it 😊 Want to make another one?"},
   magical:{greet:'✨ A new day arrives, Shira',ctag:'[the thread to pull]',flag1:'Alex stands at a threshold today. Hold space before you speak.',flag2:'One moon has passed with Morgan. Mark the moment — even briefly.',flag3:"The Rivera Group chapter nears its close. Ciara can weave the invoice when you're ready.",goal:'The most powerful thing you can offer today is presence. Let the silence do its work.',alexRead:"Alex carries the seed you planted in session 6. Today it may be ready to bloom — don't rush it.",morganRead:"Morgan orbits a decision that hasn't yet found its name. Create the conditions for it to emerge.",obCiara:"LinkedIn is your stage. Your words carry the weight of real transformation.",expNetT:'Seeds to plant',expNetS:'Experiments worth tending',ni1t:'Honor the journey before the next chapter begins',ni1d:"Before you speak of renewal, acknowledge what's already been built. Gratitude opens doors.",ni2t:'A gentle signal to Paula',ni2d:"One sentence that names what was real between you. No agenda.",chatMsg:"Your words carry the resonance of real transformation. Which truth from this week wants to be shared?"}
 };
-function setVibe(v,label,el){document.getElementById('vibe-label').textContent=label;document.querySelectorAll('.vibe-opt').forEach(o=>o.classList.remove('on'));el.classList.add('on');toggleVibe();var d=VIBES[v];document.getElementById('d-greet').textContent=d.greet;document.getElementById('d-ctag').textContent=d.ctag;document.getElementById('flag1').textContent=d.flag1;document.getElementById('flag2').textContent=d.flag2;document.getElementById('flag3').textContent=d.flag3;document.getElementById('d-goal').textContent=d.goal;document.getElementById('cr-alex').textContent=d.alexRead;document.getElementById('cr-morgan').textContent=d.morganRead;document.getElementById('ob-ciara-msg').textContent=d.obCiara;document.getElementById('exp-net-t').textContent=d.expNetT;document.getElementById('exp-net-s').textContent=d.expNetS;document.getElementById('net-i1t').textContent=d.ni1t;document.getElementById('net-i1d').textContent=d.ni1d;document.getElementById('net-i2t').textContent=d.ni2t;document.getElementById('net-i2d').textContent=d.ni2d;document.getElementById('ciara-chat-msg').textContent=d.chatMsg;}
+function setVibe(v,label,el){
+  document.getElementById('vibe-label').textContent=label;
+  document.querySelectorAll('.vibe-opt').forEach(function(o){o.classList.remove('on');});el.classList.add('on');toggleVibe();
+  var d=VIBES[v];
+  // body class for CSS vibe theming
+  document.getElementById('app-body').className='vibe-'+v;
+  document.getElementById('d-greet').textContent=d.greet; document.getElementById('d-ctag').textContent=d.ctag;
+  document.getElementById('flag1').textContent=d.flag1; document.getElementById('flag2').textContent=d.flag2; document.getElementById('flag3').textContent=d.flag3;
+  document.getElementById('d-goal').textContent=d.goal; document.getElementById('cr-alex').textContent=d.alexRead; document.getElementById('cr-morgan').textContent=d.morganRead;
+  document.getElementById('ob-ciara-msg').textContent=d.obCiara;
+  document.getElementById('exp-net-t').textContent=d.expNetT; document.getElementById('exp-net-s').textContent=d.expNetS;
+  document.getElementById('net-i1t').textContent=d.ni1t; document.getElementById('net-i1d').textContent=d.ni1d;
+  document.getElementById('net-i2t').textContent=d.ni2t; document.getElementById('net-i2d').textContent=d.ni2d;
+  document.getElementById('ciara-chat-msg').textContent=d.chatMsg;
+  // Rebuild graph nodes with vibe-aware colors
+  buildGraph();
+}
 function toggleVibe(){document.getElementById('vibe-btn').classList.toggle('open');document.getElementById('vibe-dd').classList.toggle('open');}
 document.addEventListener('click',function(e){if(!e.target.closest('.vibe-wrap')){document.getElementById('vibe-btn').classList.remove('open');document.getElementById('vibe-dd').classList.remove('open');}});
-function showScr(id,tab){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));document.getElementById('scr-'+id).classList.add('on');if(tab)tab.classList.add('on');}
-function showDomain(id,tab){document.querySelectorAll('.domain-scr').forEach(s=>s.classList.remove('on'));document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('on'));document.getElementById('dom-'+id).classList.add('on');if(tab)tab.classList.add('on');}
+
+// NAV
+function showScr(id,tab){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});document.getElementById('scr-'+id).classList.add('on');if(tab)tab.classList.add('on');}
+function showDomain(id,tab){document.querySelectorAll('.domain-scr').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.dtab').forEach(function(t){t.classList.remove('on');});document.getElementById('dom-'+id).classList.add('on');if(tab)tab.classList.add('on');}
 function closeModal(){document.getElementById('ob-modal').classList.add('gone');}
-function goStep(n){[1,2,3,4].forEach(i=>{var e=document.getElementById('ob'+i);if(e)e.style.display=i===n?'block':'none';var d=document.getElementById('pd'+i);if(d)d.classList.toggle('dn',i<=n);});document.getElementById('ob-lbl').textContent='Step '+n+' of 4';}
-function pick(el,sel){var scope=el.closest('.niche-grid,.goal-list,.cta-grid');if(!scope)scope=el.parentElement;scope.querySelectorAll(sel).forEach(b=>b.classList.remove('on'));el.classList.add('on');}
+function goStep(n){[1,2,3,4].forEach(function(i){var e=document.getElementById('ob'+i);if(e)e.style.display=i===n?'block':'none';var d=document.getElementById('pd'+i);if(d)d.classList.toggle('dn',i<=n);});document.getElementById('ob-lbl').textContent='Step '+n+' of 4';}
+function pick(el,sel){var scope=el.closest('.niche-grid,.goal-list,.cta-grid');if(!scope)scope=el.parentElement;scope.querySelectorAll(sel).forEach(function(b){b.classList.remove('on');});el.classList.add('on');}
 function togTool(el){el.classList.toggle('on');var s=el.querySelector('span[style]');if(s){s.textContent=el.classList.contains('on')?'✓':'+';s.style.color=el.classList.contains('on')?'var(--p)':'var(--tm)';}}
 function toggleDrawer(id){document.getElementById(id).classList.toggle('open');}
 function toggleSess(id){document.getElementById(id).classList.toggle('open');}
 
+// NETWORK
 var focusId='AJ';
-var NODES=[{id:'YOU',init:'S',x:320,y:140,r:18,color:'#1A1730',tier:'you'},{id:'AJ',init:'AJ',x:175,y:70,r:13,color:'#1D9E75',tier:'mvp'},{id:'SK',init:'SK',x:445,y:65,r:13,color:'#1D9E75',tier:'mvp'},{id:'RG',init:'RG',x:510,y:155,r:13,color:'#1D9E75',tier:'mvp'},{id:'ML',init:'ML',x:178,y:200,r:11,color:'#534AB7',tier:'potential'},{id:'DT',init:'DT',x:395,y:220,r:11,color:'#534AB7',tier:'potential'},{id:'JW',init:'JW',x:115,y:140,r:11,color:'#534AB7',tier:'potential'},{id:'CW',init:'CW',x:400,y:130,r:10,color:'#534AB7',tier:'potential'},{id:'PR',init:'PR',x:295,y:62,r:9,color:'#EF9F27',tier:'effort'},{id:'BN',init:'BN',x:480,y:225,r:9,color:'#EF9F27',tier:'effort'},{id:'JP',init:'JP',x:90,y:205,r:9,color:'#EF9F27',tier:'effort'},{id:'TH',init:'TH',x:230,y:248,r:8,color:'#E24B4A',tier:'cut'},{id:'LM',init:'LM',x:555,y:105,r:8,color:'#E24B4A',tier:'cut'},{id:'MR',init:'MR',x:575,y:200,r:8,color:'#E24B4A',tier:'cut'}];
+var NODES=[{id:'YOU',init:'S',x:320,y:140,r:18,tier:'you'},{id:'AJ',init:'AJ',x:175,y:70,r:13,tier:'mvp'},{id:'SK',init:'SK',x:445,y:65,r:13,tier:'mvp'},{id:'RG',init:'RG',x:510,y:155,r:13,tier:'mvp'},{id:'ML',init:'ML',x:178,y:200,r:11,tier:'potential'},{id:'DT',init:'DT',x:395,y:220,r:11,tier:'potential'},{id:'JW',init:'JW',x:115,y:140,r:11,tier:'potential'},{id:'CW',init:'CW',x:400,y:130,r:10,tier:'potential'},{id:'PR',init:'PR',x:295,y:62,r:9,tier:'effort'},{id:'BN',init:'BN',x:480,y:225,r:9,tier:'effort'},{id:'JP',init:'JP',x:90,y:205,r:9,tier:'effort'},{id:'TH',init:'TH',x:230,y:248,r:8,tier:'cut'},{id:'LM',init:'LM',x:555,y:105,r:8,tier:'cut'},{id:'MR',init:'MR',x:575,y:200,r:8,tier:'cut'}];
 var LINES=[['YOU','AJ'],['YOU','SK'],['YOU','RG'],['YOU','ML'],['YOU','DT'],['YOU','JW'],['YOU','PR'],['YOU','BN'],['YOU','TH'],['YOU','LM'],['YOU','CW'],['YOU','JP'],['YOU','MR'],['AJ','SK'],['SK','RG'],['ML','DT']];
-var PROFILES={AJ:{av:'AJ',bg:'var(--okp)',col:'#085041',name:'Alex Johnson',tags:[{t:'MVP',c:'b-ok'},{t:'Client',c:'b-p'}],since:'Jan 2023',spend:'$18,400',last:'Today',loc:'San Francisco',li:'@alexjohnson',refs:'2 🔥',read:'Strong MVP signal. Session 6 breakthrough needs reinforcing. Worth deepening.'},SK:{av:'SK',bg:'#E8F4FD',col:'#185FA5',name:'Sarah Kim',tags:[{t:'MVP',c:'b-ok'},{t:'Alumni',c:'b-p'}],since:'Mar 2022',spend:'$24,200',last:'2 weeks ago',loc:'New York',li:'@sarahkim',refs:'3 🔥',read:'Most consistent referrer. A quarterly check-in keeps this warm.'},RG:{av:'RG',bg:'var(--okp)',col:'#085041',name:'Rivera Group',tags:[{t:'MVP',c:'b-ok'},{t:'Corporate',c:'b-p'}],since:'Sep 2023',spend:'$31,000',last:'Last week',loc:'Chicago',li:'@riveragroup',refs:'0',read:'Largest spend. Sprint ends soon. Approach renewal as strategic planning.'},ML:{av:'ML',bg:'var(--pp)',col:'var(--pd)',name:'Morgan Lee',tags:[{t:'Potential',c:'b-pot'},{t:'Client',c:'b-p'}],since:'May 2025',spend:'$4,800',last:'Today',loc:'Los Angeles',li:'@morganlee',refs:'0',read:'Career pivot circling. If they name it today, a longer engagement is likely.'},JW:{av:'JW',bg:'var(--pp)',col:'var(--pd)',name:'James Wu',tags:[{t:'Potential',c:'b-pot'}],since:'—',spend:'—',last:'3 weeks ago',loc:'Seattle',li:'@jameswu',refs:'0',read:"Strong interest but hasn't booked. A relevant insight follow-up could convert."},CW:{av:'CW',bg:'var(--pp)',col:'var(--pd)',name:'Chris Wang',tags:[{t:'Potential',c:'b-pot'}],since:'—',spend:'—',last:'1 month ago',loc:'Boston',li:'@chriswang',refs:'0',read:"Came through Alex. Discovery went well — hasn't committed yet."},DT:{av:'DT',bg:'var(--pp)',col:'var(--pd)',name:'Dana Torres',tags:[{t:'Potential',c:'b-pot'},{t:'Client',c:'b-p'}],since:'Jun 2025',spend:'$2,400',last:'3 weeks ago',loc:'Miami',li:'@danatorres',refs:'0',read:'Came through a LinkedIn post — direct content-to-client conversion.'},PR:{av:'PR',bg:'var(--wnp)',col:'#7A4E00',name:'Paula Reed',tags:[{t:'Needs effort',c:'b-eff'}],since:'2021',spend:'$8,200',last:'2 months ago',loc:'Austin',li:'@paulareed',refs:'1',read:'Long-term relationship gone quiet. Personal outreach would reactivate.'},BN:{av:'BN',bg:'var(--wnp)',col:'#7A4E00',name:'Ben Nakamura',tags:[{t:'Needs effort',c:'b-eff'}],since:'2023',spend:'$5,100',last:'2 months ago',loc:'Portland',li:'@bennakamura',refs:'0',read:'Good fit but relationship has cooled. A check-in might surface renewal.'},JP:{av:'JP',bg:'var(--wnp)',col:'#7A4E00',name:'Jan Park',tags:[{t:'Needs effort',c:'b-eff'}],since:'2022',spend:'$6,400',last:'6 weeks ago',loc:'Seattle',li:'@janpark',refs:'0',read:'No contact since completion. Could become a referral source.'},TH:{av:'TH',bg:'#FEECEC',col:'#8B1C1C',name:'Tom Hill',tags:[{t:'Cut loose',c:'b-cut'}],since:'2020',spend:'$3,100',last:'7 months ago',loc:'Denver',li:'—',refs:'0',read:'No engagement in 7 months. Energy is better invested elsewhere.'},LM:{av:'LM',bg:'#FEECEC',col:'#8B1C1C',name:'Lena Morris',tags:[{t:'Cut loose',c:'b-cut'}],since:'2021',spend:'$2,200',last:'8 months ago',loc:'Chicago',li:'—',refs:'0',read:'Low engagement, minimal spend. 8 months silent.'},MR:{av:'MR',bg:'#FEECEC',col:'#8B1C1C',name:'Maya Roth',tags:[{t:'Cut loose',c:'b-cut'}],since:'2020',spend:'$1,800',last:'9 months ago',loc:'Phoenix',li:'—',refs:'0',read:'Minimal engagement. Safe to remove from active tracking.'}};
-function buildGraph(){var lG=document.getElementById('net-lines'),nG=document.getElementById('net-nodes');if(!lG||!nG)return;lG.innerHTML='';nG.innerHTML='';LINES.forEach(function(l){var a=NODES.find(n=>n.id===l[0]),b=NODES.find(n=>n.id===l[1]);if(!a||!b)return;var line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',a.x);line.setAttribute('y1',a.y);line.setAttribute('x2',b.x);line.setAttribute('y2',b.y);line.setAttribute('stroke','#CECBF6');line.setAttribute('stroke-width','1');lG.appendChild(line);});NODES.forEach(function(n){var g=document.createElementNS('http://www.w3.org/2000/svg','g');g.style.cursor='pointer';g.addEventListener('click',function(){focusNode(n.id);});var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',n.x);c.setAttribute('cy',n.y);c.setAttribute('r',n.r);c.setAttribute('fill',n.color);c.id='nc-'+n.id;if(n.id===focusId)c.setAttribute('filter','drop-shadow(0 0 8px rgba(83,74,183,.9))');var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',n.x);t.setAttribute('y',n.y+1);t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','middle');t.setAttribute('fill','white');t.setAttribute('font-size',n.r>12?'9':'8');t.setAttribute('font-family','DM Mono,Courier New,monospace');t.setAttribute('font-weight','500');t.textContent=n.tier==='you'?'YOU':n.init;g.appendChild(c);g.appendChild(t);if(n.r>=11){var lbl=document.createElementNS('http://www.w3.org/2000/svg','text');lbl.setAttribute('x',n.x);lbl.setAttribute('y',n.y+n.r+11);lbl.setAttribute('text-anchor','middle');lbl.setAttribute('fill','#5C5956');lbl.setAttribute('font-size','9');lbl.setAttribute('font-family','DM Mono,Courier New,monospace');lbl.textContent=PROFILES[n.id]?PROFILES[n.id].name.split(' ')[0]:n.init;g.appendChild(lbl);}nG.appendChild(g);});}
-function focusNode(id){focusId=id;document.querySelectorAll('[id^="nc-"]').forEach(c=>c.setAttribute('filter',''));var nc=document.getElementById('nc-'+id);if(nc)nc.setAttribute('filter','drop-shadow(0 0 8px rgba(83,74,183,.9))');var p=PROFILES[id];if(!p)return;document.getElementById('np-av').textContent=p.av;document.getElementById('np-av').style.background=p.bg;document.getElementById('np-av').style.color=p.col;document.getElementById('np-name').textContent=p.name;document.getElementById('np-tags').innerHTML=p.tags.map(t=>'<span class="badge '+t.c+'">'+t.t+'</span>').join('');document.getElementById('np-grid').innerHTML='<div class="np-field"><div class="np-fl">Since</div><div class="np-fv">'+p.since+'</div></div><div class="np-field"><div class="np-fl">Spend</div><div class="np-fv'+(p.spend!=='—'?' ok':'')+'">'+p.spend+'</div></div><div class="np-field"><div class="np-fl">Last contact</div><div class="np-fv">'+p.last+'</div></div><div class="np-field"><div class="np-fl">Location</div><div class="np-fv">'+p.loc+'</div></div><div class="np-field"><div class="np-fl">LinkedIn</div><div class="np-fv" style="color:var(--p)">'+p.li+'</div></div><div class="np-field"><div class="np-fl">Referrals</div><div class="np-fv'+(p.refs!=='0'?' ok':'')+'">'+p.refs+'</div></div>';document.getElementById('np-read').textContent=p.read;document.getElementById('np-float').classList.add('show');}
+var PROFILES={AJ:{av:'AJ',bgCol:'var(--okp)',txtCol:'var(--ok)',name:'Alex Johnson',tags:[{t:'MVP',c:'b-ok'},{t:'Client',c:'b-p'}],since:'Jan 2023',spend:'$18,400',last:'Today',loc:'San Francisco',li:'@alexjohnson',refs:'2 🔥',read:'Strong MVP signal. Session 6 needs reinforcing. Worth deepening.'},SK:{av:'SK',bgCol:'color-mix(in srgb,#3A8FC9 15%,var(--bg-card))',txtCol:'#185FA5',name:'Sarah Kim',tags:[{t:'MVP',c:'b-ok'},{t:'Alumni',c:'b-p'}],since:'Mar 2022',spend:'$24,200',last:'2 weeks ago',loc:'New York',li:'@sarahkim',refs:'3 🔥',read:'Most consistent referrer. A quarterly check-in keeps this warm.'},RG:{av:'RG',bgCol:'var(--okp)',txtCol:'var(--ok)',name:'Rivera Group',tags:[{t:'MVP',c:'b-ok'},{t:'Corporate',c:'b-p'}],since:'Sep 2023',spend:'$31,000',last:'Last week',loc:'Chicago',li:'@riveragroup',refs:'0',read:'Largest spend. Sprint ends soon. Approach renewal as strategic planning.'},ML:{av:'ML',bgCol:'var(--pp)',txtCol:'var(--pd)',name:'Morgan Lee',tags:[{t:'Potential',c:'b-p'},{t:'Client',c:'b-m'}],since:'May 2025',spend:'$4,800',last:'Today',loc:'Los Angeles',li:'@morganlee',refs:'0',read:'Career pivot circling. If they name it today, a longer engagement is likely.'},JW:{av:'JW',bgCol:'var(--pp)',txtCol:'var(--pd)',name:'James Wu',tags:[{t:'Potential',c:'b-p'}],since:'—',spend:'—',last:'3 weeks ago',loc:'Seattle',li:'@jameswu',refs:'0',read:"Strong interest but hasn't booked. A relevant insight follow-up could convert."},CW:{av:'CW',bgCol:'var(--pp)',txtCol:'var(--pd)',name:'Chris Wang',tags:[{t:'Potential',c:'b-p'}],since:'—',spend:'—',last:'1 month ago',loc:'Boston',li:'@chriswang',refs:'0',read:"Came through Alex. Discovery went well — hasn't committed yet."},DT:{av:'DT',bgCol:'var(--pp)',txtCol:'var(--pd)',name:'Dana Torres',tags:[{t:'Potential',c:'b-p'},{t:'Client',c:'b-m'}],since:'Jun 2025',spend:'$2,400',last:'3 weeks ago',loc:'Miami',li:'@danatorres',refs:'0',read:'Came through a LinkedIn post — direct content-to-client conversion.'},PR:{av:'PR',bgCol:'var(--wnp)',txtCol:'var(--wn)',name:'Paula Reed',tags:[{t:'Needs effort',c:'b-eff'}],since:'2021',spend:'$8,200',last:'2 months ago',loc:'Austin',li:'@paulareed',refs:'1',read:'Long-term relationship gone quiet. Personal outreach would reactivate.'},BN:{av:'BN',bgCol:'var(--wnp)',txtCol:'var(--wn)',name:'Ben Nakamura',tags:[{t:'Needs effort',c:'b-eff'}],since:'2023',spend:'$5,100',last:'2 months ago',loc:'Portland',li:'@bennakamura',refs:'0',read:'Good fit but relationship has cooled. A check-in might surface renewal.'},JP:{av:'JP',bgCol:'var(--wnp)',txtCol:'var(--wn)',name:'Jan Park',tags:[{t:'Needs effort',c:'b-eff'}],since:'2022',spend:'$6,400',last:'6 weeks ago',loc:'Seattle',li:'@janpark',refs:'0',read:'No contact since completion. Could become a referral source.'},TH:{av:'TH',bgCol:'color-mix(in srgb,#E24B4A 12%,var(--bg-card))',txtCol:'#E24B4A',name:'Tom Hill',tags:[{t:'Cut loose',c:'b-cut'}],since:'2020',spend:'$3,100',last:'7 months ago',loc:'Denver',li:'—',refs:'0',read:'No engagement in 7 months. Energy is better invested elsewhere.'},LM:{av:'LM',bgCol:'color-mix(in srgb,#E24B4A 12%,var(--bg-card))',txtCol:'#E24B4A',name:'Lena Morris',tags:[{t:'Cut loose',c:'b-cut'}],since:'2021',spend:'$2,200',last:'8 months ago',loc:'Chicago',li:'—',refs:'0',read:'Low engagement, minimal spend. 8 months silent.'},MR:{av:'MR',bgCol:'color-mix(in srgb,#E24B4A 12%,var(--bg-card))',txtCol:'#E24B4A',name:'Maya Roth',tags:[{t:'Cut loose',c:'b-cut'}],since:'2020',spend:'$1,800',last:'9 months ago',loc:'Phoenix',li:'—',refs:'0',read:'Minimal engagement. Safe to remove from active tracking.'}};
+
+function tierColor(tier){
+  if(tier==='you') return getComputedStyle(document.body).getPropertyValue('--t1').trim()||'#1A1730';
+  if(tier==='mvp') return '#1D9E75';
+  if(tier==='potential') return getComputedStyle(document.body).getPropertyValue('--p').trim()||'#534AB7';
+  if(tier==='effort') return '#EF9F27';
+  return '#E24B4A';
+}
+
+function buildGraph(){
+  var lG=document.getElementById('net-lines'),nG=document.getElementById('net-nodes');
+  if(!lG||!nG)return;lG.innerHTML='';nG.innerHTML='';
+  LINES.forEach(function(l){var a=NODES.find(function(n){return n.id===l[0];}),b=NODES.find(function(n){return n.id===l[1];});if(!a||!b)return;var line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',a.x);line.setAttribute('y1',a.y);line.setAttribute('x2',b.x);line.setAttribute('y2',b.y);line.setAttribute('stroke','var(--bde)');line.setAttribute('stroke-width','1.2');lG.appendChild(line);});
+  NODES.forEach(function(n){
+    var g=document.createElementNS('http://www.w3.org/2000/svg','g');g.style.cursor='pointer';g.addEventListener('click',function(){focusNode(n.id);});
+    if(n.id===focusId){var glow=document.createElementNS('http://www.w3.org/2000/svg','circle');glow.setAttribute('cx',n.x);glow.setAttribute('cy',n.y);glow.setAttribute('r',n.r+5);glow.setAttribute('fill','none');glow.setAttribute('stroke','var(--node-glow)');glow.setAttribute('stroke-width','3');glow.setAttribute('opacity','.6');g.appendChild(glow);}
+    var c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',n.x);c.setAttribute('cy',n.y);c.setAttribute('r',n.r);c.setAttribute('fill',tierColor(n.tier));c.id='nc-'+n.id;g.appendChild(c);
+    var t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',n.x);t.setAttribute('y',n.y+1);t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','middle');t.setAttribute('fill','white');t.setAttribute('font-size',n.r>12?'9':'8');t.setAttribute('font-family','DM Mono,Courier New,monospace');t.setAttribute('font-weight','500');t.textContent=n.tier==='you'?'YOU':n.init;g.appendChild(t);
+    if(n.r>=11){var lbl=document.createElementNS('http://www.w3.org/2000/svg','text');lbl.setAttribute('x',n.x);lbl.setAttribute('y',n.y+n.r+11);lbl.setAttribute('text-anchor','middle');lbl.setAttribute('fill','var(--tm)');lbl.setAttribute('font-size','9');lbl.setAttribute('font-family','DM Mono,Courier New,monospace');lbl.textContent=PROFILES[n.id]?PROFILES[n.id].name.split(' ')[0]:n.init;g.appendChild(lbl);}
+    nG.appendChild(g);
+  });
+}
+function focusNode(id){focusId=id;buildGraph();var p=PROFILES[id];if(!p)return;document.getElementById('np-av').textContent=p.av;document.getElementById('np-av').style.background=p.bgCol;document.getElementById('np-av').style.color=p.txtCol;document.getElementById('np-name').textContent=p.name;document.getElementById('np-tags').innerHTML=p.tags.map(function(t){return'<span class="badge '+t.c+'">'+t.t+'</span>';}).join('');document.getElementById('np-grid').innerHTML='<div class="np-field"><div class="np-fl">Since</div><div class="np-fv">'+p.since+'</div></div><div class="np-field"><div class="np-fl">Spend</div><div class="np-fv'+(p.spend!=='—'?' ok':'')+'">'+p.spend+'</div></div><div class="np-field"><div class="np-fl">Last contact</div><div class="np-fv">'+p.last+'</div></div><div class="np-field"><div class="np-fl">Location</div><div class="np-fv">'+p.loc+'</div></div><div class="np-field"><div class="np-fl">LinkedIn</div><div class="np-fv" style="color:var(--p)">'+p.li+'</div></div><div class="np-field"><div class="np-fl">Referrals</div><div class="np-fv'+(p.refs!=='0'?' ok':'')+'">'+p.refs+'</div></div>';document.getElementById('np-read').textContent=p.read;document.getElementById('np-float').classList.add('show');}
 function closeProfile(){document.getElementById('np-float').classList.remove('show');}
-var curFmt='linkedin';
-function pickRC(el,pfx){document.querySelectorAll('.create-rail .rail-chip[id^="'+pfx+'"]').forEach(b=>b.classList.remove('on'));el.classList.add('on');}
-function pickTC(el){document.querySelectorAll('.tone-chip').forEach(b=>b.classList.remove('on'));el.classList.add('on');}
-function pickMF(el,fmt){document.querySelectorAll('.mfs-chip').forEach(b=>b.classList.remove('on'));el.classList.add('on');pickFmt(fmt);}
-function pickFmt(fmt){curFmt=fmt;resetOutput();var rid=document.getElementById('rf-'+fmt);if(rid){document.querySelectorAll('.rail-chip[id^="rf-"]').forEach(b=>b.classList.remove('on'));rid.classList.add('on');}}
-function pickSug(el,txt){document.querySelectorAll('.sug-card').forEach(s=>s.classList.remove('on'));el.classList.add('on');document.getElementById('manual-prompt').value=txt;}
-function resetOutput(){document.getElementById('cs-output').innerHTML='<div class="output-empty"><div class="output-empty-icon">✦</div><div style="font-size:18px;font-weight:900;color:var(--nb)">Ready when you are</div><div style="font-size:15px;color:var(--tm);max-width:240px;text-align:center;line-height:1.6">Write your insight or pick a suggestion, then hit Generate.</div></div>';}
+
+// CREATE
+function pickSug(el,txt){document.querySelectorAll('.sug-card').forEach(function(s){s.classList.remove('on');});el.classList.add('on');document.getElementById('manual-prompt').value=txt;}
+function resetOutput(){document.getElementById('cs-output').innerHTML='<div class="output-empty"><div class="output-empty-icon">✦</div><div style="font-size:18px;font-weight:900;color:var(--t1)">Ready when you are</div><div style="font-size:15px;color:var(--tm);max-width:240px;text-align:center;line-height:1.6">Write your insight or pick a suggestion, then hit Generate.</div></div>';}
 function doGenerate(){
   var out=document.getElementById('cs-output');
-  var labels={linkedin:'Generated · LinkedIn post',infographic:'Generated · Infographic',video:'Generated · Video script',carousel:'Generated · Carousel',poll:'Generated · Poll',email:'Generated · Email'};
-  var cBtn='<button class="ab ab-g">Open in Canva</button>';var inner='';
-  if(curFmt==='linkedin'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Version 1 · Storytelling</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button><button class="ab ab-g">Edit</button></div></div><div class="gen-txt"><strong>Six months of circling the same conversation.</strong><br><br>My client finally walked into their manager\'s office — and it went better than they ever imagined.<br><br>Avoidance isn\'t laziness. It\'s protection. The breakthrough wasn\'t courage. It was clarity about what was worth the risk.<br><br><em>📅 If this resonates, let\'s talk. Link in bio.</em></div></div><div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Version 2 · Direct</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button><button class="ab ab-g">Edit</button></div></div><div class="gen-txt"><strong>Avoidance isn\'t the problem. It\'s the signal.</strong><br><br>It\'s never about courage — it\'s about getting clear on what you\'re protecting, and deciding it\'s worth the risk.<br><br>What are you circling? 📅 Book a call.</div></div>';}
+  var platLabel={linkedin:'LinkedIn',instagram:'Instagram',email:'Email',youtube:'YouTube',substack:'Substack'}[curPlat]||curPlat;
+  var fmtLabel=PLAT_FORMATS[curPlat]?((PLAT_FORMATS[curPlat].find(function(f){return f.id===curFmt;})||{}).lbl||curFmt):curFmt;
+  var header=platLabel+' · '+fmtLabel;
+  var cBtn='<button class="ab ab-g">Open in Canva</button>';
+  var inner='';
+  if(curFmt==='post'||curFmt==='feed'||curFmt==='newsletter'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Version 1 · Storytelling</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button><button class="ab ab-g">Edit</button></div></div><div class="gen-txt"><strong>Six months of circling the same conversation.</strong><br><br>My client finally walked into their manager\'s office — and it went better than they ever imagined.<br><br>Avoidance isn\'t laziness. It\'s protection. The breakthrough wasn\'t courage. It was clarity about what was worth the risk.<br><br><em>📅 If this resonates, let\'s talk. Link in bio.</em></div></div><div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Version 2 · Direct</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button><button class="ab ab-g">Edit</button></div></div><div class="gen-txt"><strong>Avoidance isn\'t the problem. It\'s the signal.</strong><br><br>It\'s never about courage — it\'s about getting clear on what you\'re protecting, and deciding it\'s worth the risk.<br><br>What are you circling? 📅 Book a call.</div></div>';}
   else if(curFmt==='infographic'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Infographic</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button>'+cBtn+'</div></div><div class="infog"><div class="infog-title">The Avoidance Pattern</div><div class="infog-big">6 months</div><div class="infog-sub">Average time clients circle a difficult conversation</div><div class="infog-bars"><div class="ib-row"><div class="ib-lbl">Fear of conflict</div><div class="ib-track"><div class="ib-fill" style="width:78%"></div></div><div class="ib-val">78%</div></div><div class="ib-row"><div class="ib-lbl">Protecting self</div><div class="ib-track"><div class="ib-fill" style="width:65%"></div></div><div class="ib-val">65%</div></div><div class="ib-row"><div class="ib-lbl">Unclear outcome</div><div class="ib-track"><div class="ib-fill" style="width:52%"></div></div><div class="ib-val">52%</div></div></div></div></div><div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Caption</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div class="gen-txt">Most difficult conversations happen not because people find courage — but because they get clear on what they\'re protecting. Which bar is yours?</div></div>';}
-  else if(curFmt==='video'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Script</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div class="vid-prev"><div class="vid-orb"></div><div class="vid-tag">Hook · 0–3s</div><div class="vid-title">The conversation you\'ve been avoiding?</div><div class="vid-script" style="margin-bottom:10px">You\'re not scared. You\'re protecting something.</div><div class="vid-tag">Body · 3–25s</div><div class="vid-script" style="margin-bottom:10px">My client circled the same conversation for six months. Last week they finally had it — better than they ever imagined.<br><br>Because they stopped asking "am I brave enough?" and started asking "what am I protecting here?"</div><div class="vid-tag">CTA · 25–30s</div><div class="vid-script">Book a call. Link in bio.</div></div></div><div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Shoot notes</span></div><div class="gen-txt" style="font-size:13px;color:var(--tm)">Straight to camera. No cuts. Pause after "protecting something." Target 28–35 seconds.</div></div>';}
-  else if(curFmt==='carousel'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">6 slides</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button>'+cBtn+'</div></div><div class="carousel-out">'+[{n:'01',t:'The Avoidance Pattern',b:'Why smart people circle the same conversation for months'},{n:'02',t:'Not fear.',b:"Protection. You're guarding something real."},{n:'03',t:'The question',b:'"What am I protecting?"'},{n:'04',t:'The story',b:'6 months. One conversation. Better than expected.'},{n:'05',t:'Breakthrough',b:'Not courage. Clarity.'},{n:'06',t:'Your turn',b:'What are you circling? 📅 Book a call.'}].map(s=>'<div class="c-slide"><div class="cs-n">'+s.n+'</div><div class="cs-t">'+s.t+'</div><div class="cs-b">'+s.b+'</div></div>').join('')+'</div></div>';}
-  else if(curFmt==='poll'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Poll · LinkedIn</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div style="font-size:16px;font-weight:700;color:var(--nb);margin-bottom:13px">What usually stops you from having a difficult conversation?</div>'+["I'm not sure how it will land","I'm protecting the relationship","I haven't found the right moment","I'm not sure what I actually want"].map((o,i)=>'<div class="poll-opt'+(i===0?' hi':'')+'">'+o+'</div>').join('')+'<div style="font-size:13px;color:var(--tm);margin-top:9px">Drop your answer 👇</div></div>';}
-  else if(curFmt==='email'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Subject</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div class="gen-txt">The conversation you\'ve been circling</div></div><div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Body</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div class="gen-txt">Hi [first name],<br><br>My client circled the same conversation for six months. Last week they finally had it.<br><br>Not because they found courage — but because they got clear on what they were protecting.<br><br>I\'m exploring this in a workshop next month. <span style="color:var(--p);font-weight:700">Reserve your spot →</span></div></div>';}
-  out.innerHTML='<div style="font-size:17px;font-weight:900;color:var(--nb);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">'+(labels[curFmt]||'Generated')+'<div style="display:flex;gap:7px"><button class="ab ab-g" onclick="resetOutput()">Clear</button><button class="ab ab-g">Save</button></div></div>'+inner;
+  else if(curFmt==='carousel'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">6 slides</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button>'+cBtn+'</div></div><div class="carousel-out">'+[{n:'01',t:'The Avoidance Pattern',b:'Why smart people circle the same conversation for months'},{n:'02',t:'Not fear.',b:"Protection. You're guarding something real."},{n:'03',t:'The question',b:'"What am I protecting?"'},{n:'04',t:'The story',b:'6 months. One conversation. Better than expected.'},{n:'05',t:'Breakthrough',b:'Not courage. Clarity.'},{n:'06',t:'Your turn',b:'What are you circling? 📅 Book a call.'}].map(function(s){return'<div class="c-slide"><div class="cs-n">'+s.n+'</div><div class="cs-t">'+s.t+'</div><div class="cs-b">'+s.b+'</div></div>';}).join('')+'</div></div>';}
+  else if(curFmt==='poll'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Poll · '+platLabel+'</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div style="font-size:16px;font-weight:700;color:var(--t1);margin-bottom:13px">What usually stops you from having a difficult conversation?</div>'+["I'm not sure how it will land","I'm protecting the relationship","I haven't found the right moment","I'm not sure what I actually want"].map(function(o,i){return'<div class="poll-opt'+(i===0?' hi':'')+'">'+o+'</div>';}).join('')+'<div style="font-size:13px;color:var(--tm);margin-top:9px">Drop your answer 👇</div></div>';}
+  else if(curFmt==='script'||curFmt==='reel'||curFmt==='shorts'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Script · '+fmtLabel+'</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div class="vid-prev"><div class="vid-orb"></div><div class="vid-tag">Hook · 0–3s</div><div class="vid-title">The conversation you\'ve been avoiding?</div><div class="vid-script" style="margin-bottom:10px">You\'re not scared. You\'re protecting something.</div><div class="vid-tag">Body · 3–25s</div><div class="vid-script" style="margin-bottom:10px">My client circled the same conversation for six months. Last week they finally had it — better than they ever imagined.<br><br>Because they stopped asking "am I brave enough?" and started asking "what am I protecting here?"</div><div class="vid-tag">CTA · 25–30s</div><div class="vid-script">Book a call. Link in bio.</div></div></div><div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Shoot notes</span></div><div class="gen-txt" style="font-size:13px;color:var(--tm)">Straight to camera. No cuts. Pause after "protecting something." Target 28–35 seconds.</div></div>';}
+  else if(curFmt==='article'){inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">Article · LinkedIn</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button></div></div><div class="gen-txt"><strong>Why Your Client\'s Hesitation Is Actually Data</strong><br><br>In every coaching engagement I run, there comes a moment when a client knows exactly what they need to do — and still doesn\'t do it.<br><br>For six months, one of my clients circled the same conversation with their manager. They rehearsed it. They journaled about it. They talked about it in every session.<br><br>Last week, they had it. Twelve minutes. Better than expected.<br><br>What changed? Not their courage. Their clarity about what they were protecting — and their decision that the thing they wanted was worth the risk.<br><br>Hesitation isn\'t resistance. It\'s information. The coach\'s job is to help the client name what they\'re protecting, then decide if it\'s worth it.</div></div>';}
+  else{inner='<div class="gen-output"><div class="gen-hdr"><span class="gen-ver">'+header+'</span><div class="gen-acts"><button class="ab ab-p">Use ↗</button><button class="ab ab-g">Edit</button></div></div><div class="gen-txt"><strong>Six months of circling the same conversation.</strong><br><br>My client finally walked in — and it went better than they ever imagined.<br><br>Avoidance isn\'t laziness. It\'s protection. The breakthrough wasn\'t courage. It was clarity.<br><br><em>📅 If this resonates, let\'s talk.</em></div></div>';}
+  out.innerHTML='<div style="font-size:16px;font-weight:900;color:var(--t1);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">'+header+'<div style="display:flex;gap:7px"><button class="ab ab-g" onclick="resetOutput()">Clear</button><button class="ab ab-g">Save</button></div></div>'+inner;
 }
+
+// CIARA
 function toggleChat(){document.getElementById('ciara-chat').classList.toggle('open');}
-function sendToC(){var inp=document.getElementById('ciara-input');var msg=inp.value.trim();if(!msg)return;var body=document.getElementById('ciara-chat-body');var user=document.createElement('div');user.style.cssText='align-self:flex-end;background:var(--pp);border-radius:12px 0 12px 12px;padding:10px 13px;font-size:14px;color:var(--pd);max-width:90%;margin-left:auto;';user.textContent=msg;body.appendChild(user);inp.value='';setTimeout(function(){var r=document.createElement('div');r.className='ciara-bub';var res=["Great insight! Want me to turn that into a LinkedIn post?","I can see a strong angle here — should I draft something?","That sounds like your best-performing content type. Let me generate a few versions.","Got it. Pulling from your recent sessions to shape this..."];r.textContent=res[Math.floor(Math.random()*res.length)];body.appendChild(r);body.scrollTop=body.scrollHeight;},600);body.scrollTop=body.scrollHeight;}
+function sendToC(){var inp=document.getElementById('ciara-input');var msg=inp.value.trim();if(!msg)return;var body=document.getElementById('ciara-chat-body');var user=document.createElement('div');user.style.cssText='align-self:flex-end;background:var(--pp);border-radius:12px 0 12px 12px;padding:10px 13px;font-size:14px;color:var(--pd);max-width:90%;margin-left:auto;';user.textContent=msg;body.appendChild(user);inp.value='';setTimeout(function(){var r=document.createElement('div');r.className='ciara-bub';var res=["Great insight! Want me to turn that into a "+({linkedin:'LinkedIn post',instagram:'Reel',email:'newsletter',youtube:'video',substack:'piece'}[curPlat]||'post')+"?","I can see a strong angle here — should I draft something?","That sounds like your best-performing content type. Let me generate a few versions.","Got it. Pulling from your recent sessions to shape this..."];r.textContent=res[Math.floor(Math.random()*res.length)];body.appendChild(r);body.scrollTop=body.scrollHeight;},600);body.scrollTop=body.scrollHeight;}
+
 buildGraph();
 </script>
 </body>
