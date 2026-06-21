@@ -559,7 +559,7 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
     </div>
     <div id="ob2" style="display:none">
       <div class="mtitle">What's your outreach goal?</div>
-      <div class="msub">Smoov shapes every recommendation around what you're actually trying to build.</div>
+      <div class="msub">Ciara shapes every recommendation around what you're actually trying to build.</div>
       <div class="goal-list">
         <button class="goal-btn on" onclick="pick(this,'.goal-btn')">🎯 Fill my client pipeline — I need more leads</button>
         <button class="goal-btn" onclick="pick(this,'.goal-btn')">🧲 Build brand authority — known for my POV</button>
@@ -612,7 +612,7 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
         <div style="border:0.5px solid var(--bd);border-radius:8px;padding:14px;background:var(--card)">
           <div class="flbl" style="margin-bottom:8px">🎤 Record your voice</div>
-          <div style="border:2px dashed var(--bd);border-radius:6px;padding:18px;text-align:center;cursor:pointer;background:var(--card2)" onclick="alert('Voice recorder — 30-60 seconds talking about your work and approach')">
+          <div style="border:2px dashed var(--bd);border-radius:6px;padding:18px;text-align:center;cursor:pointer;background:var(--card2)" onclick="alert('Voice recorder — record 30-60 seconds talking about your work and approach')">
             <div style="font-size:22px;margin-bottom:5px">🎤</div>
             <div style="font-size:13px;color:var(--t2)">Click to record or upload audio</div>
             <div style="font-size:11px;color:var(--tm);margin-top:2px">30–60 seconds · MP3, WAV, M4A</div>
@@ -649,7 +649,7 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start">
           <div style="width:38px;height:38px;border-radius:8px;background:var(--pp);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">✏️</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:3px">Create — Content in your voice</div><div style="font-size:13px;color:var(--tm);line-height:1.5">Posts, videos, emails — all sounding like you. Review and approve or let agents handle it automatically.</div></div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:3px">Create — Content in your voice</div><div style="font-size:13px;color:var(--tm);line-height:1.5">Posts, videos, emails — all sounding like you. Review and approve, or let agents handle it automatically.</div></div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start">
           <div style="width:38px;height:38px;border-radius:8px;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">⚙️</div>
@@ -903,13 +903,10 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       </div>
     </div>
     <div class="create-center">
-      <!-- Content | Agents Toggle -->
-      <div id="create-mode-bar" style="display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid var(--bd)">
-        <button id="cm-content" onclick="setCreateMode('content')" style="padding:10px 20px;border:none;background:none;font-size:14px;font-weight:600;color:var(--p);cursor:pointer;border-bottom:2px solid var(--p);margin-bottom:-2px;transition:all 0.15s;font-family:inherit">Content</button>
-        <button id="cm-agents" onclick="setCreateMode('agents')" style="padding:10px 20px;border:none;background:none;font-size:14px;font-weight:600;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit">Agents</button>
+      <div style="display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid var(--bd)">
+        <button id="cm-content" onclick="setCreateMode('content')" style="padding:10px 20px;border:none;background:none;font-size:14px;font-weight:600;color:var(--p);cursor:pointer;border-bottom:2px solid var(--p);margin-bottom:-2px;font-family:inherit">Content</button>
+        <button id="cm-agents" onclick="setCreateMode('agents')" style="padding:10px 20px;border:none;background:none;font-size:14px;font-weight:600;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:inherit">Agents</button>
       </div>
-
-      <!-- CONTENT MODE (default) -->
       <div id="create-content-view">
       <div class="prompt-label">✏️ What's the insight?</div>
       <div class="prompt-wrap">
@@ -942,65 +939,49 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       </div>
       </div><!-- /create-content-view -->
 
-      <!-- AGENTS MODE -->
       <div id="create-agents-view" style="display:none">
         <div style="margin-bottom:24px">
           <div style="font-size:19px;font-weight:900;color:var(--t1);margin-bottom:6px">Your agent team</div>
-          <div style="font-size:14px;color:var(--tm);line-height:1.6">Smoov manages your agents behind the scenes. Talk to Smoov or manage them directly below.</div>
+          <div style="font-size:14px;color:var(--tm);line-height:1.6">Smoov manages your agents. Talk to Smoov or manage them directly here.</div>
         </div>
-
-        <!-- Pre-loaded agents -->
-        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
-          <div class="agent-card" style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div>
-                <div style="font-size:15px;font-weight:700;color:var(--t1)">✏️ Brand Studio</div>
-                <div style="font-size:12px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Content &amp; publishing</div>
-              </div>
+              <div><div style="font-size:15px;font-weight:700;color:var(--t1)">✏️ Brand Studio</div><div style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Content &amp; publishing</div></div>
               <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
             </div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Creates and schedules content from your sessions. Drafts for review by default. Runs A/B tests and reports on what's working.</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Creates and schedules content from your sessions. Drafts for review by default. Runs A/B tests.</div>
             <div style="display:flex;gap:6px">
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="showAgentDetail('brand-studio')">Edit</button>
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Test: Brand Studio would generate a draft from your last session with Alex Johnson')">Test</button>
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Agent paused')">Pause</button>
             </div>
           </div>
-
-          <div class="agent-card" style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
+          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div>
-                <div style="font-size:15px;font-weight:700;color:var(--t1)">☀️ Practice Assistant</div>
-                <div style="font-size:12px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Prep, scheduling &amp; follow-ups</div>
-              </div>
+              <div><div style="font-size:15px;font-weight:700;color:var(--t1)">☀️ Practice Assistant</div><div style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Prep, scheduling &amp; follow-ups</div></div>
               <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
             </div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Handles session prep, calendar scheduling, and post-session client recaps. Sends next weekday at 9am — review required by default.</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Session prep, calendar scheduling, and post-session client recaps. Review required by default.</div>
             <div style="display:flex;gap:6px">
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="showAgentDetail('practice-assistant')">Edit</button>
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Test: Practice Assistant would send Alex Johnson a session recap from today')">Test</button>
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Agent paused')">Pause</button>
             </div>
           </div>
-
-          <div class="agent-card" style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
+          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div>
-                <div style="font-size:15px;font-weight:700;color:var(--t1)">🤝 Client Relations</div>
-                <div style="font-size:12px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Check-ins &amp; milestones</div>
-              </div>
+              <div><div style="font-size:15px;font-weight:700;color:var(--t1)">🤝 Client Relations</div><div style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Check-ins &amp; milestones</div></div>
               <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
             </div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Sends milestone celebrations, check-ins, and referral prompts at the right moments. Trained on your voice and client history.</div>
+            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Milestone celebrations, check-ins, and referral prompts at the right moments.</div>
             <div style="display:flex;gap:6px">
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="showAgentDetail('client-relations')">Edit</button>
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Test: Client Relations would send a milestone note to Sarah Kim (1 year anniversary)')">Test</button>
+              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Test: Client Relations would send a milestone note to Sarah Kim')">Test</button>
               <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Agent paused')">Pause</button>
             </div>
           </div>
         </div>
-
-        <!-- Create new agent -->
         <button class="ab ab-p" style="width:100%;padding:14px" onclick="showCreateAgent()">+ Create a new agent</button>
       </div><!-- /create-agents-view -->
 
@@ -1079,7 +1060,7 @@ function pickPlat(el,plat){
 function pickFmt(el,fmt){
   document.querySelectorAll('#fmt-options .rc, #fc-video').forEach(function(b){b.classList.remove('on');});
   el.classList.add('on');curFmt=fmt;
-  if(fmt==='video'){showVideoWorkflow(1);} else {resetOutput();}
+  if(fmt==='video'){showVideoWorkflow(1);}else{resetOutput();}
 }
 function pickAud(el){
   document.querySelectorAll('.create-rail .rc:not([id])').forEach(function(b){b.classList.remove('on');});
@@ -1130,195 +1111,6 @@ function setVibe(v,label,el){
   document.getElementById('net-i2d').textContent=d.ni2d;
   document.getElementById('ciara-chat-msg').textContent=d.chatMsg;
   buildGraph();
-
-// ── CREATE MODE TOGGLE ──
-var createMode = 'content';
-function setCreateMode(mode){
-  createMode = mode;
-  var cBtn = document.getElementById('cm-content');
-  var aBtn = document.getElementById('cm-agents');
-  var cView = document.getElementById('create-content-view');
-  var aView = document.getElementById('create-agents-view');
-  if(mode === 'content'){
-    cBtn.style.color='var(--p)'; cBtn.style.borderBottomColor='var(--p)';
-    aBtn.style.color='var(--tm)'; aBtn.style.borderBottomColor='transparent';
-    cView.style.display='block'; aView.style.display='none';
-    // reset video if coming back
-    if(curFmt==='video'){ curFmt='post'; document.querySelectorAll('#fc-video').forEach(function(b){b.classList.remove('on');}); resetOutput(); }
-  } else {
-    aBtn.style.color='var(--p)'; aBtn.style.borderBottomColor='var(--p)';
-    cBtn.style.color='var(--tm)'; cBtn.style.borderBottomColor='transparent';
-    cView.style.display='none'; aView.style.display='block';
-  }
-}
-
-// ── VIDEO WORKFLOW ──
-var videoStep = 0;
-function showVideoWorkflow(step){
-  videoStep = step || 1;
-  var out = document.getElementById('cs-output');
-  var steps = ['Script','Upload','Enhance','Save'];
-  var dots = steps.map(function(s,i){
-    return '<div style="flex:1;height:3px;border-radius:2px;background:'+(i<videoStep?'var(--p)':'var(--bd)')+'"></div>';
-  }).join('');
-  var stepLabel = '<div style="display:flex;gap:6px;margin-bottom:20px">'+dots+'</div>';
-  var inner = '';
-
-  if(videoStep===1){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Your script</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Smoov generated this from your session with Alex. Edit or use as-is.</div>'+
-      '<div style="background:var(--card2);border-radius:8px;padding:16px;font-size:14px;line-height:1.7;color:var(--t1);margin-bottom:16px;max-height:180px;overflow-y:auto">'+
-        '<strong>Six months of circling the same conversation.</strong><br><br>'+
-        'My client finally walked in — and it went better than they ever imagined.<br><br>'+
-        'Avoidance isn't laziness. It's protection. The breakthrough wasn't courage. It was clarity.<br><br>'+
-        '<em>If this resonates, let's talk. Link in bio.</em>'+
-      '</div>'+
-      '<button class="ab ab-g" style="width:100%;margin-bottom:12px" onclick="alert('Edit script — coming soon')">Edit script</button>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="resetOutput();document.getElementById('fc-video').classList.remove('on')">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(2)">Ready to film →</button>'+
-      '</div>';
-  } else if(videoStep===2){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Upload your video</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Record on your phone, then upload here. Smoov will enhance it.</div>'+
-      '<div style="border:2px dashed var(--bd);border-radius:8px;padding:32px 20px;text-align:center;background:var(--card2);cursor:pointer;margin-bottom:14px" onclick="alert('File picker')">'+
-        '<div style="font-size:28px;margin-bottom:8px">📹</div>'+
-        '<div style="font-size:14px;color:var(--t2);margin-bottom:4px">Click or drag to upload</div>'+
-        '<div style="font-size:12px;color:var(--tm)">MP4 or MOV · up to 500MB</div>'+
-      '</div>'+
-      '<div style="font-size:12px;color:var(--tm);line-height:1.5;margin-bottom:14px;padding:10px 12px;background:var(--card2);border-radius:6px">No need for perfect lighting or setup. Smoov enhances your appearance and lets you choose a background.</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(1)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(3)">Next: Enhance →</button>'+
-      '</div>';
-  } else if(videoStep===3){
-    var bgs = [
-      {label:'Professional',name:'Modern office',sel:true},
-      {label:'Professional',name:'Boardroom',sel:false},
-      {label:'Relaxed',name:'Cozy cabin',sel:false},
-      {label:'Luxury',name:'Beach club',sel:false},
-      {label:'Creative',name:'Space shuttle',sel:false},
-      {label:'Minimal',name:'Gradient',sel:false},
-    ];
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Enhance your appearance</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Select options, then preview.</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Appearance</div>'+
-        '<div style="display:flex;flex-direction:column;gap:6px">'+
-          '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked> <span style="font-size:13px;color:var(--t2)">Smooth skin and enhance lighting</span></label>'+
-          '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked> <span style="font-size:13px;color:var(--t2)">Enhance hair and makeup</span></label>'+
-        '</div>'+
-      '</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Background</div>'+
-        '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px">'+
-          bgs.map(function(bg){
-            return '<div style="border:'+(bg.sel?'2px solid var(--p)':'0.5px solid var(--bd)')+';border-radius:7px;padding:8px;text-align:center;cursor:pointer;background:'+(bg.sel?'var(--pp)':'var(--card)')+'">'+
-              '<div style="font-size:10px;color:var(--tm);margin-bottom:3px">'+bg.label+'</div>'+
-              '<div style="font-size:12px;font-weight:600;color:var(--t1)">'+bg.name+'</div>'+
-            '</div>';
-          }).join('')+
-        '</div>'+
-      '</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(2)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(4)">Next: Save →</button>'+
-      '</div>';
-  } else if(videoStep===4){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Save to library</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Then download or push to your platforms.</div>'+
-      '<div style="margin-bottom:12px">'+
-        '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Title</label>'+
-        '<input type="text" value="Six months of circling" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)">'+
-      '</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Caption</label>'+
-        '<div style="background:var(--card2);border-radius:6px;padding:12px;font-size:13px;line-height:1.6;color:var(--t1)">Six months of circling the same conversation...<br><br>My client finally walked in.</div>'+
-      '</div>'+
-      '<div style="font-size:12px;color:var(--tm);line-height:1.5;padding:10px 12px;background:var(--card2);border-radius:6px;margin-bottom:14px">Saved to library. Then: <strong>Download</strong> or <strong>Push</strong> to LinkedIn, YouTube, or Instagram.</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(3)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="alert('Saved to library!');resetOutput();document.getElementById('fc-video').classList.remove('on')">Save to library →</button>'+
-      '</div>';
-  }
-
-  out.innerHTML = '<div style="padding:4px 0">' + inner + '</div>';
-}
-
-// ── AGENT DETAIL / CREATE ──
-function showAgentDetail(agentId){
-  var agents = {
-    'brand-studio': {
-      name: '✏️ Brand Studio',
-      desc: 'Creates and schedules content from your sessions.',
-      guardrails: ['Review required before publishing','LinkedIn and Instagram only','Post Tuesday and Thursday at 8am','No more than 2 posts per week'],
-    },
-    'practice-assistant': {
-      name: '☀️ Practice Assistant',
-      desc: 'Handles session prep, scheduling, and client recaps.',
-      guardrails: ['Review required before sending to clients','Send recaps next weekday at 9am','Working sessions only (not social calls)','Include CTA to schedule next session'],
-    },
-    'client-relations': {
-      name: '🤝 Client Relations',
-      desc: 'Sends milestone celebrations, check-ins, and referral prompts.',
-      guardrails: ['Review required before sending','Milestones: 3-month and 6-month check-ins','Referral prompts only after positive session','Warm, personal tone'],
-    }
-  };
-  var a = agents[agentId];
-  if(!a) return;
-  var out = document.getElementById('cs-output');
-  out.innerHTML = '<div style="padding:4px 0">'+
-    '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">'+a.name+'</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">'+a.desc+'</div>'+
-    '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Guardrails</div>'+
-    '<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">'+
-      a.guardrails.map(function(g){
-        return '<div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2)">'+
-          '<input type="checkbox" checked>'+
-          '<span style="font-size:13px;color:var(--t2)">'+g+'</span>'+
-        '</div>';
-      }).join('')+
-      '<button class="ab ab-g" style="font-size:12px;margin-top:4px" onclick="alert('Add custom guardrail')">+ Add guardrail</button>'+
-    '</div>'+
-    '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Test run</div>'+
-    '<div style="background:var(--card2);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:var(--t1);margin-bottom:16px">'+
-      '<div style="font-size:11px;color:var(--tm);margin-bottom:8px;font-family:'DM Mono',monospace">Preview · what this agent would do next</div>'+
-      'Hi Alex,<br><br>Great session today. Here's what we covered:<br><br>'+
-      '<strong>Notes:</strong> Communication patterns with your team. Where directiveness blocks curiosity.<br><br>'+
-      '<strong>Next steps:</strong> Try the listening exercise in one team meeting this week.<br><br>'+
-      'Ready to keep building? <a href="#" style="color:var(--p)">Schedule our next session →</a>'+
-    '</div>'+
-    '<div style="display:flex;gap:8px">'+
-      '<button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-      '<button class="ab ab-p" style="flex:1" onclick="alert('Changes saved')">Save changes</button>'+
-    '</div>'+
-    '<button class="ab ab-g" style="width:100%;margin-top:8px;color:#E24B4A;border-color:#E24B4A" onclick="alert('Agent deleted')">Delete agent</button>'+
-  '</div>';
-}
-
-function showCreateAgent(){
-  var out = document.getElementById('cs-output');
-  out.innerHTML = '<div style="padding:4px 0">'+
-    '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">Create a new agent</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">Describe what you want the agent to do. Smoov will build it.</div>'+
-    '<div style="margin-bottom:12px">'+
-      '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Agent name</label>'+
-      '<input type="text" placeholder="e.g. Growth Agent" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)">'+
-    '</div>'+
-    '<div style="margin-bottom:16px">'+
-      '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">What should it do?</label>'+
-      '<textarea placeholder="Be specific. e.g. After each working session, send the client on-brand session notes, next steps, and progress highlights. Include a CTA to schedule the next session. Send next weekday at 9am." style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card);resize:vertical;min-height:90px"></textarea>'+
-    '</div>'+
-    '<div style="display:flex;gap:8px">'+
-      '<button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-      '<button class="ab ab-p" style="flex:1" onclick="alert('Smoov is building your agent...')">Create agent →</button>'+
-    '</div>'+
-  '</div>';
-}
 
 // ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
 (function(){
@@ -1389,195 +1181,6 @@ function buildGraph(){
 function focusNode(id){
   focusId=id;buildGraph();
 
-// ── CREATE MODE TOGGLE ──
-var createMode = 'content';
-function setCreateMode(mode){
-  createMode = mode;
-  var cBtn = document.getElementById('cm-content');
-  var aBtn = document.getElementById('cm-agents');
-  var cView = document.getElementById('create-content-view');
-  var aView = document.getElementById('create-agents-view');
-  if(mode === 'content'){
-    cBtn.style.color='var(--p)'; cBtn.style.borderBottomColor='var(--p)';
-    aBtn.style.color='var(--tm)'; aBtn.style.borderBottomColor='transparent';
-    cView.style.display='block'; aView.style.display='none';
-    // reset video if coming back
-    if(curFmt==='video'){ curFmt='post'; document.querySelectorAll('#fc-video').forEach(function(b){b.classList.remove('on');}); resetOutput(); }
-  } else {
-    aBtn.style.color='var(--p)'; aBtn.style.borderBottomColor='var(--p)';
-    cBtn.style.color='var(--tm)'; cBtn.style.borderBottomColor='transparent';
-    cView.style.display='none'; aView.style.display='block';
-  }
-}
-
-// ── VIDEO WORKFLOW ──
-var videoStep = 0;
-function showVideoWorkflow(step){
-  videoStep = step || 1;
-  var out = document.getElementById('cs-output');
-  var steps = ['Script','Upload','Enhance','Save'];
-  var dots = steps.map(function(s,i){
-    return '<div style="flex:1;height:3px;border-radius:2px;background:'+(i<videoStep?'var(--p)':'var(--bd)')+'"></div>';
-  }).join('');
-  var stepLabel = '<div style="display:flex;gap:6px;margin-bottom:20px">'+dots+'</div>';
-  var inner = '';
-
-  if(videoStep===1){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Your script</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Smoov generated this from your session with Alex. Edit or use as-is.</div>'+
-      '<div style="background:var(--card2);border-radius:8px;padding:16px;font-size:14px;line-height:1.7;color:var(--t1);margin-bottom:16px;max-height:180px;overflow-y:auto">'+
-        '<strong>Six months of circling the same conversation.</strong><br><br>'+
-        'My client finally walked in — and it went better than they ever imagined.<br><br>'+
-        'Avoidance isn't laziness. It's protection. The breakthrough wasn't courage. It was clarity.<br><br>'+
-        '<em>If this resonates, let's talk. Link in bio.</em>'+
-      '</div>'+
-      '<button class="ab ab-g" style="width:100%;margin-bottom:12px" onclick="alert('Edit script — coming soon')">Edit script</button>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="resetOutput();document.getElementById('fc-video').classList.remove('on')">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(2)">Ready to film →</button>'+
-      '</div>';
-  } else if(videoStep===2){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Upload your video</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Record on your phone, then upload here. Smoov will enhance it.</div>'+
-      '<div style="border:2px dashed var(--bd);border-radius:8px;padding:32px 20px;text-align:center;background:var(--card2);cursor:pointer;margin-bottom:14px" onclick="alert('File picker')">'+
-        '<div style="font-size:28px;margin-bottom:8px">📹</div>'+
-        '<div style="font-size:14px;color:var(--t2);margin-bottom:4px">Click or drag to upload</div>'+
-        '<div style="font-size:12px;color:var(--tm)">MP4 or MOV · up to 500MB</div>'+
-      '</div>'+
-      '<div style="font-size:12px;color:var(--tm);line-height:1.5;margin-bottom:14px;padding:10px 12px;background:var(--card2);border-radius:6px">No need for perfect lighting or setup. Smoov enhances your appearance and lets you choose a background.</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(1)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(3)">Next: Enhance →</button>'+
-      '</div>';
-  } else if(videoStep===3){
-    var bgs = [
-      {label:'Professional',name:'Modern office',sel:true},
-      {label:'Professional',name:'Boardroom',sel:false},
-      {label:'Relaxed',name:'Cozy cabin',sel:false},
-      {label:'Luxury',name:'Beach club',sel:false},
-      {label:'Creative',name:'Space shuttle',sel:false},
-      {label:'Minimal',name:'Gradient',sel:false},
-    ];
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Enhance your appearance</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Select options, then preview.</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Appearance</div>'+
-        '<div style="display:flex;flex-direction:column;gap:6px">'+
-          '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked> <span style="font-size:13px;color:var(--t2)">Smooth skin and enhance lighting</span></label>'+
-          '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked> <span style="font-size:13px;color:var(--t2)">Enhance hair and makeup</span></label>'+
-        '</div>'+
-      '</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Background</div>'+
-        '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px">'+
-          bgs.map(function(bg){
-            return '<div style="border:'+(bg.sel?'2px solid var(--p)':'0.5px solid var(--bd)')+';border-radius:7px;padding:8px;text-align:center;cursor:pointer;background:'+(bg.sel?'var(--pp)':'var(--card)')+'">'+
-              '<div style="font-size:10px;color:var(--tm);margin-bottom:3px">'+bg.label+'</div>'+
-              '<div style="font-size:12px;font-weight:600;color:var(--t1)">'+bg.name+'</div>'+
-            '</div>';
-          }).join('')+
-        '</div>'+
-      '</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(2)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(4)">Next: Save →</button>'+
-      '</div>';
-  } else if(videoStep===4){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Save to library</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Then download or push to your platforms.</div>'+
-      '<div style="margin-bottom:12px">'+
-        '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Title</label>'+
-        '<input type="text" value="Six months of circling" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)">'+
-      '</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Caption</label>'+
-        '<div style="background:var(--card2);border-radius:6px;padding:12px;font-size:13px;line-height:1.6;color:var(--t1)">Six months of circling the same conversation...<br><br>My client finally walked in.</div>'+
-      '</div>'+
-      '<div style="font-size:12px;color:var(--tm);line-height:1.5;padding:10px 12px;background:var(--card2);border-radius:6px;margin-bottom:14px">Saved to library. Then: <strong>Download</strong> or <strong>Push</strong> to LinkedIn, YouTube, or Instagram.</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(3)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="alert('Saved to library!');resetOutput();document.getElementById('fc-video').classList.remove('on')">Save to library →</button>'+
-      '</div>';
-  }
-
-  out.innerHTML = '<div style="padding:4px 0">' + inner + '</div>';
-}
-
-// ── AGENT DETAIL / CREATE ──
-function showAgentDetail(agentId){
-  var agents = {
-    'brand-studio': {
-      name: '✏️ Brand Studio',
-      desc: 'Creates and schedules content from your sessions.',
-      guardrails: ['Review required before publishing','LinkedIn and Instagram only','Post Tuesday and Thursday at 8am','No more than 2 posts per week'],
-    },
-    'practice-assistant': {
-      name: '☀️ Practice Assistant',
-      desc: 'Handles session prep, scheduling, and client recaps.',
-      guardrails: ['Review required before sending to clients','Send recaps next weekday at 9am','Working sessions only (not social calls)','Include CTA to schedule next session'],
-    },
-    'client-relations': {
-      name: '🤝 Client Relations',
-      desc: 'Sends milestone celebrations, check-ins, and referral prompts.',
-      guardrails: ['Review required before sending','Milestones: 3-month and 6-month check-ins','Referral prompts only after positive session','Warm, personal tone'],
-    }
-  };
-  var a = agents[agentId];
-  if(!a) return;
-  var out = document.getElementById('cs-output');
-  out.innerHTML = '<div style="padding:4px 0">'+
-    '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">'+a.name+'</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">'+a.desc+'</div>'+
-    '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Guardrails</div>'+
-    '<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">'+
-      a.guardrails.map(function(g){
-        return '<div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2)">'+
-          '<input type="checkbox" checked>'+
-          '<span style="font-size:13px;color:var(--t2)">'+g+'</span>'+
-        '</div>';
-      }).join('')+
-      '<button class="ab ab-g" style="font-size:12px;margin-top:4px" onclick="alert('Add custom guardrail')">+ Add guardrail</button>'+
-    '</div>'+
-    '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Test run</div>'+
-    '<div style="background:var(--card2);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:var(--t1);margin-bottom:16px">'+
-      '<div style="font-size:11px;color:var(--tm);margin-bottom:8px;font-family:'DM Mono',monospace">Preview · what this agent would do next</div>'+
-      'Hi Alex,<br><br>Great session today. Here's what we covered:<br><br>'+
-      '<strong>Notes:</strong> Communication patterns with your team. Where directiveness blocks curiosity.<br><br>'+
-      '<strong>Next steps:</strong> Try the listening exercise in one team meeting this week.<br><br>'+
-      'Ready to keep building? <a href="#" style="color:var(--p)">Schedule our next session →</a>'+
-    '</div>'+
-    '<div style="display:flex;gap:8px">'+
-      '<button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-      '<button class="ab ab-p" style="flex:1" onclick="alert('Changes saved')">Save changes</button>'+
-    '</div>'+
-    '<button class="ab ab-g" style="width:100%;margin-top:8px;color:#E24B4A;border-color:#E24B4A" onclick="alert('Agent deleted')">Delete agent</button>'+
-  '</div>';
-}
-
-function showCreateAgent(){
-  var out = document.getElementById('cs-output');
-  out.innerHTML = '<div style="padding:4px 0">'+
-    '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">Create a new agent</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">Describe what you want the agent to do. Smoov will build it.</div>'+
-    '<div style="margin-bottom:12px">'+
-      '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Agent name</label>'+
-      '<input type="text" placeholder="e.g. Growth Agent" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)">'+
-    '</div>'+
-    '<div style="margin-bottom:16px">'+
-      '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">What should it do?</label>'+
-      '<textarea placeholder="Be specific. e.g. After each working session, send the client on-brand session notes, next steps, and progress highlights. Include a CTA to schedule the next session. Send next weekday at 9am." style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card);resize:vertical;min-height:90px"></textarea>'+
-    '</div>'+
-    '<div style="display:flex;gap:8px">'+
-      '<button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-      '<button class="ab ab-p" style="flex:1" onclick="alert('Smoov is building your agent...')">Create agent →</button>'+
-    '</div>'+
-  '</div>';
-}
-
 // ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
 (function(){
   var banner = document.querySelector('.domain-tabs-sticky');
@@ -1647,196 +1250,119 @@ function doGenerate(){
 function toggleChat(){document.getElementById('ciara-chat').classList.toggle('open');}
 function sendToC(){var inp=document.getElementById('ciara-input');var msg=inp.value.trim();if(!msg)return;var body=document.getElementById('ciara-chat-body');var user=document.createElement('div');user.style.cssText='align-self:flex-end;background:var(--pp);border-radius:12px 0 12px 12px;padding:10px 13px;font-size:14px;color:var(--pd);max-width:90%;margin-left:auto;';user.textContent=msg;body.appendChild(user);inp.value='';setTimeout(function(){var r=document.createElement('div');r.className='ciara-bub';var nm={linkedin:'LinkedIn post',instagram:'Reel',email:'newsletter',youtube:'video',substack:'piece'};r.textContent=["Great! Want me to turn that into a "+((nm[curPlat])||'post')+"?","I can see a strong angle — should I draft something?","That sounds like your best-performing type. Let me generate a few versions.","Got it. Pulling from your sessions to shape this..."][Math.floor(Math.random()*4)];body.appendChild(r);body.scrollTop=body.scrollHeight;},600);body.scrollTop=body.scrollHeight;}
 
-buildGraph();
-
-// ── CREATE MODE TOGGLE ──
-var createMode = 'content';
+// ── CREATE MODE ──
+var createMode='content';
 function setCreateMode(mode){
-  createMode = mode;
-  var cBtn = document.getElementById('cm-content');
-  var aBtn = document.getElementById('cm-agents');
-  var cView = document.getElementById('create-content-view');
-  var aView = document.getElementById('create-agents-view');
-  if(mode === 'content'){
-    cBtn.style.color='var(--p)'; cBtn.style.borderBottomColor='var(--p)';
-    aBtn.style.color='var(--tm)'; aBtn.style.borderBottomColor='transparent';
-    cView.style.display='block'; aView.style.display='none';
-    // reset video if coming back
-    if(curFmt==='video'){ curFmt='post'; document.querySelectorAll('#fc-video').forEach(function(b){b.classList.remove('on');}); resetOutput(); }
-  } else {
-    aBtn.style.color='var(--p)'; aBtn.style.borderBottomColor='var(--p)';
-    cBtn.style.color='var(--tm)'; cBtn.style.borderBottomColor='transparent';
-    cView.style.display='none'; aView.style.display='block';
+  createMode=mode;
+  var cBtn=document.getElementById('cm-content');
+  var aBtn=document.getElementById('cm-agents');
+  var cView=document.getElementById('create-content-view');
+  var aView=document.getElementById('create-agents-view');
+  if(mode==='content'){
+    cBtn.style.color='var(--p)';cBtn.style.borderBottomColor='var(--p)';
+    aBtn.style.color='var(--tm)';aBtn.style.borderBottomColor='transparent';
+    cView.style.display='block';aView.style.display='none';
+    if(curFmt==='video'){curFmt='post';document.getElementById('fc-video').classList.remove('on');resetOutput();}
+  }else{
+    aBtn.style.color='var(--p)';aBtn.style.borderBottomColor='var(--p)';
+    cBtn.style.color='var(--tm)';cBtn.style.borderBottomColor='transparent';
+    cView.style.display='none';aView.style.display='block';
   }
 }
 
 // ── VIDEO WORKFLOW ──
-var videoStep = 0;
 function showVideoWorkflow(step){
-  videoStep = step || 1;
-  var out = document.getElementById('cs-output');
-  var steps = ['Script','Upload','Enhance','Save'];
-  var dots = steps.map(function(s,i){
-    return '<div style="flex:1;height:3px;border-radius:2px;background:'+(i<videoStep?'var(--p)':'var(--bd)')+'"></div>';
-  }).join('');
-  var stepLabel = '<div style="display:flex;gap:6px;margin-bottom:20px">'+dots+'</div>';
-  var inner = '';
-
-  if(videoStep===1){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Your script</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Smoov generated this from your session with Alex. Edit or use as-is.</div>'+
-      '<div style="background:var(--card2);border-radius:8px;padding:16px;font-size:14px;line-height:1.7;color:var(--t1);margin-bottom:16px;max-height:180px;overflow-y:auto">'+
-        '<strong>Six months of circling the same conversation.</strong><br><br>'+
-        'My client finally walked in — and it went better than they ever imagined.<br><br>'+
-        'Avoidance isn't laziness. It's protection. The breakthrough wasn't courage. It was clarity.<br><br>'+
-        '<em>If this resonates, let's talk. Link in bio.</em>'+
-      '</div>'+
-      '<button class="ab ab-g" style="width:100%;margin-bottom:12px" onclick="alert('Edit script — coming soon')">Edit script</button>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="resetOutput();document.getElementById('fc-video').classList.remove('on')">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(2)">Ready to film →</button>'+
-      '</div>';
-  } else if(videoStep===2){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Upload your video</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Record on your phone, then upload here. Smoov will enhance it.</div>'+
-      '<div style="border:2px dashed var(--bd);border-radius:8px;padding:32px 20px;text-align:center;background:var(--card2);cursor:pointer;margin-bottom:14px" onclick="alert('File picker')">'+
-        '<div style="font-size:28px;margin-bottom:8px">📹</div>'+
-        '<div style="font-size:14px;color:var(--t2);margin-bottom:4px">Click or drag to upload</div>'+
-        '<div style="font-size:12px;color:var(--tm)">MP4 or MOV · up to 500MB</div>'+
-      '</div>'+
-      '<div style="font-size:12px;color:var(--tm);line-height:1.5;margin-bottom:14px;padding:10px 12px;background:var(--card2);border-radius:6px">No need for perfect lighting or setup. Smoov enhances your appearance and lets you choose a background.</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(1)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(3)">Next: Enhance →</button>'+
-      '</div>';
-  } else if(videoStep===3){
-    var bgs = [
-      {label:'Professional',name:'Modern office',sel:true},
-      {label:'Professional',name:'Boardroom',sel:false},
-      {label:'Relaxed',name:'Cozy cabin',sel:false},
-      {label:'Luxury',name:'Beach club',sel:false},
-      {label:'Creative',name:'Space shuttle',sel:false},
-      {label:'Minimal',name:'Gradient',sel:false},
-    ];
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Enhance your appearance</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Select options, then preview.</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Appearance</div>'+
-        '<div style="display:flex;flex-direction:column;gap:6px">'+
-          '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked> <span style="font-size:13px;color:var(--t2)">Smooth skin and enhance lighting</span></label>'+
-          '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked> <span style="font-size:13px;color:var(--t2)">Enhance hair and makeup</span></label>'+
-        '</div>'+
-      '</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Background</div>'+
-        '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px">'+
-          bgs.map(function(bg){
-            return '<div style="border:'+(bg.sel?'2px solid var(--p)':'0.5px solid var(--bd)')+';border-radius:7px;padding:8px;text-align:center;cursor:pointer;background:'+(bg.sel?'var(--pp)':'var(--card)')+'">'+
-              '<div style="font-size:10px;color:var(--tm);margin-bottom:3px">'+bg.label+'</div>'+
-              '<div style="font-size:12px;font-weight:600;color:var(--t1)">'+bg.name+'</div>'+
-            '</div>';
-          }).join('')+
-        '</div>'+
-      '</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(2)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(4)">Next: Save →</button>'+
-      '</div>';
-  } else if(videoStep===4){
-    inner = stepLabel +
-      '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Save to library</div>'+
-      '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Then download or push to your platforms.</div>'+
-      '<div style="margin-bottom:12px">'+
-        '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Title</label>'+
-        '<input type="text" value="Six months of circling" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)">'+
-      '</div>'+
-      '<div style="margin-bottom:14px">'+
-        '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Caption</label>'+
-        '<div style="background:var(--card2);border-radius:6px;padding:12px;font-size:13px;line-height:1.6;color:var(--t1)">Six months of circling the same conversation...<br><br>My client finally walked in.</div>'+
-      '</div>'+
-      '<div style="font-size:12px;color:var(--tm);line-height:1.5;padding:10px 12px;background:var(--card2);border-radius:6px;margin-bottom:14px">Saved to library. Then: <strong>Download</strong> or <strong>Push</strong> to LinkedIn, YouTube, or Instagram.</div>'+
-      '<div style="display:flex;gap:8px">'+
-        '<button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(3)">← Back</button>'+
-        '<button class="ab ab-p" style="flex:1" onclick="alert('Saved to library!');resetOutput();document.getElementById('fc-video').classList.remove('on')">Save to library →</button>'+
-      '</div>';
+  var out=document.getElementById('cs-output');
+  var dots=[1,2,3,4].map(function(i){return'<div style="flex:1;height:3px;border-radius:2px;background:'+(i<=step?'var(--p)':'var(--bd)')+'"></div>';}).join('');
+  var bar='<div style="display:flex;gap:6px;margin-bottom:20px">'+dots+'</div>';
+  var inner='';
+  if(step===1){
+    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Your script</div>'+
+    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Smoov generated this from your session with Alex. Edit or use as-is.</div>'+
+    '<div style="background:var(--card2);border-radius:8px;padding:16px;font-size:14px;line-height:1.7;color:var(--t1);margin-bottom:16px;max-height:180px;overflow-y:auto">'+
+    '<strong>Six months of circling the same conversation.</strong><br><br>My client finally walked in — and it went better than they ever imagined.<br><br>Avoidance isn't laziness. It's protection. The breakthrough wasn't courage. It was clarity.<br><br><em>If this resonates, let's talk.</em></div>'+
+    '<button class="ab ab-g" style="width:100%;margin-bottom:12px" onclick="alert('Edit mode coming soon')">Edit script</button>'+
+    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="resetOutput();document.getElementById('fc-video').classList.remove('on')">← Back</button>'+
+    '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(2)">Ready to film →</button></div>';
+  }else if(step===2){
+    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Upload your video</div>'+
+    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Record on your phone, then upload here. Smoov will enhance it.</div>'+
+    '<div style="border:2px dashed var(--bd);border-radius:8px;padding:32px 20px;text-align:center;background:var(--card2);cursor:pointer;margin-bottom:14px" onclick="alert('File picker')">'+
+    '<div style="font-size:28px;margin-bottom:8px">📹</div><div style="font-size:14px;color:var(--t2);margin-bottom:4px">Click or drag to upload</div>'+
+    '<div style="font-size:12px;color:var(--tm)">MP4 or MOV</div></div>'+
+    '<div style="font-size:12px;color:var(--tm);line-height:1.5;margin-bottom:14px;padding:10px 12px;background:var(--card2);border-radius:6px">No need for perfect lighting. Smoov enhances your appearance and lets you choose a background.</div>'+
+    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(1)">← Back</button>'+
+    '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(3)">Next: Enhance →</button></div>';
+  }else if(step===3){
+    var bgs=[['Professional','Modern office',true],['Professional','Boardroom',false],['Relaxed','Cozy cabin',false],['Luxury','Beach club',false],['Creative','Space shuttle',false],['Minimal','Gradient',false]];
+    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Enhance</div>'+
+    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Select options, then preview.</div>'+
+    '<div style="margin-bottom:12px"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Appearance</div>'+
+    '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer;margin-bottom:6px"><input type="checkbox" checked><span style="font-size:13px;color:var(--t2)">Smooth skin and enhance lighting</span></label>'+
+    '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked><span style="font-size:13px;color:var(--t2)">Enhance hair and makeup</span></label></div>'+
+    '<div style="margin-bottom:14px"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Background</div>'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px">'+
+    bgs.map(function(b){return'<div style="border:'+(b[2]?'2px solid var(--p)':'0.5px solid var(--bd)')+';border-radius:7px;padding:8px;text-align:center;cursor:pointer;background:'+(b[2]?'var(--pp)':'var(--card)')+'"><div style="font-size:10px;color:var(--tm);margin-bottom:3px">'+b[0]+'</div><div style="font-size:12px;font-weight:600;color:var(--t1)">'+b[1]+'</div></div>';}).join('')+
+    '</div></div>'+
+    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(2)">← Back</button>'+
+    '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(4)">Next: Save →</button></div>';
+  }else if(step===4){
+    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Save to library</div>'+
+    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Then download or push to your platforms.</div>'+
+    '<div style="margin-bottom:12px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">Title</label>'+
+    '<input type="text" value="Six months of circling" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)"></div>'+
+    '<div style="margin-bottom:14px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">Caption</label>'+
+    '<div style="background:var(--card2);border-radius:6px;padding:12px;font-size:13px;line-height:1.6;color:var(--t1)">Six months of circling the same conversation...<br><br>My client finally walked in.</div></div>'+
+    '<div style="font-size:12px;color:var(--tm);line-height:1.5;padding:10px 12px;background:var(--card2);border-radius:6px;margin-bottom:14px">Saved to library. Then: <strong>Download</strong> or <strong>Push</strong> to LinkedIn, YouTube, or Instagram.</div>'+
+    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(3)">← Back</button>'+
+    '<button class="ab ab-p" style="flex:1" onclick="alert('Saved to library!');resetOutput();document.getElementById('fc-video').classList.remove('on')">Save to library →</button></div>';
   }
-
-  out.innerHTML = '<div style="padding:4px 0">' + inner + '</div>';
+  out.innerHTML='<div style="padding:4px 0">'+inner+'</div>';
 }
 
-// ── AGENT DETAIL / CREATE ──
-function showAgentDetail(agentId){
-  var agents = {
-    'brand-studio': {
-      name: '✏️ Brand Studio',
-      desc: 'Creates and schedules content from your sessions.',
-      guardrails: ['Review required before publishing','LinkedIn and Instagram only','Post Tuesday and Thursday at 8am','No more than 2 posts per week'],
-    },
-    'practice-assistant': {
-      name: '☀️ Practice Assistant',
-      desc: 'Handles session prep, scheduling, and client recaps.',
-      guardrails: ['Review required before sending to clients','Send recaps next weekday at 9am','Working sessions only (not social calls)','Include CTA to schedule next session'],
-    },
-    'client-relations': {
-      name: '🤝 Client Relations',
-      desc: 'Sends milestone celebrations, check-ins, and referral prompts.',
-      guardrails: ['Review required before sending','Milestones: 3-month and 6-month check-ins','Referral prompts only after positive session','Warm, personal tone'],
-    }
+// ── AGENT DETAIL ──
+function showAgentDetail(id){
+  var agents={
+    'brand-studio':{name:'✏️ Brand Studio',desc:'Creates and schedules content from your sessions.',guardrails:['Review required before publishing','LinkedIn and Instagram only','Post Tuesday and Thursday at 8am','No more than 2 posts per week']},
+    'practice-assistant':{name:'☀️ Practice Assistant',desc:'Session prep, scheduling, and client recaps.',guardrails:['Review required before sending','Send recaps next weekday at 9am','Working sessions only','Include CTA to schedule next session']},
+    'client-relations':{name:'🤝 Client Relations',desc:'Milestone celebrations, check-ins, and referral prompts.',guardrails:['Review required before sending','3-month and 6-month check-ins','Referral prompts only after positive sessions','Warm, personal tone']}
   };
-  var a = agents[agentId];
-  if(!a) return;
-  var out = document.getElementById('cs-output');
-  out.innerHTML = '<div style="padding:4px 0">'+
+  var a=agents[id];if(!a)return;
+  var out=document.getElementById('cs-output');
+  out.innerHTML='<div style="padding:4px 0">'+
     '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">'+a.name+'</div>'+
     '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">'+a.desc+'</div>'+
-    '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Guardrails</div>'+
+    '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Guardrails</div>'+
     '<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">'+
-      a.guardrails.map(function(g){
-        return '<div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2)">'+
-          '<input type="checkbox" checked>'+
-          '<span style="font-size:13px;color:var(--t2)">'+g+'</span>'+
-        '</div>';
-      }).join('')+
-      '<button class="ab ab-g" style="font-size:12px;margin-top:4px" onclick="alert('Add custom guardrail')">+ Add guardrail</button>'+
-    '</div>'+
-    '<div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Test run</div>'+
+    a.guardrails.map(function(g){return'<div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2)"><input type="checkbox" checked><span style="font-size:13px;color:var(--t2)">'+g+'</span></div>';}).join('')+
+    '<button class="ab ab-g" style="font-size:12px;margin-top:4px" onclick="alert('Add guardrail')">+ Add guardrail</button></div>'+
+    '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Test preview</div>'+
     '<div style="background:var(--card2);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:var(--t1);margin-bottom:16px">'+
-      '<div style="font-size:11px;color:var(--tm);margin-bottom:8px;font-family:'DM Mono',monospace">Preview · what this agent would do next</div>'+
-      'Hi Alex,<br><br>Great session today. Here's what we covered:<br><br>'+
-      '<strong>Notes:</strong> Communication patterns with your team. Where directiveness blocks curiosity.<br><br>'+
-      '<strong>Next steps:</strong> Try the listening exercise in one team meeting this week.<br><br>'+
-      'Ready to keep building? <a href="#" style="color:var(--p)">Schedule our next session →</a>'+
-    '</div>'+
-    '<div style="display:flex;gap:8px">'+
-      '<button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-      '<button class="ab ab-p" style="flex:1" onclick="alert('Changes saved')">Save changes</button>'+
-    '</div>'+
+    '<div style="font-size:11px;color:var(--tm);margin-bottom:8px;font-family:'DM Mono',monospace">What this agent would do next</div>'+
+    'Hi Alex,<br><br>Great session today. Here's what we covered:<br><br><strong>Notes:</strong> Communication patterns with your team.<br><br><strong>Next steps:</strong> Try the listening exercise in one team meeting this week.<br><br>'+
+    'Ready to keep building? <a href="#" style="color:var(--p)">Schedule our next session →</a></div>'+
+    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
+    '<button class="ab ab-p" style="flex:1" onclick="alert('Changes saved')">Save changes</button></div>'+
     '<button class="ab ab-g" style="width:100%;margin-top:8px;color:#E24B4A;border-color:#E24B4A" onclick="alert('Agent deleted')">Delete agent</button>'+
   '</div>';
 }
 
 function showCreateAgent(){
-  var out = document.getElementById('cs-output');
-  out.innerHTML = '<div style="padding:4px 0">'+
+  var out=document.getElementById('cs-output');
+  out.innerHTML='<div style="padding:4px 0">'+
     '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">Create a new agent</div>'+
     '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">Describe what you want the agent to do. Smoov will build it.</div>'+
-    '<div style="margin-bottom:12px">'+
-      '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">Agent name</label>'+
-      '<input type="text" placeholder="e.g. Growth Agent" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)">'+
-    '</div>'+
-    '<div style="margin-bottom:16px">'+
-      '<label style="display:block;font-size:12px;font-weight:600;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.07em">What should it do?</label>'+
-      '<textarea placeholder="Be specific. e.g. After each working session, send the client on-brand session notes, next steps, and progress highlights. Include a CTA to schedule the next session. Send next weekday at 9am." style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card);resize:vertical;min-height:90px"></textarea>'+
-    '</div>'+
-    '<div style="display:flex;gap:8px">'+
-      '<button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-      '<button class="ab ab-p" style="flex:1" onclick="alert('Smoov is building your agent...')">Create agent →</button>'+
-    '</div>'+
+    '<div style="margin-bottom:12px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">Agent name</label>'+
+    '<input type="text" placeholder="e.g. Growth Agent" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)"></div>'+
+    '<div style="margin-bottom:16px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">What should it do?</label>'+
+    '<textarea placeholder="Be specific. e.g. After each working session, send the client on-brand session notes, next steps, and progress highlights..." style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card);resize:vertical;min-height:90px"></textarea></div>'+
+    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
+    '<button class="ab ab-p" style="flex:1" onclick="alert('Smoov is building your agent...')">Create agent →</button></div>'+
   '</div>';
 }
+
+
+buildGraph();
 
 // ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
 (function(){
