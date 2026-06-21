@@ -841,6 +841,10 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       </div>
     </div>
     <div class="create-center">
+      <div style="display:flex;gap:16px;margin-bottom:20px;border-bottom:1px solid var(--bd);padding-bottom:12px">
+        <button class="create-mode-toggle on" data-mode="content" onclick="setCreateMode('content')" style="padding:8px 12px;border:none;background:none;font-size:13px;font-weight:500;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s" onmouseover="this.style.color='var(--t1)'" onmouseout="this.style.color=createMode==='content'?'var(--p)':'var(--tm)'">Content</button>
+        <button class="create-mode-toggle" data-mode="agents" onclick="setCreateMode('agents')" style="padding:8px 12px;border:none;background:none;font-size:13px;font-weight:500;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s" onmouseover="this.style.color='var(--t1)'" onmouseout="this.style.color=createMode==='agents'?'var(--p)':'var(--tm)'">Agents</button>
+      </div>
       <div class="prompt-label">✏️ What's the insight?</div>
       <div class="prompt-wrap">
         <textarea class="prompt-ta" rows="4" id="manual-prompt" placeholder="Describe the breakthrough, framework, or moment you want to share. Be specific — Ciara will shape it into your voice.&#10;&#10;Example: A client finally confronted their manager about being passed over. They'd avoided it for 8 months. Took 12 minutes and changed everything."></textarea>
@@ -1168,5 +1172,92 @@ buildGraph();
   };
 })();
 </script>
+
+
+<script>
+// ── VIDEO WORKFLOW ──
+var videoMode = false;
+var videoStep = 1; // 1=script, 2=upload, 3=enhance, 4=save
+
+function showVideoWorkflow(){
+  videoMode = true;
+  document.querySelector('.create-right').innerHTML = `
+    <div style="padding:20px;color:var(--t1)">
+      <div style="font-size:18px;font-weight:600;margin-bottom:16px">📹 Create Video Content</div>
+      <div style="font-size:14px;color:var(--tm);margin-bottom:20px">Ciara pulled this moment from your sessions. Edit or use as-is.</div>
+      
+      <div style="background:var(--card2);border-radius:8px;padding:14px;margin-bottom:16px;font-size:13px;line-height:1.6">
+        <strong>Six months of circling the same conversation.</strong><br><br>
+        My client finally walked in — and it went better than they ever imagined.<br><br>
+        Avoidance isn't laziness. It's protection. The breakthrough wasn't courage. It was clarity.
+      </div>
+      
+      <button class="ab ab-g" style="width:100%;margin-bottom:10px" onclick="videoStep=2;showVideoWorkflow()">Ready to film →</button>
+      <button class="ab ab-g" style="width:100%;opacity:0.6" onclick="videoMode=false;resetOutput()">← Back</button>
+    </div>
+  `;
+}
+
+// ── AGENT MANAGEMENT ──
+var agentMode = false;
+
+function showAgentDashboard(){
+  agentMode = true;
+  var agents = [
+    {name: 'Client session recap', status: 'Active', desc: 'Sends after working sessions'},
+    {name: 'Weekly warm lead outreach', status: 'Active', desc: 'Every Monday at 9 AM'}
+  ];
+  
+  document.querySelector('.create-right').innerHTML = `
+    <div style="padding:20px;color:var(--t1)">
+      <div style="font-size:18px;font-weight:600;margin-bottom:16px">⚙️ Your Agents</div>
+      ${agents.map((a, i) => `
+        <div style="border:0.5px solid var(--bd);border-radius:8px;padding:12px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:500;margin-bottom:3px">${a.name}</div>
+            <div style="font-size:12px;color:var(--tm)">${a.status} · ${a.desc}</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="ab ab-g" style="padding:5px 8px;font-size:10px" onclick="alert('Edit '+this.closest('.ab').parentElement.parentElement.querySelector('div').textContent)">Edit</button>
+            <button class="ab ab-g" style="padding:5px 8px;font-size:10px" onclick="alert('Delete agent')">Delete</button>
+          </div>
+        </div>
+      `).join('')}
+      
+      <button class="ab ab-p" style="width:100%;margin-top:16px" onclick="agentMode=false;resetOutput()">← Back to Content</button>
+    </div>
+  `;
+}
+
+// ── MODE MANAGEMENT ──
+var createMode = 'content'; // 'content' or 'agents'
+
+
+function setCreateMode(mode){
+  createMode = mode;
+  var toggles = document.querySelectorAll('.create-mode-toggle');
+  toggles.forEach(b => {
+    b.classList.remove('on');
+    b.style.borderBottomColor = 'transparent';
+    b.style.color = 'var(--tm)';
+  });
+  var active = document.querySelector('[data-mode="'+mode+'"]');
+  active.classList.add('on');
+  active.style.borderBottomColor = 'var(--p)';
+  active.style.color = 'var(--p)';
+  
+  if(mode === 'agents'){
+    showAgentDashboard();
+  } else {
+    videoMode = false;
+    resetOutput();
+  }
+} else {
+    videoMode = false;
+    resetOutput();
+  }
+}
+</script>
+
 </body>
 </html>
