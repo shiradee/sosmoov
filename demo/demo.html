@@ -168,8 +168,8 @@ body.vibe-magical .topbar{border-bottom-color:rgba(155,114,207,.25)}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;
   display:flex;align-items:center;justify-content:center;padding:24px}
 .modal-overlay.gone{display:none}
-.modal{background:var(--card);border-radius:20px;width:100%;max-width:560px;max-height:90vh;
-  overflow-y:auto;padding:28px 32px 36px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal{background:var(--card);border-radius:20px;width:100%;max-width:560px;
+  padding:28px 32px 28px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 .mhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .mclose{background:none;border:none;font-size:24px;color:var(--tm);padding:2px 6px;line-height:1}
 .prog-row{display:flex;gap:5px;margin-bottom:20px}
@@ -215,6 +215,11 @@ body.vibe-magical .topbar{border-bottom-color:rgba(155,114,207,.25)}
 .cname{font-weight:700;font-size:14px;color:var(--t1)}
 .cmsg{font-size:14px;color:var(--t2);line-height:1.55;margin-top:4px}
 
+
+.ob-stack{display:grid}
+.ob-stack > div{grid-area:1/1;visibility:hidden;pointer-events:none;display:flex;flex-direction:column}
+.ob-stack > div.ob-on{visibility:visible;pointer-events:auto}
+.ob-stack .btn-row-m{margin-top:auto;padding-top:20px}
 /* ── PREP ── full width */
 .prep-wrap{padding:28px 32px 48px}
 @media(max-width:720px){.prep-wrap{padding:16px 16px 100px}}
@@ -259,28 +264,15 @@ body.vibe-magical .sess-header:hover{background:rgba(44,34,80,.9)}
 .sess-dot{width:8px;height:8px;border-radius:50%}
 
 /* ── ANALYZE ── full width */
-.analyze-wrap{padding:20px 32px 48px}
+.analyze-wrap{padding:28px 32px 48px}
 @media(max-width:720px){.analyze-wrap{padding:16px 16px 100px}}
-.domain-tabs-sticky{background:var(--bg);padding:16px 32px 0;transition:background .3s}
-@media(max-width:720px){.domain-tabs-sticky{padding:12px 16px 0}}
-.domain-tabs-sticky.stuck{position:fixed;top:56px;left:0;right:0;z-index:20;padding:8px 32px;box-shadow:0 4px 16px rgba(0,0,0,.1)}
-@media(max-width:720px){.domain-tabs-sticky.stuck{padding:8px 16px}}
-.domain-tabs-spacer{display:none;height:0}
-.domain-tabs-sticky.stuck~.domain-tabs-spacer{display:block;height:72px}
-.domain-tabs{display:flex;background:var(--card);border:.5px solid var(--bd);border-radius:11px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.07);margin-bottom:0}.domain-tabs-wrap{padding-bottom:28px}
+.domain-tabs{display:flex;margin-bottom:28px;background:var(--card);border:.5px solid var(--bd);border-radius:11px;overflow:hidden}
 .dtab{flex:1;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;padding:13px 8px;
   color:var(--tm);background:none;border:none;border-right:.5px solid var(--bd);
   transition:all .12s;text-align:center;display:flex;align-items:center;justify-content:center;gap:7px}
 .dtab:last-child{border-right:none}
 .dtab.on{background:var(--pp);color:var(--p)}
 .dtab:hover:not(.on){background:var(--bg);color:var(--t1)}
-body.vibe-magical .dtab{color:#9A8AB8;border-right-color:rgba(155,114,207,.25)}
-body.vibe-magical .dtab.on{background:#2E2650;color:#C9A0E8}
-body.vibe-magical .dtab:hover:not(.on){background:#231E42;color:#C4BAE8}
-body.vibe-magical .sess-badge{background:#2E2650;color:#C9A0E8;border-color:#6A50A0}
-body.vibe-magical .m-ctag{background:#2A1F4A;color:#C9A832;border-color:#C9A832}
-body.vibe-chill .m-ctag{background:#D4EDDA;color:#1A6035;border-color:#2E9E5A}
-body.vibe-chill .ctag{background:#D4EDDA;color:#1A6035;border-color:#2E9E5A}
 .domain-scr{display:none}.domain-scr.on{display:block}
 .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px}
 .score-tile{background:var(--card);border:.5px solid var(--bd);border-radius:14px;padding:22px 24px;transition:background .3s}
@@ -356,7 +348,7 @@ body.vibe-chill .ctag{background:#D4EDDA;color:#1A6035;border-color:#2E9E5A}
 .np-acts{display:flex;gap:5px;flex-wrap:wrap}
 
 /* ── CREATE 3-col ── */
-.create-layout{display:grid;grid-template-columns:215px 1fr 1fr;gap:0;min-height:calc(100vh - 56px)}
+.create-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:calc(100vh - 56px)}
 @media(max-width:960px){.create-layout{grid-template-columns:1fr}}
 .mobile-plat-scroll{display:none}
 @media(max-width:960px){
@@ -409,16 +401,13 @@ body.vibe-chill .ctag{background:#D4EDDA;color:#1A6035;border-color:#2E9E5A}
 .prompt-label{font-size:19px;font-weight:900;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .prompt-wrap{background:var(--card);border:1.5px solid var(--bde);border-radius:14px;overflow:hidden;margin-bottom:12px;transition:background .3s}
 .prompt-wrap:focus-within{border-color:var(--p)}
-.prompt-ta{width:100%;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:16px;color:var(--t1);line-height:1.65;resize:none;background:transparent;padding:16px 18px}
-body.vibe-magical .prompt-ta::placeholder{color:#6A5A90}
-body.vibe-magical .prompt-ta{color:#EAE4FF}
+.prompt-ta{width:100%;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:16px;
+  color:var(--t1);line-height:1.65;resize:none;background:transparent;padding:16px 18px}
 .prompt-footer{padding:11px 16px 13px;border-top:1px solid var(--bd);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .media-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;
   border:.5px solid var(--bde);background:var(--bg);font-family:'DM Mono','Courier New',monospace;
   font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--tm);cursor:pointer;transition:all .12s}
 .media-pill:hover{border-color:var(--p);color:var(--p);background:var(--pp)}
-body.vibe-magical .media-pill{border-color:#6A50A0;color:#C9A0E8;background:rgba(155,114,207,.12)}
-body.vibe-magical .canva-pill{border-color:rgba(155,114,207,.4);background:rgba(120,80,200,.15);color:#C9A0E8}
 .canva-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;
   border:.5px solid color-mix(in srgb,#7B2FBE 30%,transparent);
   background:color-mix(in srgb,#7B2FBE 8%,transparent);
@@ -512,14 +501,43 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
 </style>
 </head>
 <body class="vibe-chill" id="app-body">
-<script>if(sessionStorage.getItem("sosmoov_access")!=="1"){window.location.href="index.html";}</script>
+<script>
+(function(){
+  if(sessionStorage.getItem("sosmoov_access")==="1")return;
+  document.addEventListener("DOMContentLoaded",function(){
+    var g=document.createElement("div");
+    g.id="pw-gate";
+    g.style.cssText="position:fixed;inset:0;background:#1A1730;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;font-family:Nunito,sans-serif";
+    g.innerHTML='<div style="font-size:28px;font-weight:900;color:#fff"><span style="color:#534AB7">so</span><span style="color:#FF6B35">smoov</span></div>'
+      +'<div style="font-size:14px;color:rgba(255,255,255,0.5)">Enter password to continue</div>'
+      +'<div style="display:flex;gap:8px">'
+      +'<input id="pw-in" type="password" placeholder="Password" style="padding:10px 14px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:14px;font-family:inherit;outline:none;width:200px" autofocus />'
+      +'<button onclick="ckPw()" style="padding:10px 18px;border-radius:7px;background:#FF6B35;color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer">Enter</button>'
+      +'</div>'
+      +'<div id="pw-err" style="color:#FF6B35;font-size:13px;display:none">Incorrect password</div>';
+    document.body.prepend(g);
+    document.getElementById("pw-in").addEventListener("keydown",function(e){if(e.key==="Enter")ckPw();});
+  });
+})();
+function ckPw(){
+  if(document.getElementById("pw-in").value.trim().toLowerCase()==="flywheel"){
+    sessionStorage.setItem("sosmoov_access","1");
+    document.getElementById("pw-gate").remove();
+  } else {
+    document.getElementById("pw-err").style.display="block";
+    document.getElementById("pw-in").value="";
+    document.getElementById("pw-in").focus();
+  }
+}
+</script>
 <div id="app">
 <div class="topbar">
   <div class="wordmark"><span class="wm-so">so</span><span class="wm-sm">smoov</span></div>
   <div class="tab-row">
     <button class="tab on"  onclick="showScr('prep',this)">☀️ Prep</button>
     <button class="tab"     onclick="showScr('analyze',this)">📊 Analyze</button>
-    <button class="tab"     onclick="showScr('create',this)">✏️ Create</button>
+    <button class="tab"     onclick="showScr('studio',this)">✏️ Studio</button>
+    <button class="tab"     onclick="showScr('agents',this)">⚙️ Agents</button>
   </div>
   <div class="vibe-wrap">
     <button class="vibe-btn" id="vibe-btn" onclick="toggleVibe()"><span id="vibe-label">😌 Chill</span><span class="vchev">▾</span></button>
@@ -539,9 +557,10 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
   <div class="modal">
     <div class="mhdr"><span class="lbl" id="ob-lbl">Step 1 of 6</span><button class="mclose" onclick="closeModal()">×</button></div>
     <div class="prog-row"><div class="pdot dn" id="pd1"></div><div class="pdot" id="pd2"></div><div class="pdot" id="pd3"></div><div class="pdot" id="pd4"></div><div class="pdot" id="pd5"></div><div class="pdot" id="pd6"></div></div>
-    <div id="ob1">
+    <div class="ob-stack">
+    <div id="ob1" class="ob-on">
       <div class="mtitle">What kind of work do you do?</div>
-      <div class="msub">Sosmoov adapts everything — templates, Ciara's voice, insights — to your practice.</div>
+      <div class="msub">Sosmoov adapts everything to your practice — content, agents, and insights.</div>
       <div class="niche-grid">
         <button class="niche-btn on" onclick="pick(this,'.niche-btn')">🧠 Executive Coach</button>
         <button class="niche-btn" onclick="pick(this,'.niche-btn')">🌱 Life Coach</button>
@@ -557,9 +576,9 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       <div class="card-ciara-m"><div class="cav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#1A1730"/></svg></div><div><span class="cname">Smoov</span><span class="ctag">[INSIGHT]</span><div class="cmsg" id="ob-ciara-msg">LinkedIn is usually the move for exec coaches. I'll keep it warm but professional.</div></div></div>
       <div class="btn-row-m"><span></span><button class="ab ab-p" onclick="goStep(2)">Continue →</button></div>
     </div>
-    <div id="ob2" style="display:none">
+    <div id="ob2">
       <div class="mtitle">What's your outreach goal?</div>
-      <div class="msub">Ciara shapes every recommendation around what you're actually trying to build.</div>
+      <div class="msub">Smoov shapes every recommendation around what you are actually trying to build.</div>
       <div class="goal-list">
         <button class="goal-btn on" onclick="pick(this,'.goal-btn')">🎯 Fill my client pipeline — I need more leads</button>
         <button class="goal-btn" onclick="pick(this,'.goal-btn')">🧲 Build brand authority — known for my POV</button>
@@ -576,7 +595,7 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       <div class="card-ciara-m"><div class="cav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#1A1730"/></svg></div><div><span class="cname">Smoov</span><span class="ctag">[ON IT]</span><div class="cmsg">Every post closes with a clear booking CTA — calibrated to feel natural, not pushy.</div></div></div>
       <div class="btn-row-m"><button class="ab ab-g" onclick="goStep(1)">← Back</button><button class="ab ab-p" onclick="goStep(3)">Continue →</button></div>
     </div>
-    <div id="ob3" style="display:none">
+    <div id="ob3">
       <div class="mtitle">Connect your tools</div>
       <div class="msub">Your CRM builds itself from transcripts and calendar. Nothing to fill in.</div>
       <div class="tool-row on" onclick="togTool(this)"><div class="ticon" style="background:#E8F4FD">📹</div><div style="flex:1"><div>Zoom</div><div class="tmeta">Transcripts auto-imported</div></div><span style="color:var(--p);margin-left:auto">✓</span></div>
@@ -587,76 +606,103 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       <div class="card-ciara-m" style="margin-top:14px"><div class="cav"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" fill="#1A1730"/></svg></div><div><span class="cname">Smoov</span><span class="ctag">[ON IT]</span><div class="cmsg">I'll start building your practice map the moment your first transcript comes in.</div></div></div>
       <div class="btn-row-m"><button class="ab ab-g" onclick="goStep(2)">← Back</button><button class="ab ab-p" onclick="goStep(4)" style="background:var(--o)!important;color:#fff!important">Connect &amp; continue →</button></div>
     </div>
-    <div id="ob4" style="display:none">
-      <div class="mtitle">Here's what Smoov does for you.</div>
-      <div class="msub">Two things — content that sounds like you, and agents that run your back office.</div>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
-        <div style="border:1.5px solid var(--pl);border-radius:10px;padding:16px;background:var(--pp)">
-          <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--p);margin-bottom:8px">✏️ Content Example</div>
-          <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:6px">Six months of circling the same conversation.</div>
-          <div style="font-size:13px;color:var(--t2);line-height:1.6">My client finally walked in — and it went better than they ever imagined. Avoidance isn't laziness. It's protection.</div>
-          <div style="font-size:11px;color:var(--tm);margin-top:8px;font-family:'DM Mono',monospace">Smoov · from your session · LinkedIn post</div>
-        </div>
-        <div style="border:1.5px solid var(--pl);border-radius:10px;padding:16px;background:var(--cp)">
-          <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--c);margin-bottom:8px">⚙️ Agent Example</div>
-          <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:6px">Client session recap sent automatically.</div>
-          <div style="font-size:13px;color:var(--t2);line-height:1.6">After every working session, your Practice Assistant drafts session notes and next steps — for your review, then sends to the client.</div>
-          <div style="font-size:11px;color:var(--tm);margin-top:8px;font-family:'DM Mono',monospace">Practice Assistant · runs after each session</div>
+    <div id="ob4">
+      <div class="mtitle">Two things Smoov does for you.</div>
+      <div class="msub">Content that sounds like you. And agents that run your back office.</div>
+
+      <div style="border:1.5px solid var(--pl);border-radius:12px;overflow:hidden;background:var(--pp);margin-bottom:12px">
+        <div style="padding:10px 14px 6px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--p)">✏️ Content — what it looks like</div>
+        <div style="background:var(--card);margin:0 10px 10px;border-radius:8px;border:0.5px solid var(--pl);padding:12px">
+          <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--tm);margin-bottom:6px">LINKEDIN · FROM SESSION · BRAND STUDIO <span style="background:var(--cp);color:var(--c);padding:1px 5px;border-radius:3px">&lt;content&gt;</span></div>
+          <div style="font-size:15px;font-weight:800;color:var(--t1);margin-bottom:6px">Avoiding conflict prolongs it.</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px">After 6 months of avoiding a talk with their boss, my client finally had the conversation — and it went better than they ever imagined. Hear the story.</div>
+          <div style="display:flex;gap:6px"><span style="font-size:10px;padding:3px 8px;border-radius:4px;background:var(--pp);color:var(--p);font-weight:600;font-family:'DM Mono',monospace">👍 Approve</span><span style="font-size:10px;padding:3px 8px;border-radius:4px;background:var(--pp);color:var(--p);font-weight:600;font-family:'DM Mono',monospace">✏️ Edit</span><span style="font-size:10px;padding:3px 8px;border-radius:4px;background:var(--pp);color:var(--p);font-weight:600;font-family:'DM Mono',monospace">🕐 Schedule</span></div>
         </div>
       </div>
-      <div class="btn-row-m"><button class="ab ab-g" onclick="goStep(3)">← Back</button><button class="ab ab-p" onclick="goStep(5)">Continue →</button></div>
-    </div>
-    <div id="ob5" style="display:none">
-      <div class="mtitle">Train Smoov on your voice.</div>
-      <div class="msub">The more Smoov knows how you communicate, the better everything sounds like you. You can skip this and come back later.</div>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
-        <div style="border:0.5px solid var(--bd);border-radius:8px;padding:14px;background:var(--card)">
-          <div class="flbl" style="margin-bottom:8px">🎤 Record your voice</div>
-          <div style="border:2px dashed var(--bd);border-radius:6px;padding:18px;text-align:center;cursor:pointer;background:var(--card2)" onclick="alert('Voice recorder — record 30-60 seconds talking about your work and approach')">
-            <div style="font-size:22px;margin-bottom:5px">🎤</div>
-            <div style="font-size:13px;color:var(--t2)">Click to record or upload audio</div>
-            <div style="font-size:11px;color:var(--tm);margin-top:2px">30–60 seconds · MP3, WAV, M4A</div>
+
+      <div style="border:1.5px solid var(--pl);border-radius:12px;overflow:hidden;background:var(--cp)">
+        <div style="padding:10px 14px 6px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--c)">⚙️ Agent — what it does</div>
+        <div style="background:var(--card);margin:0 10px 10px;border-radius:8px;border:0.5px solid var(--pl)">
+          <div style="padding:10px 12px;border-bottom:0.5px solid var(--bd)">
+            <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--tm);margin-bottom:3px">PRACTICE ASSISTANT <span style="background:var(--cp);color:var(--c);padding:1px 5px;border-radius:3px">&lt;practice&gt;</span> · TRIGGERED</div>
+            <div style="font-size:13px;font-weight:600;color:var(--t1)">Post-session recap → Alex Johnson</div>
           </div>
-        </div>
-        <div style="border:0.5px solid var(--bd);border-radius:8px;padding:14px;background:var(--card)">
-          <label class="flbl" style="display:block;margin-bottom:6px">🔗 Link to a video or podcast of you speaking</label>
-          <input class="finput" placeholder="https://youtube.com/... or podcast link" style="margin-bottom:4px"/>
-          <div style="font-size:11px;color:var(--tm)">YouTube, Vimeo, podcast — any link where you're speaking for a few minutes</div>
-        </div>
-        <div style="border:0.5px solid var(--bd);border-radius:8px;padding:14px;background:var(--card)">
-          <div class="flbl" style="margin-bottom:8px">📄 Upload a document you wrote</div>
-          <div style="border:2px dashed var(--bd);border-radius:6px;padding:18px;text-align:center;cursor:pointer;background:var(--card2)" onclick="alert('Upload web copy, a playbook, or methodology doc')">
-            <div style="font-size:22px;margin-bottom:5px">📄</div>
-            <div style="font-size:13px;color:var(--t2)">Click or drag to upload</div>
-            <div style="font-size:11px;color:var(--tm);margin-top:2px">Web copy, playbook, methodology doc · PDF, Word, text</div>
+          <div style="padding:8px 12px">
+            <div style="font-size:12px;color:var(--t2);display:flex;flex-direction:column;gap:4px">
+              <div><span style="color:var(--ok)">✓</span> Session classified as working session</div>
+              <div><span style="color:var(--ok)">✓</span> Notes drafted from transcript</div>
+              <div><span style="color:var(--ok)">✓</span> Next steps pulled and formatted</div>
+              <div><span style="color:var(--ok)">✓</span> CTA to schedule next session added</div>
+              <div><span style="color:var(--wn)">⏳</span> Sending tomorrow 9am — awaiting your review</div>
+            </div>
+          </div>
+          <div style="padding:8px 12px 10px;display:flex;gap:6px">
+            <span style="font-size:10px;padding:3px 8px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600;font-family:'DM Mono',monospace">✓ Approve</span>
+            <span style="font-size:10px;padding:3px 8px;border-radius:4px;background:var(--pp);color:var(--p);font-weight:600;font-family:'DM Mono',monospace">✏️ Edit</span>
+            <span style="font-size:10px;padding:3px 8px;border-radius:4px;background:color-mix(in srgb,#E24B4A 12%,transparent);color:#E24B4A;font-weight:600;font-family:'DM Mono',monospace">✗ Skip</span>
           </div>
         </div>
       </div>
-      <div style="font-size:12px;color:var(--tm);line-height:1.5;text-align:center;margin-bottom:14px">Smoov also learns continuously from your sessions, emails, and approved content over time.</div>
-      <div class="btn-row-m"><button class="ab ab-g" onclick="goStep(4)">← Back</button><div style="display:flex;gap:8px"><button class="ab ab-g" onclick="goStep(6)" style="color:var(--tm)">Skip →</button><button class="ab ab-p" onclick="goStep(6)">Save & continue →</button></div></div>
+
+      <div class="btn-row-m" style="margin-top:16px"><button class="ab ab-g" onclick="goStep(3)">← Back</button><button class="ab ab-p" onclick="goStep(5)">Continue →</button></div>
     </div>
-    <div id="ob6" style="display:none">
-      <div class="mtitle">You're entering a whole new world.</div>
-      <div class="msub">Here's what's waiting for you inside your practice.</div>
-      <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px">
-        <div style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:38px;height:38px;border-radius:8px;background:var(--pp);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">☀️</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:3px">Prep — Your day at a glance</div><div style="font-size:13px;color:var(--tm);line-height:1.5">Walk into every session prepared. Context, milestones, and Smoov's read on what matters.</div></div>
+
+    <div id="ob5">
+      <div class="mtitle">Give Smoov your voice.</div>
+      <div class="msub">One recording or a link — that is genuinely all Smoov needs to start sounding like you. Smoov also learns from every session and piece of content you approve over time. You can skip this and do it in Settings later.</div>
+
+      <div style="border:1px solid var(--bde);border-radius:12px;padding:16px;background:var(--card);margin-bottom:12px">
+        <label class="flbl">🎤 Record 60 seconds of you talking</label>
+        <div style="border:2px dashed var(--bde);border-radius:8px;padding:20px;text-align:center;cursor:pointer;background:var(--bg)" onclick="alert('Voice recorder')">
+          <div style="font-size:24px;margin-bottom:6px">🎤</div>
+          <div style="font-size:13px;color:var(--t2)">Click to record or upload audio</div>
+          <div style="font-size:11px;color:var(--tm);margin-top:2px;font-family:'DM Mono',monospace">MP3 · WAV · M4A</div>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:38px;height:38px;border-radius:8px;background:var(--pp);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📊</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:3px">Analyze — Insights across your practice</div><div style="font-size:13px;color:var(--tm);line-height:1.5">Network health, content performance, revenue signals — with actions you can take right now.</div></div>
+      </div>
+
+      <div style="text-align:center;font-size:13px;color:var(--tm);margin:8px 0">— or —</div>
+
+      <div style="border:1px solid var(--bde);border-radius:12px;padding:16px;background:var(--card)">
+        <label class="flbl">🔗 Link to a video or podcast of you speaking</label>
+        <input class="finput" placeholder="YouTube, Vimeo, podcast — anywhere you speak for a few minutes" style="margin-bottom:0"/>
+      </div>
+
+      <div class="btn-row-m" style="margin-top:16px">
+        <button class="ab ab-g" onclick="goStep(4)">← Back</button>
+        <div style="display:flex;gap:8px">
+          <button class="ab ab-g" onclick="goStep(6)" style="color:var(--tm)">Skip →</button>
+          <button class="ab ab-p" onclick="goStep(6)">Save →</button>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:38px;height:38px;border-radius:8px;background:var(--pp);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">✏️</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:3px">Create — Content in your voice</div><div style="font-size:13px;color:var(--tm);line-height:1.5">Posts, videos, emails — all sounding like you. Review and approve, or let agents handle it automatically.</div></div>
+      </div>
+    </div>
+
+    <div id="ob6">
+      <div class="mtitle">Your practice, supercharged.</div>
+      <div class="msub" style="margin-bottom:20px">Here is what is waiting for you.</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
+        <div style="display:flex;gap:12px;align-items:center;padding:11px 13px;border-radius:8px;background:var(--bg)">
+          <span style="font-size:20px">☀️</span>
+          <div style="font-size:14px;color:var(--t1)"><strong>Prep</strong> — Sessions with context, milestones, and priorities ready.</div>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:38px;height:38px;border-radius:8px;background:var(--cp);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">⚙️</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:3px">Agents — Your practice team</div><div style="font-size:13px;color:var(--tm);line-height:1.5">Brand Studio, Practice Assistant, Client Relations — pre-loaded and ready. Talk to Smoov or manage agents directly.</div></div>
+        <div style="display:flex;gap:12px;align-items:center;padding:11px 13px;border-radius:8px;background:var(--bg)">
+          <span style="font-size:20px">📊</span>
+          <div style="font-size:14px;color:var(--t1)"><strong>Analyze</strong> — Network health, content performance, revenue signals.</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:11px 13px;border-radius:8px;background:var(--bg)">
+          <span style="font-size:20px">✏️</span>
+          <div style="font-size:14px;color:var(--t1)"><strong>Studio</strong> — Posts, video, and email in your voice. Review and approve.</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:11px 13px;border-radius:8px;background:var(--cp)">
+          <span style="font-size:20px">⚙️</span>
+          <div style="font-size:14px;color:var(--t1)"><strong>Agents</strong> — Brand Studio, Practice Assistant, Client Relations pre-loaded.</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;padding:11px 13px;border-radius:8px;background:var(--bg)">
+          <span style="font-size:20px">✦</span>
+          <div style="font-size:14px;color:var(--t1)"><strong>Smoov</strong> — Your chief of staff. Ask anything. Gets smarter every session.</div>
         </div>
       </div>
       <div class="btn-row-m"><button class="ab ab-g" onclick="goStep(5)">← Back</button><button class="ab ab-p" style="background:var(--o)!important;color:#fff!important" onclick="closeModal()">Enter my practice →</button></div>
+    </div>
     </div>
   </div>
 </div>
@@ -669,7 +715,7 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
       <div class="m-inner">
         <div class="stat-strip">
           <div class="sp"><div class="sp-val">8 🔥</div><div class="sp-lbl">Clients</div></div>
-          <div class="sp"><div class="sp-val">$142K 🔥</div><div class="sp-lbl">Valuation</div></div>
+          <div class="sp"><div class="sp-val">$14.2K</div><div class="sp-lbl">Avg monthly</div></div>
           <div class="sp"><div class="sp-val">14</div><div class="sp-lbl">Sessions / mo</div></div>
           <div class="sp"><div class="sp-val">74</div><div class="sp-lbl">Network</div></div>
         </div>
@@ -690,8 +736,8 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
             <span class="sess-chevron" style="margin-left:8px">▾</span>
           </div>
           <div class="sess-detail">
-            <div class="sess-flag"><div class="sess-flag-hed">🚩 Flag</div><div id="flag1">Alex has been thinking about that manager conversation. Worth a soft check-in.</div></div>
-            <div class="sess-read"><div class="sess-read-lbl">Ciara's read</div><div class="sess-read-txt" id="cr-alex">Alex still looks for your validation before they trust themselves. Just stay curious.</div></div>
+            <div class="sess-flag"><div class="sess-flag-hed">🚩 Flag <span style="font-size:9px;font-family:'DM Mono',monospace;background:var(--cp);color:var(--c);padding:1px 5px;border-radius:3px;margin-left:4px">&lt;outreach&gt;</span></div><div id="flag1">Alex has been thinking about that manager conversation. Worth a soft check-in. <button class="ab ab-g" style="font-size:10px!important;padding:3px 9px!important;margin-top:6px" onclick="alert('Smoov is drafting a check-in message to Alex for your review...')">Draft check-in →</button></div></div>
+            <div class="sess-read"><div class="sess-read-lbl">Smoov's read</div><div class="sess-read-txt" id="cr-alex">Alex still looks for your validation before they trust themselves. Just stay curious.</div></div>
             <div class="sess-footer"><div class="sess-status"><div class="sess-dot" style="background:var(--ok)"></div>Assignment complete</div><button class="ab ab-g">View profile →</button></div>
           </div>
         </div>
@@ -705,13 +751,13 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
           </div>
           <div class="sess-detail">
             <div class="sess-flag"><div class="sess-flag-hed">🎉 Milestone</div><div id="flag2">One month with Morgan! A little acknowledgment goes a long way 🎉</div></div>
-            <div class="sess-read"><div class="sess-read-lbl">Ciara's read</div><div class="sess-read-txt" id="cr-morgan">Something's brewing with Morgan around a career change. Leave space for it.</div></div>
+            <div class="sess-read"><div class="sess-read-lbl">Smoov's read</div><div class="sess-read-txt" id="cr-morgan">Something's brewing with Morgan around a career change. Leave space for it.</div></div>
             <div class="sess-footer"><div class="sess-status"><div class="sess-dot" style="background:var(--wn)"></div>Assignment pending 🤔</div><button class="ab ab-g">View profile →</button></div>
           </div>
         </div>
         <div style="margin-top:9px;background:color-mix(in srgb,var(--c) 10%,transparent);border:1px solid color-mix(in srgb,var(--c) 35%,transparent);border-radius:11px;padding:11px 15px;font-size:15px;color:var(--t2)">
-          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--wn);display:block;margin-bottom:3px">🔔 Reminder</span>
-          <span id="flag3">Heads up — Rivera Group invoice is due Friday. Want me to draft it?</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--wn);display:block;margin-bottom:3px">🔔 Reminder <span style="font-family:'DM Mono',monospace;background:var(--cp);color:var(--c);padding:1px 5px;border-radius:3px;margin-left:4px;text-transform:none">&lt;finance&gt;</span></span>
+          <span id="flag3">Rivera Group invoice is due Friday. <button class="ab ab-g" style="font-size:10px!important;padding:3px 9px!important;margin-top:6px" onclick="alert('Smoov is drafting the Rivera Group invoice email for your review...')">Draft invoice →</button></span>
         </div>
       </div>
     </div>
@@ -719,23 +765,20 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
   <div class="bnav">
     <button class="bni on">☀️<br>Prep</button>
     <button class="bni" onclick="showScr('analyze',document.querySelectorAll('.tab')[1])">📊<br>Analyze</button>
-    <button class="bni bni-c">✦<br>Ciara</button>
-    <button class="bni" onclick="showScr('create',document.querySelectorAll('.tab')[2])">✏️<br>Create</button>
+    <button class="bni bni-c">✦<br>Smoov</button>
+    <button class="bni" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">✏️<br>Studio</button>
   </div>
 </div>
 
 <!-- ANALYZE -->
 <div class="scr" id="scr-analyze">
-  <div class="domain-tabs-sticky">
+  <div class="analyze-wrap">
     <div class="domain-tabs">
       <button class="dtab on" onclick="showDomain('network',this)">👤 Network</button>
       <button class="dtab" onclick="showDomain('content',this)">📄 Content</button>
       <button class="dtab" onclick="showDomain('reach',this)">🌐 Reach</button>
       <button class="dtab" onclick="showDomain('revenue',this)">💲 Revenue</button>
     </div>
-  </div>
-  <div class="domain-tabs-spacer"></div>
-  <div class="analyze-wrap">
     <!-- NETWORK -->
     <div class="domain-scr on" id="dom-network">
       <div class="net-toolbar">
@@ -747,7 +790,7 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
         </div>
       </div>
       <div class="net-graph-wrap">
-        <svg width="100%" viewBox="0 0 640 280" style="display:block"><g id="net-lines"></g><g id="net-nodes"></g></svg>
+        <svg width="100%" viewBox="0 0 760 340" style="display:block"><g id="net-lines"></g><g id="net-nodes"></g></svg>
         <div class="net-graph-legend">
           <div class="legend-item"><div class="legend-dot" style="background:#1D9E75"></div>MVP</div>
           <div class="legend-item"><div class="legend-dot" style="background:var(--p)"></div>Potential</div>
@@ -759,8 +802,8 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
           <button class="np-close" onclick="closeProfile()">×</button>
           <div class="np-top"><div class="np-av" id="np-av" style="background:var(--okp);color:var(--ok)">AJ</div><div style="flex:1"><div class="np-name" id="np-name">Alex Johnson</div><div class="np-tags" id="np-tags"><span class="badge b-ok">MVP</span><span class="badge b-p">Client</span></div></div></div>
           <div class="np-grid" id="np-grid"></div>
-          <div class="np-read"><div class="np-rl">Ciara's read</div><div class="np-rt" id="np-read">Strong MVP signal. Worth deepening.</div></div>
-          <div class="np-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Save to list</button><button class="ab ab-g">Edit</button><button class="ab ab-g">Message</button></div>
+          <div class="np-read"><div class="np-rl">Smoov's read</div><div class="np-rt" id="np-read">Strong MVP signal. Worth deepening.</div></div>
+          <div class="np-acts"><button class="ab ab-p" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">Save to list</button><button class="ab ab-g">Edit</button><button class="ab ab-g">Message</button></div>
         </div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--okp)">📈</div><div><div class="wcb-title">What's working</div><div class="wcb-sub">Client domain · 90 days</div></div></div>
@@ -768,11 +811,11 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>3 MVPs generating referrals.</strong> Alex, Sarah, Rivera Group — 5 clients sent this year.</div></div></div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--wnp)">📉</div><div><div class="wcb-title">Could be better</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Zero referrals in 60 days</strong> despite 8 active clients.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create referral post</button></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Zero referrals in 60 days</strong> despite 8 active clients.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">Create referral post</button></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Paula Reed going cold.</strong> No contact in 2 months. Previously a referral source.</div></div><div class="az-acts"><button class="ab ab-p">Draft outreach</button></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Rivera Group renewal not initiated.</strong> Sprint ends in 3 sessions.</div></div><div class="az-acts"><button class="ab ab-p">Draft renewal conversation</button></div></div>
       </div>
-      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--idea-bg)">✦</div><div><div class="wcb-title" id="exp-net-t">Things worth trying</div><div class="wcb-sub" id="exp-net-s">Low lift, Ciara tracks results</div></div></div>
+      <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--idea-bg)">✦</div><div><div class="wcb-title" id="exp-net-t">Things worth trying</div><div class="wcb-sub" id="exp-net-s">Low lift, Smoov tracks results</div></div></div>
         <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title" id="net-i1t">Check in with Rivera before talking renewal</div><div class="idea-desc" id="net-i1d">Ask how it's been going. It'll feel less transactional.</div><div class="idea-acts"><button class="ab ab-p">Draft the ask</button></div></div></div>
         <div class="idea-card"><div class="idea-num">2</div><div><div class="idea-title" id="net-i2t">Personal note to Paula</div><div class="idea-desc" id="net-i2d">Not a newsletter. Just one real sentence.</div><div class="idea-acts"><button class="ab ab-p">Draft the message</button></div></div></div>
       </div>
@@ -796,7 +839,7 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:var(--ok)"></div><div class="az-txt"><strong>Email open rate strong at 31%.</strong> Industry average is 21%.</div></div></div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--wnp)">📉</div><div><div class="wcb-title">Could be better</div></div></div>
-        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Posting dropped off.</strong> 11 days since last post. On pace for 3 vs target of 8.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Generate a post</button></div></div>
+        <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>Posting dropped off.</strong> 11 days since last post. On pace for 3 vs target of 8.</div></div><div class="az-acts"><button class="ab ab-p" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">Generate a post</button></div></div>
         <div class="az-card"><div class="az-row"><div class="az-dot" style="background:#E8A824"></div><div class="az-txt"><strong>No Calendly link in your LinkedIn bio.</strong> Posts drive traffic but there's no clear next step.</div></div><div class="az-acts"><button class="ab ab-p" onclick="toggleDrawer('cal-drawer')">Learn how</button></div>
           <div class="learn-drawer" id="cal-drawer">
             <div class="learn-step"><div class="learn-num">1</div><div>Go to <strong>linkedin.com/in/yourprofile</strong> → <strong>Edit profile</strong>.</div></div>
@@ -808,8 +851,8 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
         </div>
       </div>
       <div class="wcb-section"><div class="wcb-hdr"><div class="wcb-icon" style="background:var(--idea-bg)">✦</div><div><div class="wcb-title">Experiments</div></div></div>
-        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Monthly "client win" post</div><div class="idea-desc">One anonymized breakthrough per month keeps your pipeline warm.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create in Studio</button></div></div></div>
-        <div class="idea-card"><div class="idea-num">2</div><div><div class="idea-title">Try a poll this week</div><div class="idea-desc">3–4× more replies than regular posts. Low effort, high signal.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('create',document.querySelectorAll('.tab')[2])">Create a poll</button></div></div></div>
+        <div class="idea-card"><div class="idea-num">1</div><div><div class="idea-title">Monthly "client win" post</div><div class="idea-desc">One anonymized breakthrough per month keeps your pipeline warm.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">Create in Studio</button></div></div></div>
+        <div class="idea-card"><div class="idea-num">2</div><div><div class="idea-title">Try a poll this week</div><div class="idea-desc">3–4× more replies than regular posts. Low effort, high signal.</div><div class="idea-acts"><button class="ab ab-p" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">Create a poll</button></div></div></div>
       </div>
     </div>
     <!-- REACH -->
@@ -853,64 +896,83 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
   </div>
 </div>
 <!-- CREATE -->
-<div class="scr" id="scr-create">
-  <div class="mobile-plat-scroll" id="mobile-plat-scroll">
-    <button class="mfs-chip on" onclick="pickMobilePlat(this,'linkedin')">💼 LinkedIn</button>
-    <button class="mfs-chip" onclick="pickMobilePlat(this,'instagram')">📸 Instagram</button>
-    <button class="mfs-chip" onclick="pickMobilePlat(this,'email')">📧 Email</button>
-    <button class="mfs-chip" onclick="pickMobilePlat(this,'youtube')">▶️ YouTube</button>
-    <button class="mfs-chip" onclick="pickMobilePlat(this,'substack')">📝 Substack</button>
-  </div>
+<div class="scr" id="scr-studio">
   <div class="create-layout">
-    <div class="create-rail">
-      <div class="rail-section">
-        <div class="rail-lbl">Platform</div>
-        <button class="rc on" id="pc-linkedin" onclick="pickPlat(this,'linkedin')"><span class="rc-icon">💼</span>LinkedIn</button>
-        <button class="rc" id="pc-instagram" onclick="pickPlat(this,'instagram')"><span class="rc-icon">📸</span>Instagram</button>
-        <button class="rc" id="pc-email" onclick="pickPlat(this,'email')"><span class="rc-icon">📧</span>Email</button>
-        <button class="rc" id="pc-youtube" onclick="pickPlat(this,'youtube')"><span class="rc-icon">▶️</span>YouTube</button>
-        <button class="rc" id="pc-substack" onclick="pickPlat(this,'substack')"><span class="rc-icon">📝</span>Substack</button>
-      </div>
-      <div class="rail-divider"></div>
-      <div class="rail-section">
-        <div class="rail-lbl">Format</div>
-        <div id="fmt-options"></div>
-        <button class="rc" id="fc-video" onclick="pickFmt(this,'video')" style="margin-top:8px;border-top:0.5px solid var(--bd);padding-top:10px;width:100%;color:var(--o);border-color:var(--o);font-weight:600"><span class="rc-icon">🎥</span>Video</button>
-      </div>
-      <div class="rail-divider"></div>
-      <div class="rail-section">
-        <div class="rail-lbl">Audience list</div>
-        <button class="rc" onclick="pickAud(this)">All clients</button>
-        <button class="rc" onclick="pickAud(this)">MVPs · 3</button>
-        <button class="rc" onclick="pickAud(this)">Potential MVPs</button>
-        <button class="rc" onclick="pickAud(this)">At-risk · 2</button>
-        <button class="rc" style="color:var(--p);border-color:var(--pl);font-size:13px" onclick="alert('List builder — create a new segment from your Network')">+ New list</button>
-      </div>
-      <div class="rail-divider"></div>
-      <div class="rail-section">
-        <div class="rail-lbl">Tone</div>
-        <button class="rc on" id="tone-warm" onclick="pickTone(this)">Warm &amp; direct</button>
-        <button class="rc" onclick="pickTone(this)">Provocative</button>
-        <button class="rc" onclick="pickTone(this)">Storytelling</button>
-        <button class="rc" onclick="pickTone(this)">Data-led</button>
-      </div>
-      <div class="rail-divider"></div>
-      <div class="rail-section">
-        <div class="rail-lbl">Library</div>
-        <button class="rail-btn">📂 Saved posts</button>
-        <button class="rail-btn">📋 Templates</button>
-        <button class="rail-btn">🕐 History</button>
-      </div>
-    </div>
     <div class="create-center">
-      <div style="display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid var(--bd)">
-        <button id="cm-content" onclick="setCreateMode('content')" style="padding:10px 20px;border:none;background:none;font-size:14px;font-weight:600;color:var(--p);cursor:pointer;border-bottom:2px solid var(--p);margin-bottom:-2px;font-family:inherit">Content</button>
-        <button id="cm-agents" onclick="setCreateMode('agents')" style="padding:10px 20px;border:none;background:none;font-size:14px;font-weight:600;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:inherit">Agents</button>
+      <!-- STUDIO PATH TABS -->
+      <div style="display:flex;gap:0;border-bottom:2px solid var(--bd);margin:-26px -24px 20px;padding:0 24px">
+        <button id="ptab-review" onclick="switchPath('review')" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:600;color:var(--p);cursor:pointer;border-bottom:2px solid var(--p);margin-bottom:-2px;font-family:inherit;white-space:nowrap">📥 Review <span id="review-badge" style="font-size:10px;background:var(--wn);color:white;padding:1px 5px;border-radius:3px;margin-left:3px">3</span></button>
+        <button id="ptab-prompt" onclick="switchPath('prompt')" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:600;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:inherit;white-space:nowrap">✏️ From prompt</button>
+        <button id="ptab-format" onclick="switchPath('format')" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:600;color:var(--tm);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:inherit;white-space:nowrap">🎯 Format first</button>
       </div>
-      <div id="create-content-view">
+
+      <!-- PATH: REVIEW QUEUE -->
+      <div id="studio-path-review">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-size:15px;font-weight:700;color:var(--t1)">Ready for your review</div>
+          <span style="font-size:10px;font-family:'DM Mono',monospace;background:var(--wn);color:white;padding:2px 7px;border-radius:3px;font-weight:600">3 pending</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+
+          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:14px;background:var(--card);cursor:pointer" onclick="showDraftReview()">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div style="display:flex;gap:6px;align-items:center">
+                <span style="font-size:10px;padding:2px 7px;border-radius:3px;background:var(--pp);color:var(--p);font-weight:700;font-family:'DM Mono',monospace">LinkedIn</span>
+                <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:var(--cp);color:var(--c);font-family:'DM Mono',monospace">&lt;content&gt;</span>
+              </div>
+              <span style="font-size:11px;color:var(--wn);font-weight:600">Needs review</span>
+            </div>
+            <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:3px">Avoiding conflict prolongs it.</div>
+            <div style="font-size:12px;color:var(--tm);margin-bottom:10px">Video post · From session with Alex · Brand Studio</div>
+            <div style="display:flex;gap:6px">
+              <button class="ab ab-p" style="font-size:12px;padding:6px 12px" onclick="event.stopPropagation();alert('Posted to LinkedIn!')">↗ Post now</button>
+              <button class="ab ab-g" style="font-size:12px;padding:6px 12px" onclick="event.stopPropagation();showDraftReview()">Review</button>
+              <button class="ab ab-g" style="font-size:12px;padding:6px 12px" onclick="event.stopPropagation();alert('Scheduled for Tuesday 8am')">Schedule</button>
+            </div>
+          </div>
+
+          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:14px;background:var(--card)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div style="display:flex;gap:6px;align-items:center">
+                <span style="font-size:10px;padding:2px 7px;border-radius:3px;background:var(--pp);color:var(--p);font-weight:700;font-family:'DM Mono',monospace">LinkedIn</span>
+                <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:var(--cp);color:var(--c);font-family:'DM Mono',monospace">&lt;content&gt;</span>
+              </div>
+              <span style="font-size:11px;color:var(--wn);font-weight:600">Needs review</span>
+            </div>
+            <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:3px">Why session 6-8 is where transformation happens.</div>
+            <div style="font-size:12px;color:var(--tm);margin-bottom:10px">Carousel · 6 slides · From your analytics · Brand Studio</div>
+            <div style="display:flex;gap:6px">
+              <button class="ab ab-p" style="font-size:12px;padding:6px 12px" onclick="alert('Posted!')">↗ Post now</button>
+              <button class="ab ab-g" style="font-size:12px;padding:6px 12px">Review</button>
+              <button class="ab ab-g" style="font-size:12px;padding:6px 12px" onclick="alert('Scheduled for Thursday 8am')">Schedule</button>
+            </div>
+          </div>
+
+          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:14px;background:var(--card)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div style="display:flex;gap:6px;align-items:center">
+                <span style="font-size:10px;padding:2px 7px;border-radius:3px;background:var(--cp);color:var(--c);font-weight:700;font-family:'DM Mono',monospace">Email</span>
+                <span style="font-size:10px;padding:2px 6px;border-radius:3px;background:var(--cp);color:var(--c);font-family:'DM Mono',monospace">&lt;outreach&gt;</span>
+              </div>
+              <span style="font-size:11px;color:var(--wn);font-weight:600">Needs review</span>
+            </div>
+            <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:3px">Session recap — Alex Johnson</div>
+            <div style="font-size:12px;color:var(--tm);margin-bottom:10px">Post-session recap · Practice Assistant · Sends tomorrow 9am</div>
+            <div style="display:flex;gap:6px">
+              <button class="ab ab-p" style="font-size:12px;padding:6px 12px" onclick="alert('Approved — sends tomorrow 9am')">✓ Approve</button>
+              <button class="ab ab-g" style="font-size:12px;padding:6px 12px">Review</button>
+              <button class="ab ab-g" style="font-size:12px;padding:6px 12px" onclick="alert('Skipped')">Skip</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PATH: FROM PROMPT -->
+      <div id="studio-path-prompt" style="display:none">
       <div class="prompt-label">✏️ What's the insight?</div>
       <div class="prompt-wrap">
-        <textarea class="prompt-ta" rows="4" id="manual-prompt" placeholder="Describe the breakthrough, framework, or moment you want to share. Be specific — Smoov will shape it into your voice.&#10;&#10;Example: A client finally confronted their manager about being passed over. They'd avoided it for 8 months. Took 12 minutes and changed everything."></textarea>
+        <textarea class="prompt-ta" rows="4" id="manual-prompt" placeholder="Describe the breakthrough, framework, or moment you want to share. Be specific — Ciara will shape it into your voice.&#10;&#10;Example: A client finally confronted their manager about being passed over. They'd avoided it for 8 months. Took 12 minutes and changed everything."></textarea>
         <div class="prompt-footer">
           <span class="media-pill" onclick="alert('Add image, video, or doc')">📎 Add media</span>
           <span class="canva-pill" onclick="alert('Connect Canva to import templates and brand assets')">🎨 Import from Canva</span>
@@ -937,53 +999,77 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
           <div class="sug-body"><div class="sug-tags"><span class="sug-tag st-data">From insights</span><span class="sug-tag st-fmt" id="sug4-fmt">Poll</span></div><div class="sug-title">Referral rate dropped — make it a poll</div><div class="sug-desc">Surfaces referral psychology.</div></div>
         </div>
       </div>
-      </div><!-- /create-content-view -->
+      </div><!-- /studio-path-prompt -->
 
-      <div id="create-agents-view" style="display:none">
-        <div style="margin-bottom:24px">
-          <div style="font-size:19px;font-weight:900;color:var(--t1);margin-bottom:6px">Your agent team</div>
-          <div style="font-size:14px;color:var(--tm);line-height:1.6">Smoov manages your agents. Talk to Smoov or manage them directly here.</div>
+      <!-- PATH: FORMAT FIRST -->
+      <div id="studio-path-format" style="display:none">
+        <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px">Build it step by step</div>
+        <div style="font-size:13px;color:var(--tm);margin-bottom:20px">Choose your settings, then create the content or set up an agent to do it on a schedule.</div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:6px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--p);color:white;font-size:10px;text-align:center;line-height:18px;margin-right:6px">1</span>Format</label>
+            <select id="ff-format" style="width:100%;padding:11px 12px;border:0.5px solid var(--bd);border-radius:8px;font-family:inherit;font-size:14px;color:var(--t1);background:var(--card)">
+              <option value="post">📝 Text post</option>
+              <option value="carousel">🖼️ Carousel</option>
+              <option value="video">🎥 Video</option>
+              <option value="newsletter">📧 Email / Newsletter</option>
+              <option value="poll">📣 Poll</option>
+              <option value="article">📰 Long-form article</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:6px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--p);color:white;font-size:10px;text-align:center;line-height:18px;margin-right:6px">2</span>Platform</label>
+            <select id="ff-platform" style="width:100%;padding:11px 12px;border:0.5px solid var(--bd);border-radius:8px;font-family:inherit;font-size:14px;color:var(--t1);background:var(--card)">
+              <option value="linkedin">💼 LinkedIn</option>
+              <option value="instagram">📸 Instagram</option>
+              <option value="email">📧 Email</option>
+              <option value="youtube">▶️ YouTube</option>
+              <option value="substack">📝 Substack</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:6px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--p);color:white;font-size:10px;text-align:center;line-height:18px;margin-right:6px">3</span>Audience</label>
+            <select id="ff-audience" style="width:100%;padding:11px 12px;border:0.5px solid var(--bd);border-radius:8px;font-family:inherit;font-size:14px;color:var(--t1);background:var(--card)">
+              <option>All clients</option>
+              <option>MVPs (3)</option>
+              <option>Potential clients</option>
+              <option>At-risk (2)</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:6px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--p);color:white;font-size:10px;text-align:center;line-height:18px;margin-right:6px">4</span>Tone</label>
+            <select id="ff-tone" style="width:100%;padding:11px 12px;border:0.5px solid var(--bd);border-radius:8px;font-family:inherit;font-size:14px;color:var(--t1);background:var(--card)">
+              <option>Warm &amp; direct</option>
+              <option>Provocative</option>
+              <option>Storytelling</option>
+              <option>Data-led</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:6px"><span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--p);color:white;font-size:10px;text-align:center;line-height:18px;margin-right:6px">5</span>What is it about? <span style="color:var(--tm);font-weight:400;text-transform:none;letter-spacing:0">(optional — Smoov can pull from sessions)</span></label>
+            <textarea class="fta" id="ff-topic" rows="2" placeholder="Leave blank to let Smoov choose from your recent sessions, or describe a specific insight."></textarea>
+          </div>
+
         </div>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
-          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div><div style="font-size:15px;font-weight:700;color:var(--t1)">✏️ Brand Studio</div><div style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Content &amp; publishing</div></div>
-              <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
+
+        <div style="border:0.5px solid var(--bd);border-radius:8px;padding:12px;background:var(--card2);margin:16px 0">
+          <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">
+            <input type="checkbox" id="ff-recurring" style="margin-top:3px">
+            <div>
+              <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px">Make this a recurring agent workflow</div>
+              <div style="font-size:12px;color:var(--tm)">Smoov runs this on a schedule and presents each draft for your review</div>
             </div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Creates and schedules content from your sessions. Drafts for review by default. Runs A/B tests.</div>
-            <div style="display:flex;gap:6px">
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="showAgentDetail('brand-studio')">Edit</button>
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Test: Brand Studio would generate a draft from your last session with Alex Johnson')">Test</button>
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Agent paused')">Pause</button>
-            </div>
-          </div>
-          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div><div style="font-size:15px;font-weight:700;color:var(--t1)">☀️ Practice Assistant</div><div style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Prep, scheduling &amp; follow-ups</div></div>
-              <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
-            </div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Session prep, calendar scheduling, and post-session client recaps. Review required by default.</div>
-            <div style="display:flex;gap:6px">
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="showAgentDetail('practice-assistant')">Edit</button>
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Test: Practice Assistant would send Alex Johnson a session recap from today')">Test</button>
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Agent paused')">Pause</button>
-            </div>
-          </div>
-          <div style="border:0.5px solid var(--bd);border-radius:10px;padding:16px;background:var(--card)">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-              <div><div style="font-size:15px;font-weight:700;color:var(--t1)">🤝 Client Relations</div><div style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace;margin-top:2px">ACTIVE · Check-ins &amp; milestones</div></div>
-              <span style="font-size:11px;padding:3px 8px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
-            </div>
-            <div style="font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:12px">Milestone celebrations, check-ins, and referral prompts at the right moments.</div>
-            <div style="display:flex;gap:6px">
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="showAgentDetail('client-relations')">Edit</button>
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Test: Client Relations would send a milestone note to Sarah Kim')">Test</button>
-              <button class="ab ab-g" style="font-size:11px;padding:5px 10px" onclick="alert('Agent paused')">Pause</button>
-            </div>
-          </div>
+          </label>
         </div>
-        <button class="ab ab-p" style="width:100%;padding:14px" onclick="showCreateAgent()">+ Create a new agent</button>
-      </div><!-- /create-agents-view -->
+
+        <button class="ab ab-gen" style="width:100%" onclick="buildFromFormat()">✦ Build it →</button>
+      </div><!-- /studio-path-format -->
 
     </div><!-- /create-center -->
     <div class="create-right">
@@ -997,6 +1083,126 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
     </div>
   </div>
 </div>
+
+<!-- AGENTS -->
+<div class="scr" id="scr-agents">
+  <div class="analyze-wrap">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-size:24px;font-weight:900;color:var(--t1);margin-bottom:4px">Your agent team</div>
+        <div style="font-size:15px;color:var(--t2)">Smoov manages your agents. Talk to Smoov or manage them directly here.</div>
+      </div>
+      <button class="ab ab-p" style="font-size:13px;padding:10px 18px" onclick="showCreateAgentPanel()">+ New agent</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px">
+
+      <div style="border:0.5px solid var(--bd);border-radius:14px;padding:20px;background:var(--card)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--t1);margin-bottom:4px">✏️ Brand Studio <span style="font-size:10px;font-family:'DM Mono',monospace;background:var(--cp);color:var(--c);padding:2px 6px;border-radius:3px">&lt;content&gt;</span></div>
+            <div style="font-size:12px;color:var(--tm);font-family:'DM Mono',monospace">ACTIVE · Content and publishing</div>
+          </div>
+          <span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
+        </div>
+        <div style="font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:14px">Creates content from your sessions and posts for review. Runs A/B tests and reports what is working. Pre-loaded with your voice.</div>
+        <div style="background:var(--bg);border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;color:var(--t2)">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--tm);margin-bottom:6px">GUARDRAILS</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div>✓ Review required before publishing</div>
+            <div>✓ LinkedIn and Instagram only</div>
+            <div>✓ Tuesday and Thursday 8am</div>
+            <div>✓ Max 2 posts per week</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:7px">
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="showAgentEdit('Brand Studio')">Edit</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="showAgentTestPanel('Brand Studio')">Test</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="alert('Brand Studio paused')">Pause</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px;color:#E24B4A;border-color:#E24B4A!important" onclick="alert('Delete Brand Studio?')">Delete</button>
+        </div>
+      </div>
+
+      <div style="border:0.5px solid var(--bd);border-radius:14px;padding:20px;background:var(--card)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--t1);margin-bottom:4px">☀️ Practice Assistant <span style="font-size:10px;font-family:'DM Mono',monospace;background:var(--cp);color:var(--c);padding:2px 6px;border-radius:3px">&lt;practice&gt;</span></div>
+            <div style="font-size:12px;color:var(--tm);font-family:'DM Mono',monospace">ACTIVE · Prep, scheduling and follow-ups</div>
+          </div>
+          <span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
+        </div>
+        <div style="font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:14px">Session prep, calendar scheduling, and post-session client recaps. Sends next weekday at 9am. Review required by default.</div>
+        <div style="background:var(--bg);border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;color:var(--t2)">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--tm);margin-bottom:6px">GUARDRAILS</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div>✓ Review required before sending</div>
+            <div>✓ Working sessions only (not social calls)</div>
+            <div>✓ Send next weekday at 9am</div>
+            <div>✓ Include CTA to schedule next session</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:7px">
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="showAgentEdit('Practice Assistant')">Edit</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="showAgentTestPanel('Practice Assistant')">Test</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="alert('Practice Assistant paused')">Pause</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px;color:#E24B4A;border-color:#E24B4A!important" onclick="alert('Delete Practice Assistant?')">Delete</button>
+        </div>
+      </div>
+
+      <div style="border:0.5px solid var(--bd);border-radius:14px;padding:20px;background:var(--card)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--t1);margin-bottom:4px">🤝 Client Relations <span style="font-size:10px;font-family:'DM Mono',monospace;background:var(--cp);color:var(--c);padding:2px 6px;border-radius:3px">&lt;outreach&gt;</span></div>
+            <div style="font-size:12px;color:var(--tm);font-family:'DM Mono',monospace">ACTIVE · Check-ins and milestones</div>
+          </div>
+          <span style="font-size:11px;padding:3px 9px;border-radius:4px;background:var(--okp);color:var(--ok);font-weight:600">Active</span>
+        </div>
+        <div style="font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:14px">Milestone celebrations, check-ins, and referral prompts at the right moments. Trained on your voice and client history.</div>
+        <div style="background:var(--bg);border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;color:var(--t2)">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--tm);margin-bottom:6px">GUARDRAILS</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div>✓ Review required before sending</div>
+            <div>✓ 3-month and 6-month check-ins</div>
+            <div>✓ Referral prompts after positive sessions only</div>
+            <div>✓ Warm, personal tone always</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:7px">
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="showAgentEdit('Client Relations')">Edit</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="showAgentTestPanel('Client Relations')">Test</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px" onclick="alert('Client Relations paused')">Pause</button>
+          <button class="ab ab-g" style="font-size:12px;padding:7px 12px;color:#E24B4A;border-color:#E24B4A!important" onclick="alert('Delete Client Relations?')">Delete</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--bg);border-radius:14px;padding:20px;border:1px dashed var(--bde)" id="agent-create-panel" style="display:none">
+      <div style="font-size:16px;font-weight:700;color:var(--t1);margin-bottom:4px">Create a new agent</div>
+      <div style="font-size:13px;color:var(--tm);margin-bottom:16px">Describe what you want the agent to do. Smoov will build it.</div>
+      <div style="margin-bottom:12px">
+        <label class="flbl">Agent name</label>
+        <input class="finput" placeholder="e.g. Growth Agent" style="margin-bottom:0"/>
+      </div>
+      <div style="margin-bottom:16px">
+        <label class="flbl">What should it do?</label>
+        <textarea class="fta" rows="3" placeholder="e.g. After each working session, send the client session notes, next steps, and a progress highlight. Include a CTA to schedule the next session. Send next weekday at 9am."></textarea>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="ab ab-g" style="flex:1" onclick="document.getElementById('agent-create-panel').style.display='none'">Cancel</button>
+        <button class="ab ab-p" style="flex:1" onclick="alert('Smoov is building your agent... It will appear in your team shortly.')">Create agent →</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="bnav">
+    <button class="bni" onclick="showScr('prep',document.querySelectorAll('.tab')[0])">☀️<br>Prep</button>
+    <button class="bni" onclick="showScr('analyze',document.querySelectorAll('.tab')[1])">📊<br>Analyze</button>
+    <button class="bni" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">✏️<br>Studio</button>
+    <button class="bni on">⚙️<br>Agents</button>
+  </div>
+</div>
+
 
 <!-- CIARA BUBBLE -->
 <button class="ciara-bubble-btn" onclick="toggleChat()" title="Chat with Smoov">
@@ -1022,10 +1228,11 @@ body.vibe-magical .st-fmt{background:rgba(40,150,100,.2);color:#5ABB90}
   </div>
 </div>
 <div class="bnav">
-  <button class="bni on">☀️<br>Prep</button>
+  <button class="bni on" onclick="showScr('prep',document.querySelectorAll('.tab')[0])">☀️<br>Prep</button>
   <button class="bni" onclick="showScr('analyze',document.querySelectorAll('.tab')[1])">📊<br>Analyze</button>
-  <button class="bni bni-c">✦<br>Ciara</button>
-  <button class="bni" onclick="showScr('create',document.querySelectorAll('.tab')[2])">✏️<br>Create</button>
+  <button class="bni bni-c" onclick="toggleChat()">✦<br>Smoov</button>
+  <button class="bni" onclick="showScr('studio',document.querySelectorAll('.tab')[2])">✏️<br>Studio</button>
+  <button class="bni" onclick="showScr('agents',document.querySelectorAll('.tab')[3])">⚙️<br>Agents</button>
 </div>
 </div>
 
@@ -1042,7 +1249,9 @@ var curPlat='linkedin',curFmt='post';
 
 function renderFmts(plat){
   var fmts=PLAT_FORMATS[plat]||[];
-  document.getElementById('fmt-options').innerHTML=fmts.map(function(f,i){
+  var fo=document.getElementById('fmt-options');
+  if(!fo)return;
+  fo.innerHTML=fmts.map(function(f,i){
     return '<button class="rc rc-fmt'+(i===0?' on':'')
       +'" id="fc-'+f.id+'" onclick="pickFmt(this,\''+f.id+'\')">'
       +'<span style="font-size:13px;flex-shrink:0">'+f.icon+'</span>'+f.lbl+'</button>';
@@ -1058,9 +1267,8 @@ function pickPlat(el,plat){
   el.classList.add('on');curPlat=plat;renderFmts(plat);
 }
 function pickFmt(el,fmt){
-  document.querySelectorAll('#fmt-options .rc, #fc-video').forEach(function(b){b.classList.remove('on');});
-  el.classList.add('on');curFmt=fmt;
-  if(fmt==='video'){showVideoWorkflow(1);}else{resetOutput();}
+  document.querySelectorAll('#fmt-options .rc').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');curFmt=fmt;resetOutput();
 }
 function pickAud(el){
   document.querySelectorAll('.create-rail .rc:not([id])').forEach(function(b){b.classList.remove('on');});
@@ -1083,8 +1291,8 @@ renderFmts('linkedin');
 
 // VIBES
 var VIBES={
-  business:{greet:'☀️ Good morning, Shira',ctag:'[HEADS UP]',flag1:'Preparing for a difficult manager conversation. Check in before diving in.',flag2:'1-month anniversary today. A small acknowledgment goes a long way.',flag3:'Q3 invoice for Rivera Group due Friday. Ciara can draft it.',goal:'Lead from behind. Embrace pauses so insights arise naturally.',alexRead:'Still seeking external validation before acting. Session 6 breakthrough needs reinforcing — bring it back today.',morganRead:'Career pivot conversation is circling — Morgan may be ready to name it directly today.',obCiara:"Executive coaches land best on LinkedIn. I'll tune your content to senior leadership audiences.",expNetT:'Experiments',expNetS:'Try these — Ciara tracks results',ni1t:'Ask Rivera Group for a testimonial first',ni1d:'Before the renewal conversation — reinforces value and gives you content.',ni2t:'Personal outreach to Paula Reed',ni2d:'Not a newsletter — one genuine sentence about something you worked on together.',chatMsg:"Your breakthrough posts get 2.4× more engagement than frameworks. Ready to create one?"},
-  chill:{greet:'☀️ Hey Shira, morning!',ctag:'[just so you know]',flag1:"Alex has been thinking about that manager conversation. Worth a soft check-in.",flag2:"One month with Morgan! A little acknowledgment goes a long way 🎉",flag3:'Heads up — Rivera Group invoice is due Friday. Want me to draft it?',goal:"You don't have to fill every silence. Let them breathe a little today.",alexRead:'Alex still looks for your validation before they trust themselves. Just stay curious.',morganRead:"Something's brewing with Morgan around a career change. Leave space for it.",obCiara:"LinkedIn is usually the move for exec coaches. I'll keep it warm but professional.",expNetT:'Things worth trying',expNetS:'Low lift, Ciara tracks results',ni1t:'Check in with Rivera before talking renewal',ni1d:"Ask how it's been going. It'll feel less transactional.",ni2t:'Personal note to Paula',ni2d:'Not a newsletter. Just one real sentence.',chatMsg:"Hey! Your story posts are killing it 😊 Want to make another one?"},
+  business:{greet:'☀️ Good morning, Shira',ctag:'[HEADS UP]',flag1:'Preparing for a difficult manager conversation. Check in before diving in.',flag2:'1-month anniversary today. A small acknowledgment goes a long way.',flag3:'Q3 invoice for Rivera Group due Friday. Smoov can draft it.',goal:'Lead from behind. Embrace pauses so insights arise naturally.',alexRead:'Still seeking external validation before acting. Session 6 breakthrough needs reinforcing — bring it back today.',morganRead:'Career pivot conversation is circling — Morgan may be ready to name it directly today.',obCiara:"Executive coaches land best on LinkedIn. I'll tune your content to senior leadership audiences.",expNetT:'Experiments',expNetS:'Try these — Smoov tracks results',ni1t:'Ask Rivera Group for a testimonial first',ni1d:'Before the renewal conversation — reinforces value and gives you content.',ni2t:'Personal outreach to Paula Reed',ni2d:'Not a newsletter — one genuine sentence about something you worked on together.',chatMsg:"Your breakthrough posts get 2.4× more engagement than frameworks. Ready to create one?"},
+  chill:{greet:'☀️ Hey Shira, morning!',ctag:'[just so you know]',flag1:"Alex has been thinking about that manager conversation. Worth a soft check-in.",flag2:"One month with Morgan! A little acknowledgment goes a long way 🎉",flag3:'Heads up — Rivera Group invoice is due Friday. Want me to draft it?',goal:"You don't have to fill every silence. Let them breathe a little today.",alexRead:'Alex still looks for your validation before they trust themselves. Just stay curious.',morganRead:"Something's brewing with Morgan around a career change. Leave space for it.",obCiara:"LinkedIn is usually the move for exec coaches. I'll keep it warm but professional.",expNetT:'Things worth trying',expNetS:'Low lift, Smoov tracks results',ni1t:'Check in with Rivera before talking renewal',ni1d:"Ask how it's been going. It'll feel less transactional.",ni2t:'Personal note to Paula',ni2d:'Not a newsletter. Just one real sentence.',chatMsg:"Hey! Your story posts are killing it 😊 Want to make another one?"},
   magical:{greet:'✨ A new day arrives, Shira',ctag:'[the thread to pull]',flag1:'Alex stands at a threshold today. Hold space before you speak.',flag2:'One moon has passed with Morgan. Mark the moment — even briefly.',flag3:"The Rivera Group chapter nears its close. Ciara can weave the invoice when you're ready.",goal:'The most powerful thing you can offer today is presence. Let the silence do its work.',alexRead:"Alex carries the seed you planted in session 6. Today it may be ready to bloom — don't rush it.",morganRead:"Morgan orbits a decision that hasn't yet found its name. Create the conditions for it to emerge.",obCiara:"LinkedIn is your stage. Your words carry the weight of real transformation.",expNetT:'Seeds to plant',expNetS:'Experiments worth tending',ni1t:'Honor the journey before the next chapter begins',ni1d:"Before you speak of renewal, acknowledge what's already been built. Gratitude opens doors.",ni2t:'A gentle signal to Paula',ni2d:"One sentence that names what was real between you. No agenda.",chatMsg:"Your words carry the resonance of real transformation. Which truth from this week wants to be shared?"}
 };
 
@@ -1096,9 +1304,7 @@ function setVibe(v,label,el){
   var d=VIBES[v];
   document.getElementById('d-greet').textContent=d.greet;
   document.getElementById('d-ctag').textContent=d.ctag;
-  document.getElementById('flag1').textContent=d.flag1;
-  document.getElementById('flag2').textContent=d.flag2;
-  document.getElementById('flag3').textContent=d.flag3;
+  // flags are static (practice data, not vibe-dependent) — preserves Draft buttons
   document.getElementById('d-goal').textContent=d.goal;
   document.getElementById('cr-alex').textContent=d.alexRead;
   document.getElementById('cr-morgan').textContent=d.morganRead;
@@ -1111,38 +1317,6 @@ function setVibe(v,label,el){
   document.getElementById('net-i2d').textContent=d.ni2d;
   document.getElementById('ciara-chat-msg').textContent=d.chatMsg;
   buildGraph();
-
-// ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
-(function(){
-  var banner = document.querySelector('.domain-tabs-sticky');
-  if(!banner) return;
-  var lastStuck = false;
-  function checkSticky(){
-    if(!document.getElementById('scr-analyze').classList.contains('on')){
-      if(lastStuck){banner.classList.remove('stuck');lastStuck=false;}
-      return;
-    }
-    var rect = banner.getBoundingClientRect();
-    var topbar = document.querySelector('.topbar');
-    var tbH = topbar ? topbar.offsetHeight : 56;
-    var shouldStick = rect.top <= tbH;
-    if(shouldStick !== lastStuck){
-      banner.classList.toggle('stuck', shouldStick);
-      lastStuck = shouldStick;
-    }
-  }
-  window.addEventListener('scroll', checkSticky, {passive:true});
-  // re-check when switching to analyze tab
-  var origShow = window.showScr;
-  window.showScr = function(id, tab){
-    origShow(id, tab);
-    if(id === 'analyze'){
-      banner.classList.remove('stuck');
-      lastStuck = false;
-      setTimeout(checkSticky, 50);
-    }
-  };
-})();
 }
 function toggleVibe(){document.getElementById('vibe-btn').classList.toggle('open');document.getElementById('vibe-dd').classList.toggle('open');}
 document.addEventListener('click',function(e){if(!e.target.closest('.vibe-wrap')){document.getElementById('vibe-btn').classList.remove('open');document.getElementById('vibe-dd').classList.remove('open');}});
@@ -1150,7 +1324,7 @@ document.addEventListener('click',function(e){if(!e.target.closest('.vibe-wrap')
 function showScr(id,tab){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});document.getElementById('scr-'+id).classList.add('on');if(tab)tab.classList.add('on');}
 function showDomain(id,tab){document.querySelectorAll('.domain-scr').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.dtab').forEach(function(t){t.classList.remove('on');});document.getElementById('dom-'+id).classList.add('on');if(tab)tab.classList.add('on');}
 function closeModal(){document.getElementById('ob-modal').classList.add('gone');}
-function goStep(n){[1,2,3,4,5,6].forEach(function(i){var e=document.getElementById('ob'+i);if(e)e.style.display=i===n?'block':'none';var d=document.getElementById('pd'+i);if(d)d.classList.toggle('dn',i<=n);});document.getElementById('ob-lbl').textContent='Step '+n+' of 6';}
+function goStep(n){[1,2,3,4,5,6].forEach(function(i){var e=document.getElementById('ob'+i);if(e)e.classList.toggle('ob-on',i===n);var d=document.getElementById('pd'+i);if(d)d.classList.toggle('dn',i<=n);});document.getElementById('ob-lbl').textContent='Step '+n+' of 6';}
 function pick(el,sel){var scope=el.closest('.niche-grid,.goal-list,.cta-grid');if(!scope)scope=el.parentElement;scope.querySelectorAll(sel).forEach(function(b){b.classList.remove('on');});el.classList.add('on');}
 function togTool(el){el.classList.toggle('on');var s=el.querySelector('span[style]');if(s){s.textContent=el.classList.contains('on')?'✓':'+';s.style.color=el.classList.contains('on')?'var(--p)':'var(--tm)';}}
 function toggleDrawer(id){document.getElementById(id).classList.toggle('open');}
@@ -1158,7 +1332,7 @@ function toggleSess(id){document.getElementById(id).classList.toggle('open');}
 
 // NETWORK
 var focusId='AJ';
-var NODES=[{id:'YOU',x:320,y:140,r:18,tier:'you'},{id:'AJ',x:175,y:70,r:13,tier:'mvp'},{id:'SK',x:445,y:65,r:13,tier:'mvp'},{id:'RG',x:510,y:155,r:13,tier:'mvp'},{id:'ML',x:178,y:200,r:11,tier:'potential'},{id:'DT',x:395,y:220,r:11,tier:'potential'},{id:'JW',x:115,y:140,r:11,tier:'potential'},{id:'CW',x:400,y:130,r:10,tier:'potential'},{id:'PR',x:295,y:62,r:9,tier:'effort'},{id:'BN',x:480,y:225,r:9,tier:'effort'},{id:'JP',x:90,y:205,r:9,tier:'effort'},{id:'TH',x:230,y:248,r:8,tier:'cut'},{id:'LM',x:555,y:105,r:8,tier:'cut'},{id:'MR',x:575,y:200,r:8,tier:'cut'}];
+var NODES=[{id:'YOU',x:400,y:175,r:21,tier:'you'},{id:'AJ',x:219,y:88,r:15,tier:'mvp'},{id:'SK',x:556,y:81,r:15,tier:'mvp'},{id:'RG',x:638,y:194,r:15,tier:'mvp'},{id:'ML',x:222,y:250,r:13,tier:'potential'},{id:'DT',x:494,y:275,r:13,tier:'potential'},{id:'JW',x:144,y:175,r:13,tier:'potential'},{id:'CW',x:500,y:162,r:12,tier:'potential'},{id:'PR',x:369,y:78,r:10,tier:'effort'},{id:'BN',x:600,y:281,r:10,tier:'effort'},{id:'JP',x:112,y:256,r:10,tier:'effort'},{id:'TH',x:288,y:310,r:9,tier:'cut'},{id:'LM',x:694,y:131,r:9,tier:'cut'},{id:'MR',x:719,y:250,r:9,tier:'cut'}];
 var LINES=[['YOU','AJ'],['YOU','SK'],['YOU','RG'],['YOU','ML'],['YOU','DT'],['YOU','JW'],['YOU','PR'],['YOU','BN'],['YOU','TH'],['YOU','LM'],['YOU','CW'],['YOU','JP'],['YOU','MR'],['AJ','SK'],['SK','RG'],['ML','DT']];
 var PROFILES={AJ:{av:'AJ',bg:'var(--okp)',col:'var(--ok)',name:'Alex Johnson',tags:[{t:'MVP',c:'b-ok'},{t:'Client',c:'b-p'}],since:'Jan 2023',spend:'$18,400',last:'Today',loc:'San Francisco',li:'@alexjohnson',refs:'2 🔥',read:'Strong MVP signal. Session 6 needs reinforcing. Worth deepening.'},SK:{av:'SK',bg:'var(--pp)',col:'var(--pd)',name:'Sarah Kim',tags:[{t:'MVP',c:'b-ok'},{t:'Alumni',c:'b-p'}],since:'Mar 2022',spend:'$24,200',last:'2 weeks ago',loc:'New York',li:'@sarahkim',refs:'3 🔥',read:'Most consistent referrer. A quarterly check-in keeps this warm.'},RG:{av:'RG',bg:'var(--okp)',col:'var(--ok)',name:'Rivera Group',tags:[{t:'MVP',c:'b-ok'},{t:'Corporate',c:'b-p'}],since:'Sep 2023',spend:'$31,000',last:'Last week',loc:'Chicago',li:'@riveragroup',refs:'0',read:'Largest spend. Sprint ends soon. Approach renewal as strategic planning.'},ML:{av:'ML',bg:'var(--pp)',col:'var(--pd)',name:'Morgan Lee',tags:[{t:'Potential',c:'b-p'},{t:'Client',c:'b-m'}],since:'May 2025',spend:'$4,800',last:'Today',loc:'Los Angeles',li:'@morganlee',refs:'0',read:'Career pivot circling. If they name it today, a longer engagement is likely.'},JW:{av:'JW',bg:'var(--pp)',col:'var(--pd)',name:'James Wu',tags:[{t:'Potential',c:'b-p'}],since:'—',spend:'—',last:'3 weeks ago',loc:'Seattle',li:'@jameswu',refs:'0',read:"Strong interest but hasn't booked."},CW:{av:'CW',bg:'var(--pp)',col:'var(--pd)',name:'Chris Wang',tags:[{t:'Potential',c:'b-p'}],since:'—',spend:'—',last:'1 month ago',loc:'Boston',li:'@chriswang',refs:'0',read:"Came through Alex. Discovery went well."},DT:{av:'DT',bg:'var(--pp)',col:'var(--pd)',name:'Dana Torres',tags:[{t:'Potential',c:'b-p'},{t:'Client',c:'b-m'}],since:'Jun 2025',spend:'$2,400',last:'3 weeks ago',loc:'Miami',li:'@danatorres',refs:'0',read:'Came through a LinkedIn post — direct content-to-client conversion.'},PR:{av:'PR',bg:'var(--wnp)',col:'var(--wn)',name:'Paula Reed',tags:[{t:'Needs effort',c:'b-eff'}],since:'2021',spend:'$8,200',last:'2 months ago',loc:'Austin',li:'@paulareed',refs:'1',read:'Long-term relationship gone quiet. Personal outreach would reactivate.'},BN:{av:'BN',bg:'var(--wnp)',col:'var(--wn)',name:'Ben Nakamura',tags:[{t:'Needs effort',c:'b-eff'}],since:'2023',spend:'$5,100',last:'2 months ago',loc:'Portland',li:'@bennakamura',refs:'0',read:'Good fit but relationship has cooled.'},JP:{av:'JP',bg:'var(--wnp)',col:'var(--wn)',name:'Jan Park',tags:[{t:'Needs effort',c:'b-eff'}],since:'2022',spend:'$6,400',last:'6 weeks ago',loc:'Seattle',li:'@janpark',refs:'0',read:'No contact since completion. Could become a referral source.'},TH:{av:'TH',bg:'color-mix(in srgb,#E24B4A 12%,var(--card))',col:'#E24B4A',name:'Tom Hill',tags:[{t:'Cut loose',c:'b-cut'}],since:'2020',spend:'$3,100',last:'7 months ago',loc:'Denver',li:'—',refs:'0',read:'No engagement in 7 months. Energy better elsewhere.'},LM:{av:'LM',bg:'color-mix(in srgb,#E24B4A 12%,var(--card))',col:'#E24B4A',name:'Lena Morris',tags:[{t:'Cut loose',c:'b-cut'}],since:'2021',spend:'$2,200',last:'8 months ago',loc:'Chicago',li:'—',refs:'0',read:'Low engagement, minimal spend. 8 months silent.'},MR:{av:'MR',bg:'color-mix(in srgb,#E24B4A 12%,var(--card))',col:'#E24B4A',name:'Maya Roth',tags:[{t:'Cut loose',c:'b-cut'}],since:'2020',spend:'$1,800',last:'9 months ago',loc:'Phoenix',li:'—',refs:'0',read:'Minimal engagement. Safe to remove from active tracking.'}};
 
@@ -1180,38 +1354,6 @@ function buildGraph(){
 
 function focusNode(id){
   focusId=id;buildGraph();
-
-// ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
-(function(){
-  var banner = document.querySelector('.domain-tabs-sticky');
-  if(!banner) return;
-  var lastStuck = false;
-  function checkSticky(){
-    if(!document.getElementById('scr-analyze').classList.contains('on')){
-      if(lastStuck){banner.classList.remove('stuck');lastStuck=false;}
-      return;
-    }
-    var rect = banner.getBoundingClientRect();
-    var topbar = document.querySelector('.topbar');
-    var tbH = topbar ? topbar.offsetHeight : 56;
-    var shouldStick = rect.top <= tbH;
-    if(shouldStick !== lastStuck){
-      banner.classList.toggle('stuck', shouldStick);
-      lastStuck = shouldStick;
-    }
-  }
-  window.addEventListener('scroll', checkSticky, {passive:true});
-  // re-check when switching to analyze tab
-  var origShow = window.showScr;
-  window.showScr = function(id, tab){
-    origShow(id, tab);
-    if(id === 'analyze'){
-      banner.classList.remove('stuck');
-      lastStuck = false;
-      setTimeout(checkSticky, 50);
-    }
-  };
-})();
   var p=PROFILES[id];if(!p)return;
   document.getElementById('np-av').textContent=p.av;
   document.getElementById('np-av').style.background=p.bg;
@@ -1250,151 +1392,102 @@ function doGenerate(){
 function toggleChat(){document.getElementById('ciara-chat').classList.toggle('open');}
 function sendToC(){var inp=document.getElementById('ciara-input');var msg=inp.value.trim();if(!msg)return;var body=document.getElementById('ciara-chat-body');var user=document.createElement('div');user.style.cssText='align-self:flex-end;background:var(--pp);border-radius:12px 0 12px 12px;padding:10px 13px;font-size:14px;color:var(--pd);max-width:90%;margin-left:auto;';user.textContent=msg;body.appendChild(user);inp.value='';setTimeout(function(){var r=document.createElement('div');r.className='ciara-bub';var nm={linkedin:'LinkedIn post',instagram:'Reel',email:'newsletter',youtube:'video',substack:'piece'};r.textContent=["Great! Want me to turn that into a "+((nm[curPlat])||'post')+"?","I can see a strong angle — should I draft something?","That sounds like your best-performing type. Let me generate a few versions.","Got it. Pulling from your sessions to shape this..."][Math.floor(Math.random()*4)];body.appendChild(r);body.scrollTop=body.scrollHeight;},600);body.scrollTop=body.scrollHeight;}
 
-// ── CREATE MODE ──
-var createMode='content';
-function setCreateMode(mode){
-  createMode=mode;
-  var cBtn=document.getElementById('cm-content');
-  var aBtn=document.getElementById('cm-agents');
-  var cView=document.getElementById('create-content-view');
-  var aView=document.getElementById('create-agents-view');
-  if(mode==='content'){
-    cBtn.style.color='var(--p)';cBtn.style.borderBottomColor='var(--p)';
-    aBtn.style.color='var(--tm)';aBtn.style.borderBottomColor='transparent';
-    cView.style.display='block';aView.style.display='none';
-    if(curFmt==='video'){curFmt='post';document.getElementById('fc-video').classList.remove('on');resetOutput();}
-  }else{
-    aBtn.style.color='var(--p)';aBtn.style.borderBottomColor='var(--p)';
-    cBtn.style.color='var(--tm)';cBtn.style.borderBottomColor='transparent';
-    cView.style.display='none';aView.style.display='block';
+// ── STUDIO PATHS ──
+function switchPath(path){
+  var paths=['review','prompt','format'];
+  paths.forEach(function(p){
+    var el=document.getElementById('studio-path-'+p);
+    if(el)el.style.display=(p===path)?'block':'none';
+    var tab=document.getElementById('ptab-'+p);
+    if(tab){
+      tab.style.color=(p===path)?'var(--p)':'var(--tm)';
+      tab.style.borderBottomColor=(p===path)?'var(--p)':'transparent';
+    }
+  });
+  if(path!=='review')resetOutput();
+}
+
+function showDraftReview(){
+  var out=document.getElementById('cs-output');
+  out.innerHTML=`<div style="padding:4px 0">
+    <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--tm);margin-bottom:12px;letter-spacing:.06em">BRAND STUDIO &lt;content&gt; · VIDEO POST · ALEX JOHNSON</div>
+    <div style="font-size:20px;font-weight:900;color:var(--t1);margin-bottom:12px;line-height:1.25">Avoiding conflict prolongs it.</div>
+    <div style="font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:16px">After 6 months of avoiding a talk with their boss, my client finally had the conversation — and it went better than they ever imagined.<br><br>Hear the story.</div>
+    <div style="background:var(--card2);border-radius:8px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;gap:12px">
+      <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--p),var(--pd));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🎥</div>
+      <div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px">Attach video or podcast</div><div style="font-size:11px;color:var(--tm);font-family:'DM Mono',monospace">Record or attach existing clip</div></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <button class="ab ab-p" style="flex:1" onclick="alert('Posted to LinkedIn!')">↗ Post now</button>
+      <button class="ab ab-g" style="flex:1" onclick="alert('Scheduled for Tuesday 8am')">Schedule</button>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="ab ab-g" style="flex:1" onclick="resetOutput()">← Back</button>
+      <button class="ab ab-g" style="flex:1" onclick="alert('Regenerated')">↻ Regenerate</button>
+    </div></div>`;
+}
+
+function pickFmtPath(el,fmt){
+  el.closest('div').querySelectorAll('.rc').forEach(function(b){b.classList.remove('on');});
+  el.classList.add('on');
+  curFmt=fmt;
+  if(fmt==='script'){resetOutput();}else{resetOutput();}
+}
+function pickPlatPath(el,plat){
+  ['fp-linkedin','fp-instagram','fp-email','fp-youtube','fp-substack'].forEach(function(id){
+    var b=document.getElementById(id);if(b)b.classList.remove('on');
+  });
+  el.classList.add('on');curPlat=plat;
+}
+
+// ── AGENTS ──
+function showCreateAgentPanel(){
+  var p=document.getElementById('agent-create-panel');
+  if(p)p.style.display=p.style.display==='none'?'block':'none';
+  if(p&&p.style.display==='block')p.scrollIntoView({behavior:'smooth'});
+}
+function showAgentEdit(name){
+  alert('Edit agent: '+name+'\n\nFull agent editor coming soon — adjust guardrails, schedule, voice settings, and test runs.');
+}
+function showAgentTestPanel(name){
+  var out=document.getElementById('cs-output');
+  if(!out)return;
+  showScr('studio',document.querySelectorAll('.tab')[2]);
+  switchPath('review');
+  out.innerHTML=`<div style="padding:4px 0">
+    <div style="font-size:11px;font-family:'DM Mono',monospace;color:var(--tm);margin-bottom:12px">TEST RUN · ${name.toUpperCase()}</div>
+    <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:12px">What this agent would do right now:</div>
+    <div style="background:var(--card2);border-radius:8px;padding:14px;font-size:13px;color:var(--t1);line-height:1.7;margin-bottom:16px">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--tm);margin-bottom:8px">DRAFT EMAIL → ALEX JOHNSON</div>
+      Hi Alex,<br><br>Great session today. Here is what we covered:<br><br>
+      <strong>Notes:</strong> Communication patterns with your team. Where directiveness blocks curiosity.<br><br>
+      <strong>Next steps:</strong> Try the listening exercise in one team meeting this week. Notice what changes.<br><br>
+      Ready to keep building? <a href="#" style="color:var(--p)">Schedule our next session →</a>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="ab ab-g" style="flex:1" onclick="resetOutput()">← Back</button>
+      <button class="ab ab-p" style="flex:1" onclick="alert('Approved — sends tomorrow 9am')">Approve &amp; send</button>
+    </div></div>`;
+}
+
+
+function buildFromFormat(){
+  var fmt=document.getElementById('ff-format').value;
+  var plat=document.getElementById('ff-platform').value;
+  var recurring=document.getElementById('ff-recurring').checked;
+  if(recurring){
+    alert('Smoov will set up an agent to create '+fmt+' content for '+plat+' on your schedule. You will review each draft before it goes out.');
+    return;
   }
+  curFmt=fmt;curPlat=plat;
+  doGenerate();
 }
 
-// ── VIDEO WORKFLOW ──
-function showVideoWorkflow(step){
-  var out=document.getElementById('cs-output');
-  var dots=[1,2,3,4].map(function(i){return'<div style="flex:1;height:3px;border-radius:2px;background:'+(i<=step?'var(--p)':'var(--bd)')+'"></div>';}).join('');
-  var bar='<div style="display:flex;gap:6px;margin-bottom:20px">'+dots+'</div>';
-  var inner='';
-  if(step===1){
-    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Your script</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Smoov generated this from your session with Alex. Edit or use as-is.</div>'+
-    '<div style="background:var(--card2);border-radius:8px;padding:16px;font-size:14px;line-height:1.7;color:var(--t1);margin-bottom:16px;max-height:180px;overflow-y:auto">'+
-    '<strong>Six months of circling the same conversation.</strong><br><br>My client finally walked in — and it went better than they ever imagined.<br><br>Avoidance isn't laziness. It's protection. The breakthrough wasn't courage. It was clarity.<br><br><em>If this resonates, let's talk.</em></div>'+
-    '<button class="ab ab-g" style="width:100%;margin-bottom:12px" onclick="alert('Edit mode coming soon')">Edit script</button>'+
-    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="resetOutput();document.getElementById('fc-video').classList.remove('on')">← Back</button>'+
-    '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(2)">Ready to film →</button></div>';
-  }else if(step===2){
-    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Upload your video</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Record on your phone, then upload here. Smoov will enhance it.</div>'+
-    '<div style="border:2px dashed var(--bd);border-radius:8px;padding:32px 20px;text-align:center;background:var(--card2);cursor:pointer;margin-bottom:14px" onclick="alert('File picker')">'+
-    '<div style="font-size:28px;margin-bottom:8px">📹</div><div style="font-size:14px;color:var(--t2);margin-bottom:4px">Click or drag to upload</div>'+
-    '<div style="font-size:12px;color:var(--tm)">MP4 or MOV</div></div>'+
-    '<div style="font-size:12px;color:var(--tm);line-height:1.5;margin-bottom:14px;padding:10px 12px;background:var(--card2);border-radius:6px">No need for perfect lighting. Smoov enhances your appearance and lets you choose a background.</div>'+
-    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(1)">← Back</button>'+
-    '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(3)">Next: Enhance →</button></div>';
-  }else if(step===3){
-    var bgs=[['Professional','Modern office',true],['Professional','Boardroom',false],['Relaxed','Cozy cabin',false],['Luxury','Beach club',false],['Creative','Space shuttle',false],['Minimal','Gradient',false]];
-    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Enhance</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Select options, then preview.</div>'+
-    '<div style="margin-bottom:12px"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Appearance</div>'+
-    '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer;margin-bottom:6px"><input type="checkbox" checked><span style="font-size:13px;color:var(--t2)">Smooth skin and enhance lighting</span></label>'+
-    '<label style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2);cursor:pointer"><input type="checkbox" checked><span style="font-size:13px;color:var(--t2)">Enhance hair and makeup</span></label></div>'+
-    '<div style="margin-bottom:14px"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Background</div>'+
-    '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px">'+
-    bgs.map(function(b){return'<div style="border:'+(b[2]?'2px solid var(--p)':'0.5px solid var(--bd)')+';border-radius:7px;padding:8px;text-align:center;cursor:pointer;background:'+(b[2]?'var(--pp)':'var(--card)')+'"><div style="font-size:10px;color:var(--tm);margin-bottom:3px">'+b[0]+'</div><div style="font-size:12px;font-weight:600;color:var(--t1)">'+b[1]+'</div></div>';}).join('')+
-    '</div></div>'+
-    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(2)">← Back</button>'+
-    '<button class="ab ab-p" style="flex:1" onclick="showVideoWorkflow(4)">Next: Save →</button></div>';
-  }else if(step===4){
-    inner=bar+'<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:6px">Save to library</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:14px">Then download or push to your platforms.</div>'+
-    '<div style="margin-bottom:12px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">Title</label>'+
-    '<input type="text" value="Six months of circling" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)"></div>'+
-    '<div style="margin-bottom:14px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">Caption</label>'+
-    '<div style="background:var(--card2);border-radius:6px;padding:12px;font-size:13px;line-height:1.6;color:var(--t1)">Six months of circling the same conversation...<br><br>My client finally walked in.</div></div>'+
-    '<div style="font-size:12px;color:var(--tm);line-height:1.5;padding:10px 12px;background:var(--card2);border-radius:6px;margin-bottom:14px">Saved to library. Then: <strong>Download</strong> or <strong>Push</strong> to LinkedIn, YouTube, or Instagram.</div>'+
-    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="showVideoWorkflow(3)">← Back</button>'+
-    '<button class="ab ab-p" style="flex:1" onclick="alert('Saved to library!');resetOutput();document.getElementById('fc-video').classList.remove('on')">Save to library →</button></div>';
-  }
-  out.innerHTML='<div style="padding:4px 0">'+inner+'</div>';
-}
+// (sub-agent tags now in static HTML)
 
-// ── AGENT DETAIL ──
-function showAgentDetail(id){
-  var agents={
-    'brand-studio':{name:'✏️ Brand Studio',desc:'Creates and schedules content from your sessions.',guardrails:['Review required before publishing','LinkedIn and Instagram only','Post Tuesday and Thursday at 8am','No more than 2 posts per week']},
-    'practice-assistant':{name:'☀️ Practice Assistant',desc:'Session prep, scheduling, and client recaps.',guardrails:['Review required before sending','Send recaps next weekday at 9am','Working sessions only','Include CTA to schedule next session']},
-    'client-relations':{name:'🤝 Client Relations',desc:'Milestone celebrations, check-ins, and referral prompts.',guardrails:['Review required before sending','3-month and 6-month check-ins','Referral prompts only after positive sessions','Warm, personal tone']}
-  };
-  var a=agents[id];if(!a)return;
-  var out=document.getElementById('cs-output');
-  out.innerHTML='<div style="padding:4px 0">'+
-    '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">'+a.name+'</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">'+a.desc+'</div>'+
-    '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Guardrails</div>'+
-    '<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">'+
-    a.guardrails.map(function(g){return'<div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:6px;background:var(--card2)"><input type="checkbox" checked><span style="font-size:13px;color:var(--t2)">'+g+'</span></div>';}).join('')+
-    '<button class="ab ab-g" style="font-size:12px;margin-top:4px" onclick="alert('Add guardrail')">+ Add guardrail</button></div>'+
-    '<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:8px">Test preview</div>'+
-    '<div style="background:var(--card2);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;color:var(--t1);margin-bottom:16px">'+
-    '<div style="font-size:11px;color:var(--tm);margin-bottom:8px;font-family:'DM Mono',monospace">What this agent would do next</div>'+
-    'Hi Alex,<br><br>Great session today. Here's what we covered:<br><br><strong>Notes:</strong> Communication patterns with your team.<br><br><strong>Next steps:</strong> Try the listening exercise in one team meeting this week.<br><br>'+
-    'Ready to keep building? <a href="#" style="color:var(--p)">Schedule our next session →</a></div>'+
-    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-    '<button class="ab ab-p" style="flex:1" onclick="alert('Changes saved')">Save changes</button></div>'+
-    '<button class="ab ab-g" style="width:100%;margin-top:8px;color:#E24B4A;border-color:#E24B4A" onclick="alert('Agent deleted')">Delete agent</button>'+
-  '</div>';
-}
-
-function showCreateAgent(){
-  var out=document.getElementById('cs-output');
-  out.innerHTML='<div style="padding:4px 0">'+
-    '<div style="font-size:18px;font-weight:800;color:var(--t1);margin-bottom:4px">Create a new agent</div>'+
-    '<div style="font-size:13px;color:var(--tm);margin-bottom:20px">Describe what you want the agent to do. Smoov will build it.</div>'+
-    '<div style="margin-bottom:12px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">Agent name</label>'+
-    '<input type="text" placeholder="e.g. Growth Agent" style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card)"></div>'+
-    '<div style="margin-bottom:16px"><label style="display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px">What should it do?</label>'+
-    '<textarea placeholder="Be specific. e.g. After each working session, send the client on-brand session notes, next steps, and progress highlights..." style="width:100%;padding:9px 11px;border:0.5px solid var(--bd);border-radius:6px;font-family:inherit;font-size:13px;color:var(--t1);background:var(--card);resize:vertical;min-height:90px"></textarea></div>'+
-    '<div style="display:flex;gap:8px"><button class="ab ab-g" style="flex:1" onclick="setCreateMode('agents')">← Back</button>'+
-    '<button class="ab ab-p" style="flex:1" onclick="alert('Smoov is building your agent...')">Create agent →</button></div>'+
-  '</div>';
-}
 
 
 buildGraph();
-
-// ── STICKY ANALYZE SUBNAV ── works in iframes and all browsers
-(function(){
-  var banner = document.querySelector('.domain-tabs-sticky');
-  if(!banner) return;
-  var lastStuck = false;
-  function checkSticky(){
-    if(!document.getElementById('scr-analyze').classList.contains('on')){
-      if(lastStuck){banner.classList.remove('stuck');lastStuck=false;}
-      return;
-    }
-    var rect = banner.getBoundingClientRect();
-    var topbar = document.querySelector('.topbar');
-    var tbH = topbar ? topbar.offsetHeight : 56;
-    var shouldStick = rect.top <= tbH;
-    if(shouldStick !== lastStuck){
-      banner.classList.toggle('stuck', shouldStick);
-      lastStuck = shouldStick;
-    }
-  }
-  window.addEventListener('scroll', checkSticky, {passive:true});
-  // re-check when switching to analyze tab
-  var origShow = window.showScr;
-  window.showScr = function(id, tab){
-    origShow(id, tab);
-    if(id === 'analyze'){
-      banner.classList.remove('stuck');
-      lastStuck = false;
-      setTimeout(checkSticky, 50);
-    }
-  };
-})();
 </script>
 </body>
 </html>
