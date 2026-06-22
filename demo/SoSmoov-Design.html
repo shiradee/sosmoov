@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoSmoov Design v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* CUT PALETTE — violet + ink scale + paper + ONE accent (amber=Smoov) */
+  --violet:#534AB7; --violet-d:#3F3795; --violet-l:#EEEDFA;
+  --amber:#EF9F27;                 /* the single accent — Smoov only */
+  --ink-900:#1A1730; --ink-700:#3D3A55; --ink-500:#6B6883; --ink-300:#9D9AB2;
+  --paper:#FBFAFC; --card:#FFFFFF; --line:#ECEAF3;
+  /* functional — exist as tokens, appear rarely */
+  --ok:#2E9E83; --warn:#D98A3D; --risk:#D15B6B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink-900);font-family:'Schibsted Grotesk',sans-serif;padding:48px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+
+/* section labels — now in grotesk, not mono. uppercase + tracked = precise without the cliché */
+.sec-label{font-family:'Schibsted Grotesk';font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-300);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.sec-label::after{content:'';height:1px;background:var(--line);flex:1}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:32px}
+.note{font-size:13px;color:var(--ink-300);margin-top:12px;max-width:620px}
+.note b{color:var(--ink-500);font-weight:600}
+
+/* ─── WORDMARK ─── */
+.wm-final{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.wm-lockup{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:40px 44px}
+.wm{font-family:'Fredoka';font-weight:700;font-size:44px;letter-spacing:-0.01em;line-height:1}
+.wm .so{color:var(--violet)} .wm .smoov{color:var(--ink-900)}
+.wm-dark{background:var(--ink-900)}
+.wm-dark .smoov{color:#fff}
+.wm-sm{font-family:'Fredoka';font-weight:700;font-size:20px}
+.wm-sm .so{color:var(--violet)} .wm-sm .smoov{color:var(--ink-900)}
+.wm-inline-row{display:flex;align-items:center;gap:14px;margin-top:18px;color:var(--ink-500);font-size:14px}
+
+/* ─── ONE FAMILY, WEIGHT DOES THE WORK ─── */
+.scale-item{display:flex;align-items:baseline;gap:24px;padding:13px 0;border-bottom:1px solid var(--line)}
+.scale-item:last-child{border:none}
+.scale-spec{font-family:'Schibsted Grotesk';font-weight:500;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-300);width:150px;flex-shrink:0}
+.s-display{font-family:'Schibsted Grotesk';font-weight:800;font-size:52px;letter-spacing:-0.03em;line-height:1;color:var(--ink-900)}
+.s-h1{font-family:'Schibsted Grotesk';font-weight:800;font-size:30px;letter-spacing:-0.02em}
+.s-h2{font-family:'Schibsted Grotesk';font-weight:700;font-size:21px;letter-spacing:-0.01em}
+.s-h3{font-family:'Schibsted Grotesk';font-weight:600;font-size:16px}
+.s-body{font-family:'Schibsted Grotesk';font-weight:400;font-size:14px;color:var(--ink-700)}
+.s-label{font-family:'Schibsted Grotesk';font-weight:600;font-size:11px;letter-spacing:0.07em;text-transform:uppercase;color:var(--ink-500)}
+.s-tag{font-family:'Schibsted Grotesk';font-weight:500;font-size:11px;color:var(--violet);background:var(--violet-l);padding:2px 7px;border-radius:4px;letter-spacing:0.02em}
+
+/* ─── PALETTE CUT ─── */
+.pal-section{margin-bottom:20px}
+.pal-head{font-family:'Schibsted Grotesk';font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px}
+.pal-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.sw{border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.sw-color{height:60px}
+.sw-meta{padding:7px 9px;background:var(--card)}
+.sw-name{font-family:'Schibsted Grotesk';font-weight:600;font-size:10px;color:var(--ink-900);text-transform:uppercase;letter-spacing:0.03em}
+.sw-hex{font-family:'Schibsted Grotesk';font-weight:400;font-size:10px;color:var(--ink-300)}
+
+/* ─── HERO COMPONENT v2 ─── */
+.demo-stage{background:#F4F2FA;border:1px solid var(--line);border-radius:14px;padding:44px;display:flex;gap:24px;flex-wrap:wrap}
+.client-card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;width:360px;box-shadow:0 1px 2px rgba(26,23,48,0.03)}
+.cc-head{padding:18px 20px 15px;display:flex;align-items:center;gap:13px}
+.cc-avatar{width:42px;height:42px;border-radius:11px;background:var(--violet-l);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+.cc-name{font-weight:700;font-size:16px;color:var(--ink-900);letter-spacing:-0.01em}
+.cc-sub{font-weight:600;font-size:11px;color:var(--ink-300);text-transform:uppercase;letter-spacing:0.05em;margin-top:3px}
+.cc-body{padding:0 20px 16px}
+/* Smoov — the ONE warm moment. amber, restrained. */
+.cc-smoov{background:#FFFCF6;border:1px solid #F3E2C0;border-radius:9px;padding:13px 14px}
+.cc-smoov-label{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.cc-smoov-dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.cc-smoov-tag{font-weight:700;font-size:11px;color:#B97A12;text-transform:uppercase;letter-spacing:0.07em}
+.cc-smoov-text{font-size:13.5px;color:var(--ink-700);line-height:1.6}
+.cc-actions{display:flex;gap:8px;padding:0 20px 18px}
+.btn{font-family:'Schibsted Grotesk';font-weight:600;font-size:13px;padding:8px 15px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--ink-500);cursor:pointer}
+.btn-primary{background:var(--violet);color:#fff;border-color:var(--violet)}
+.cc-meta-row{display:flex;border-top:1px solid var(--line)}
+.cc-meta{flex:1;padding:12px 16px;border-right:1px solid var(--line)}
+.cc-meta:last-child{border-right:none}
+.cc-meta-lbl{font-weight:600;font-size:9px;color:var(--ink-300);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+/* METRICS in grotesk now, not Fredoka */
+.cc-meta-val{font-weight:800;font-size:16px;color:var(--ink-900);letter-spacing:-0.02em}
+.cc-meta-val.ok{color:var(--ok)}
+
+/* second card — agent tag where mono-bracket is INTENTIONAL (code-like) */
+.agent-card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;width:360px;box-shadow:0 1px 2px rgba(26,23,48,0.03)}
+.ac-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.ac-title{font-weight:700;font-size:15px;color:var(--ink-900)}
+.ac-tag{font-weight:500;font-size:11px;color:var(--violet);background:var(--violet-l);padding:3px 8px;border-radius:5px;letter-spacing:0.01em}
+.ac-status{font-weight:600;font-size:10px;color:var(--ok);text-transform:uppercase;letter-spacing:0.06em;display:flex;align-items:center;gap:5px}
+.ac-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.ac-body{padding:16px 20px}
+.ac-metric{font-weight:800;font-size:32px;letter-spacing:-0.02em;color:var(--ink-900)}
+.ac-metric-lbl{font-weight:500;font-size:13px;color:var(--ink-500);margin-top:2px}
+.ac-row{display:flex;gap:8px;padding:14px 20px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- WORDMARK LOCKED -->
+  <div>
+    <div class="sec-label">01 · Wordmark — C, locked · violet "So" + ink "Smoov"</div>
+    <div class="wm-final">
+      <div class="wm-lockup"><div class="wm"><span class="so">So</span><span class="smoov">Smoov</span></div></div>
+      <div class="wm-lockup wm-dark"><div class="wm"><span class="so">So</span><span class="smoov">Smoov</span></div></div>
+    </div>
+    <div class="wm-inline-row">
+      <div class="wm-sm"><span class="so">So</span><span class="smoov">Smoov</span></div>
+      <span>← small / nav size · still reads "So · Smoov"</span>
+    </div>
+    <div class="note"><b>Fredoka now appears here and nowhere else.</b> It is the wordmark, full stop. Everything else is one grotesk.</div>
+  </div>
+
+  <!-- ONE FAMILY -->
+  <div>
+    <div class="sec-label">02 · One type family — Schibsted Grotesk, weight does the work</div>
+    <div class="panel">
+      <div class="scale-item"><span class="scale-spec">Display · 52 · 800</span><span class="s-display">$14,200</span></div>
+      <div class="scale-item"><span class="scale-spec">H1 · 30 · 800</span><span class="s-h1">Today's sessions</span></div>
+      <div class="scale-item"><span class="scale-spec">H2 · 21 · 700</span><span class="s-h2">Ready for review</span></div>
+      <div class="scale-item"><span class="scale-spec">H3 · 16 · 600</span><span class="s-h3">Alex Johnson</span></div>
+      <div class="scale-item"><span class="scale-spec">Body · 14 · 400</span><span class="s-body">The content coaches struggle to create is sitting inside their sessions — every breakthrough already there.</span></div>
+      <div class="scale-item"><span class="scale-spec">Label · 11 · 600 caps</span><span class="s-label">Session 8 of 12</span></div>
+      <div class="scale-item"><span class="scale-spec">Agent tag · 11 · 500</span><span class="s-tag">&lt;content&gt;</span></div>
+    </div>
+    <div class="note"><b>No Nunito, no mono.</b> One family across display → body → labels. The agent tag keeps the <b>&lt;bracket&gt;</b> because that syntax genuinely references code — it earns the styling instead of borrowing it.</div>
+  </div>
+
+  <!-- PALETTE CUT -->
+  <div>
+    <div class="sec-label">03 · Palette — cut to brand + neutrals + one accent</div>
+    <div class="pal-section">
+      <div class="pal-head">Brand</div>
+      <div class="pal-grid">
+        <div class="sw"><div class="sw-color" style="background:#534AB7"></div><div class="sw-meta"><div class="sw-name">Violet</div><div class="sw-hex">#534AB7</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#3F3795"></div><div class="sw-meta"><div class="sw-name">Violet D</div><div class="sw-hex">#3F3795</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#EEEDFA"></div><div class="sw-meta"><div class="sw-name">Violet L</div><div class="sw-hex">#EEEDFA</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#EF9F27"></div><div class="sw-meta"><div class="sw-name">Amber·Smoov</div><div class="sw-hex">#EF9F27</div></div></div>
+      </div>
+    </div>
+    <div class="pal-section">
+      <div class="pal-head">Ink &amp; ground — the workhorses</div>
+      <div class="pal-grid">
+        <div class="sw"><div class="sw-color" style="background:#1A1730"></div><div class="sw-meta"><div class="sw-name">Ink 900</div><div class="sw-hex">#1A1730</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#3D3A55"></div><div class="sw-meta"><div class="sw-name">Ink 700</div><div class="sw-hex">#3D3A55</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#6B6883"></div><div class="sw-meta"><div class="sw-name">Ink 500</div><div class="sw-hex">#6B6883</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#9D9AB2"></div><div class="sw-meta"><div class="sw-name">Ink 300</div><div class="sw-hex">#9D9AB2</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#FBFAFC;border-bottom:1px solid #ECEAF3"></div><div class="sw-meta"><div class="sw-name">Paper</div><div class="sw-hex">#FBFAFC</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#ECEAF3"></div><div class="sw-meta"><div class="sw-name">Line</div><div class="sw-hex">#ECEAF3</div></div></div>
+      </div>
+    </div>
+    <div class="pal-section">
+      <div class="pal-head">Functional — tokens only, appear rarely</div>
+      <div class="pal-grid">
+        <div class="sw"><div class="sw-color" style="background:#2E9E83"></div><div class="sw-meta"><div class="sw-name">OK</div><div class="sw-hex">#2E9E83</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#D98A3D"></div><div class="sw-meta"><div class="sw-name">Warn</div><div class="sw-hex">#D98A3D</div></div></div>
+        <div class="sw"><div class="sw-color" style="background:#D15B6B"></div><div class="sw-meta"><div class="sw-name">Risk</div><div class="sw-hex">#D15B6B</div></div></div>
+      </div>
+    </div>
+    <div class="note"><b>Orange retired.</b> It sat too close to amber. Now: violet is the brand, amber means "Smoov," and that's the whole accent story. Neutrals carry everything else.</div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div>
+    <div class="sec-label">04 · Real components — metrics in grotesk, Smoov the one warm moment</div>
+    <div class="demo-stage">
+
+      <div class="client-card">
+        <div class="cc-head">
+          <div class="cc-avatar">AJ</div>
+          <div><div class="cc-name">Alex Johnson</div><div class="cc-sub">MVP · Session 8 of 12</div></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-smoov">
+            <div class="cc-smoov-label"><span class="cc-smoov-dot"></span><span class="cc-smoov-tag">Smoov</span></div>
+            <div class="cc-smoov-text">Still seeking external validation before acting. The session 6 breakthrough needs reinforcing — bring it back today.</div>
+          </div>
+        </div>
+        <div class="cc-actions">
+          <button class="btn btn-primary">Open prep</button>
+          <button class="btn">Message</button>
+        </div>
+        <div class="cc-meta-row">
+          <div class="cc-meta"><div class="cc-meta-lbl">Since</div><div class="cc-meta-val">Mar 2024</div></div>
+          <div class="cc-meta"><div class="cc-meta-lbl">Spend</div><div class="cc-meta-val ok">$8,200</div></div>
+          <div class="cc-meta"><div class="cc-meta-lbl">Referrals</div><div class="cc-meta-val">3</div></div>
+        </div>
+      </div>
+
+      <div class="agent-card">
+        <div class="ac-head">
+          <div style="display:flex;align-items:center;gap:8px"><span class="ac-title">Brand Studio</span><span class="ac-tag">&lt;content&gt;</span></div>
+          <span class="ac-status">Active</span>
+        </div>
+        <div class="ac-body">
+          <div class="ac-metric">12 posts</div>
+          <div class="ac-metric-lbl">drafted this month · 9 approved</div>
+        </div>
+        <div class="ac-row">
+          <button class="btn">Edit</button>
+          <button class="btn">Test</button>
+          <button class="btn">Pause</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="note"><b>$8,200 and 12 posts are now in the grotesk</b>, not Fredoka — serious numbers read serious. Smoov is the only warm color on either card. Agent tags use the violet bracket system.</div>
+  </div>
+
+</div>
+</body>
+</html>
